@@ -1,0 +1,15 @@
+[package]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[golang]
+disabled = true
+
+[username]
+format = "[$user]($style) "
+
+[hostname]
+ssh_only = true
+format =  "on [$hostname](green) "
