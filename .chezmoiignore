@@ -1,0 +1,4 @@
+README.md
+{{- if not (hasPrefix .chezmoi.hostname "w00") }}
+work_*
+{{- end }}
