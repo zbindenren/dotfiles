@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji
 
-sudo pacman -S --noconfirm --needed fish fisher starship
+sudo pacman -S --noconfirm --needed kitty fish fisher starship
 
 yay -S aur/jumpapp --noconfirm --needed
 
