@@ -1,5 +1,12 @@
 [package]
-disabled = true
+disabled = false
+
+[status]
+style = "bg:blue"
+symbol = "🔴"
+format = '[\[$symbol $common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = true
+disabled = false
 
 [nodejs]
 disabled = true
