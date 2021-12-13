@@ -50,6 +50,10 @@ vim.cmd(([[
 autocmd BufWritePost plugins.lua PackerCompile
 ]]))
 
+vim.cmd(([[
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+]]))
+
 -- set leader to space early
 vim.g.mapleader = " "
 
