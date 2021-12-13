@@ -4,7 +4,9 @@ if ! type brew > /dev/null; then
   exit 0
 fi
 
-brew install starship fisher tpm
+brew install starship
+brew install fisher
+brew install tpm
 
 
 fish -c 'fisher install jethrokuan/fzf'
