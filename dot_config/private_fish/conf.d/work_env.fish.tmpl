@@ -1,0 +1,34 @@
+# path
+set -x PATH $PATH $HOME/homebrew/bin
+
+# go
+set -x GOPROXY https://proxy.golang.org
+set -x GOPRIVATE '*.{{ .domain }}'
+
+# proxy
+set -x http_proxy http://localhost:9999
+set -x https_proxy http://localhost:9999
+set -x no_proxy {{ .noproxy }}
+
+set proxyname {{ .proxy }}:{{ .proxyport }}
+
+function proxyuser
+  read --prompt "echo 'username: ' " -l username
+  read -s --prompt "echo 'password: ' " -l password
+  set -x ftp_proxy http://$username:$password@$proxyname
+  set -x http_proxy http://$username:$password@$proxyname
+  set -x https_proxy http://$username:$password@$proxyname
+end
+
+function proxyoff
+  set -e ftp_proxy
+  set -e http_proxy
+  set -e https_proxy
+end
+
+function proxyappl
+set proxyname http://{{ .proxyappl }}:{{ .proxyport }}
+    set -x ftp_proxy $proxyname
+    set -x http_proxy $proxyname
+    set -x https_proxy=$proxyname
+end
