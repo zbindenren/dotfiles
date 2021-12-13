@@ -5,7 +5,7 @@ if ! type brew > /dev/null; then
 fi
 
 brew install starship
-brew install fisher
+brew install --ignore-dependencies fisher
 brew install tpm
 
 
