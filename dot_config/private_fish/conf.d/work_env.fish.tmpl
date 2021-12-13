@@ -30,5 +30,5 @@ function proxyappl
 set proxyname http://{{ .proxyappl }}:{{ .proxyport }}
     set -x ftp_proxy $proxyname
     set -x http_proxy $proxyname
-    set -x https_proxy=$proxyname
+    set -x https_proxy $proxyname
 end
