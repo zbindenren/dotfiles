@@ -1,4 +1,9 @@
 #!/bin/sh
+if ! type pacman > /dev/null; then
+  echo "not arch system"
+  exit 0
+fi
+
 sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd
 
 sudo pacman -S --noconfirm --needed kitty fish fisher starship age

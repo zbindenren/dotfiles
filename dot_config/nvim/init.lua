@@ -50,6 +50,7 @@ vim.cmd(([[
 autocmd BufWritePost plugins.lua PackerCompile
 ]]))
 
+-- apply chezmoi on write
 vim.cmd(([[
 autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
 ]]))
