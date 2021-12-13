@@ -1,7 +1,7 @@
 #!/bin/sh
 sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd
 
-sudo pacman -S --noconfirm --needed kitty fish fisher starship
+sudo pacman -S --noconfirm --needed kitty fish fisher starship age
 
 
 if ! type jumpapp > /dev/null; then
