@@ -5,6 +5,10 @@ vim.api.nvim_set_keymap('n', '<leader><leader>f', ':NvimTreeFindFile<cr>', { nor
 -- OSCYank
 vim.api.nvim_set_keymap('v', '<leader>y', ':OSCYank<cr>', { noremap = true})
 
+-- Shift + J/K moves selected lines down/up in visual mode
+vim.api.nvim_set_keymap('v', 'J', ':m \'>+1<CR>gv=gv', { noremap = true})
+vim.api.nvim_set_keymap('v', 'K', ':m \'<-2<CR>gv=gv', { noremap = true})
+
 -- avoid clashing with leader as space
 vim.api.nvim_set_keymap('n', '<space>', '<nop>', { noremap = true, silent = true })
 
