@@ -8,6 +8,8 @@ brew install starship
 brew install fisher
 brew install nvim
 brew install tpm
+brew install fd
+brew install bat
 
 
 fish -c 'fisher install jethrokuan/fzf'
