@@ -1,6 +1,6 @@
 # chrome
 alias kc="killall chromium && killall chromium && killall chromium"
-alias cat="bat"
+alias cat="bat -p"
 
 # systemctl
 alias start="sudo systemctl start"
