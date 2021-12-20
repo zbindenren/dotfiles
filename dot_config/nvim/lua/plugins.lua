@@ -107,34 +107,6 @@ return require("packer").startup(function(use)
 	-- show indents
 	use({ "lukas-reineke/indent-blankline.nvim" })
 
-	use({
-		"lukas-reineke/format.nvim",
-		config = function()
-			require("format").setup({
-				lua = {
-					{
-						cmd = { "stylua" },
-					},
-				},
-				terraform = {
-					{
-						cmd = { "terraform fmt" },
-					},
-				},
-				javascript = {
-					{
-						cmd = { "prettier -w --single-quote" },
-					},
-				},
-				yaml = {
-					{
-						cmd = { "prettier -w --single-quote" },
-					},
-				},
-			})
-		end,
-	})
-
 	-- spell checking
 	use({
 		"lewis6991/spellsitter.nvim",
@@ -199,11 +171,33 @@ return require("packer").startup(function(use)
 	})
 
 	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		config = function()
+			require("null-ls").setup({
+				sources = {
+					require("null-ls").builtins.formatting.stylua,
+					require("null-ls").builtins.diagnostics.eslint,
+					require("null-ls").builtins.completion.spell,
+					require("null-ls").builtins.diagnostics.golangci_lint,
+					require("null-ls").builtins.formatting.prettier,
+					require("null-ls").builtins.formatting.terraform_fmt,
+					require("null-ls").builtins.formatting.trim_whitespace,
+					require("null-ls").builtins.formatting.trim_newlines,
+				},
+				on_attach = function(client)
+					if client.resolved_capabilities.document_formatting then
+						vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+					end
+				end,
+			})
+		end,
+		requires = { "nvim-lua/plenary.nvim" },
+	})
+
+	use({
 		"hoob3rt/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
-
-	use({ "mfussenegger/nvim-lint" })
 
 	-- incubating plugins
 end)
