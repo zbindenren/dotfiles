@@ -35,7 +35,7 @@ vim.opt.number = true -- Print line number
 vim.opt.relativenumber = true -- Relative line numbers
 vim.opt.wrap = true -- Enable line wrap
 vim.opt.cmdheight = 2 -- More space to display messages
-vim.opt.timeoutlen = 100 -- Don't wait more that 100ms for normal mode commands
+vim.opt.timeoutlen = 300 -- Don't wait more that 300ms for normal mode commands
 vim.opt.termguicolors = true -- True color support
 vim.opt.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
