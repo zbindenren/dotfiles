@@ -4,7 +4,7 @@ if ! type pacman > /dev/null; then
   exit 0
 fi
 
-sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd bat
+sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd bat delve
 
 sudo pacman -S --noconfirm --needed kitty fish fisher starship age
 

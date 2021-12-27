@@ -1,5 +1,5 @@
 -- nvimtree
-vim.api.nvim_set_keymap("n", "<leader><leader>", ":NvimTreeToggle<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<c-b>", ":NvimTreeToggle<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader><leader>f", ":NvimTreeFindFile<cr>", { noremap = true })
 
 -- OSCYank

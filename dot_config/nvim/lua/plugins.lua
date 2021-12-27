@@ -18,6 +18,8 @@ return require("packer").startup(function(use)
 
 	use({ "fatih/vim-go" })
 
+	use({ "ggandor/lightspeed.nvim" })
+
 	-- tpope, the legend
 	use({ "tpope/vim-commentary" })
 	use({ "tpope/vim-repeat" }) -- repeat commands
