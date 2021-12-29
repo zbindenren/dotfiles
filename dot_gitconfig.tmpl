@@ -1,0 +1,42 @@
+{{- /* if email variable is set I am on work environment */ -}}
+[user]
+   name = Rene Zbinden
+{{- if .email }}
+   email = {{ .email }}
+   signingkey = 2F6C55A5233C1A7A
+{{- else }}
+   email = rene.zbinden@gmail.com
+{{- end }}
+[push]
+	 default = current
+[merge]
+   tool = vim_mergetool
+   conflictstyle = diff3
+[mergetool "vim_mergetool"]
+   cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+   trustExitCode = true
+[core]
+   editor = nvim
+   askpass =
+{{ if .email }}
+[http]
+   sslVerify = false
+   cookiefile = /home/rz/.gitcookies
+{{- end }}
+
+{{ if .email }}
+[commit]
+   gpgsign = true
+   template = /home/rz/.gitmessage
+{{- end }}
+[diff]
+   noprefix = true
+[log]
+   decorate = auto
+[hub]
+   protocol = https
+[pull]
+   rebase = false
+[credential "https://github.com"]
+   helper =
+   helper = !/usr/bin/gh auth git-credential

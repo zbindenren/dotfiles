@@ -13,7 +13,9 @@ alias k="kubectl"
 alias ks="kubectl sudo"
 alias ke="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
-alias k9="k9s --as=zbindenren --as-group=system:masters"
+{{- if .sshuser }}
+alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
+{{- end }}
 
 alias ws='cd (lab ws)'
 

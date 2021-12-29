@@ -1,4 +1,5 @@
 # path
+{{ if .proxy }}
 set -x PATH $PATH $HOME/homebrew/bin
 
 # go
@@ -27,7 +28,8 @@ function proxyoff
 end
 
 function proxyappl
-  set -x ftp_proxy 'http://outapplpf.gslb.pnet.ch:3128'
-  set -x http_proxy 'http://outapplpf.gslb.pnet.ch:3128'
-  set -x https_proxy 'http://outapplpf.gslb.pnet.ch:3128'
+set -x ftp_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
+set -x http_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
+set -x https_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
 end
+{{ end }}
