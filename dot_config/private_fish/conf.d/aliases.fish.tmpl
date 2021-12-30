@@ -21,8 +21,8 @@ alias ws='cd (lab ws)'
 
 # vi
 {{- if hasPrefix "/export" .chezmoi.homeDir }}
-alias vim=''{{ .chezmoi.homeDir }}/bin/nvim.appimage'
-alias vi=''{{ .chezmoi.homeDir }}/bin/nvim.appimage'
+alias vim='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
+alias vi='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
 {{- else }}
 alias vim='nvim'
 alias vi='nvim'
