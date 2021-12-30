@@ -13,7 +13,7 @@ alias k="kubectl"
 alias ks="kubectl sudo"
 alias ke="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
-{{- if .sshuser }}
+{{- if hasKey . "sshuser" }}
 alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
 {{- end }}
 

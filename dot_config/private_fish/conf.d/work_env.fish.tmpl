@@ -1,5 +1,5 @@
 # path
-{{ if .proxy }}
+{{ if hasKey . "proxy" }}
 set -x PATH $PATH $HOME/homebrew/bin
 
 # go

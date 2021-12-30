@@ -1,7 +1,7 @@
 {{- /* if email variable is set I am on work environment */ -}}
 [user]
    name = Rene Zbinden
-{{- if .email }}
+{{- if hasKey . "email" }}
    email = {{ .email }}
    signingkey = 2F6C55A5233C1A7A
 {{- else }}
@@ -18,13 +18,13 @@
 [core]
    editor = nvim
    askpass =
-{{ if .email }}
+{{ if hasKey . "email" }}
 [http]
    sslVerify = false
    cookiefile = /home/rz/.gitcookies
 {{- end }}
 
-{{ if .email }}
+{{ if hasKey . "email" }}
 [commit]
    gpgsign = true
    template = /home/rz/.gitmessage

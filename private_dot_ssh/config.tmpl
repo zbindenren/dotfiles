@@ -1,4 +1,4 @@
-{{ if .logingw -}}
+{{ if hasKey . "logingw" -}}
 GlobalKnownHostsFile /etc/ssh/ssh_known_hosts
 NoHostAuthenticationForLocalhost no
 ForwardAgent yes
