@@ -7,9 +7,15 @@ set -x GOPROXY https://proxy.golang.org
 set -x GOPRIVATE '*.{{ .domain }}'
 
 # proxy
+{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
 set -x http_proxy http://localhost:9999
 set -x https_proxy http://localhost:9999
 set -x no_proxy {{ .noproxy }}
+{{- else }}
+set -x http_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
+set -x https_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
+set -x no_proxy {{ .noproxy }}
+{{- end }}
 
 
 function proxyuser
