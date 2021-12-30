@@ -20,5 +20,10 @@ alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
 alias ws='cd (lab ws)'
 
 # vi
+{{- if hasPrefix "/export" .chezmoi.homeDir }}
+alias vim=''{{ .chezmoi.homeDir }}/bin/nvim.appimage'
+alias vi=''{{ .chezmoi.homeDir }}/bin/nvim.appimage'
+{{- else }}
 alias vim='nvim'
 alias vi='nvim'
+{{ end }}
