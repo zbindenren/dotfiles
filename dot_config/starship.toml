@@ -9,7 +9,8 @@ map_symbol = true
 disabled = false
 
 [directory]
-truncation_length = 5
+truncate_to_repo = false
+truncation_length = 10
 
 [nodejs]
 disabled = true
