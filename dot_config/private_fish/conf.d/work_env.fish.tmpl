@@ -41,7 +41,7 @@ end
 {{ end }}
 
 {{- if not (hasPrefix "w0" .chezmoi.fqdnHostname) }}
-function zssh
+function fzsh
   set host (/usr/bin/cat /etc/pssh/by-os/linux/all.sys | fzf)
   ssh $host
 end
