@@ -24,11 +24,35 @@ set-window-option -g window-status-current-style bg=blue
 set -g pane-border-style fg=black,bg=white
 set -g pane-active-border-style fg=black,bg=blue
 
+# Toggle Keybindings (turn off keybindings for remote sessions)
+{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
+bind -T root F12  \
+  set prefix None \;\
+  set key-table off \;\
+  set status-style bg=colour235,fg=color219 \;\
+  if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
+  refresh-client -S \;\
+
+bind -T off F12 \
+  set -u prefix \;\
+  set -u key-table \;\
+  set -u status-style \;\
+  set -u window-status-current-style \;\
+  set -u window-status-current-format \;\
+  refresh-client -S
+
+wg_is_keys_off="#[fg=$color_light,bg=$color_window_off_indicator]#([ $(tmux show-option -qv key-table) = 'off' ] && echo 'OFF')#[default]"
+{{- end }}
+
 # status bar info
 set -g status-left-length 50
 set -g status-left "#h:[#S]"
 set -g status-right-length 50
+{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
+set -g status-right "$wg_is_keys_off #(kube-tmux) %H:%M %d-%h-%Y"
+{{- else}}
 set -g status-right "#(kube-tmux) %H:%M %d-%h-%Y"
+{{- end }}
 setw -g window-status-current-format "|#I:#W|"
 set-window-option -g automatic-rename off
 set -g status-interval 5
@@ -78,6 +102,16 @@ bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 # PANEs
 bind 7 split-window -h
 bind - split-window -v
+
+
+
+
+
+
+
+
+
+
 
 
 # RESURRECT
