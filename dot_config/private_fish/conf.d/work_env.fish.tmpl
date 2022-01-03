@@ -39,3 +39,10 @@ set -x http_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
 set -x https_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
 end
 {{ end }}
+
+{{- if not (hasPrefix "w0" .chezmoi.fqdnHostname) }}
+function zssh
+  set host (/usr/bin/cat /etc/pssh/by-os/linux/all.sys | fzf)
+  ssh $host
+end
+{{- end }}
