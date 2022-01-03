@@ -69,7 +69,7 @@ vim.g.mapleader = " "
 vim.g["test#strategy"] = "vimux"
 
 -- nvim.tree settings
-vim.g.nvim_tree_width = "10%"
+vim.g.nvim_tree_width = "15%"
 
 -- symbols settings
 vim.g.symbols_outline = {
