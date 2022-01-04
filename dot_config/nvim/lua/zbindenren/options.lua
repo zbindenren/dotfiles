@@ -34,5 +34,7 @@ o.timeoutlen = 150 -- Don't wait more that 150ms for normal mode commands
 o.termguicolors = true -- True color support
 o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 
+vim.opt.shortmess:append("c")
+
 vim.cmd([[set iskeyword+=-]]) -- this treats dash separated words (i.e: dash-separated) as one word
 vim.cmd([[set whichwrap+=<,>,[,],h,l]]) -- this causes the h and l key to wrap when used at beginning or end of lines
