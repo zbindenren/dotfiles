@@ -10,6 +10,8 @@ end
 
 require("zbindenren.options")
 require("zbindenren.keymaps")
+require("zbindenren.whichkey")
+require("zbindenren.plugins")
 
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 
@@ -48,8 +50,8 @@ vim.g.symbols_outline = {
 }
 
 -- load other lua configurations
-require("plugins")
-require("mappings")
+-- require("plugins")
+-- require("mappings")
 require("go")
 require("statusline")
 require("markdown")
