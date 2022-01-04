@@ -1,5 +1,4 @@
 -- load packer on all machines
-local execute = vim.api.nvim_command
 local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -9,35 +8,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
 	execute("packadd packer.nvim")
 end
 
-local indent = 2
-vim.opt.expandtab = true -- Use spaces instead of tabs
-vim.opt.shiftwidth = indent -- Size of an indent
-vim.opt.smartindent = true -- Insert indents automatically
-vim.opt.tabstop = indent -- Number of spaces tabs count for
-vim.opt.mouse = "" -- Disable mouse
-vim.opt.clipboard = "unnamedplus" -- Put those yanks in my os clipboards
-vim.opt.completeopt = "menuone,noselect" -- Completion options (for compe)
-vim.opt.hidden = true -- Enable modified buffers in background
-vim.opt.ignorecase = true -- Ignore case
-vim.opt.incsearch = true -- Make search behave like modern browsers
-vim.opt.inccommand = "split" -- Live preview for search and replace
-vim.opt.joinspaces = false -- No double spaces with join after a dot
-vim.opt.scrolloff = 10 -- Lines of context
-vim.opt.shiftround = true -- Round indent
-vim.opt.sidescrolloff = 8 -- Columns of context
-vim.opt.smartcase = true -- Don't ignore case with capitals
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.termguicolors = true -- True color support
-vim.opt.wildmode = "list:longest" -- Command-line completion mode
-vim.opt.list = false -- Show some invisible characters (tabs...)
-vim.opt.number = true -- Print line number
-vim.opt.relativenumber = true -- Relative line numbers
-vim.opt.wrap = true -- Enable line wrap
-vim.opt.cmdheight = 2 -- More space to display messages
-vim.opt.timeoutlen = 300 -- Don't wait more that 300ms for normal mode commands
-vim.opt.termguicolors = true -- True color support
-vim.opt.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
+require("zbindenren.options")
+
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 
 -- restore cursor position
