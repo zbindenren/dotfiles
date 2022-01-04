@@ -9,6 +9,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 require("zbindenren.options")
+require("zbindenren.keymaps")
 
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 
@@ -34,8 +35,6 @@ autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | ex
 vim.cmd([[
 autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 ]])
--- set leader to space early
-vim.g.mapleader = " "
 
 -- set test strategy to vimux
 vim.g["test#strategy"] = "vimux"
