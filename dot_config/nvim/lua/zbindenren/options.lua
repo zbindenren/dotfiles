@@ -30,7 +30,7 @@ o.number = true -- Print line number
 o.relativenumber = true -- Relative line numbers
 o.wrap = true -- Enable line wrap
 o.cmdheight = 2 -- More space to display messages
-o.timeoutlen = 100 -- Don't wait more that 300ms for normal mode commands
+o.timeoutlen = 150 -- Don't wait more that 150ms for normal mode commands
 o.termguicolors = true -- True color support
 o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 
