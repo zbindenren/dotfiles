@@ -39,6 +39,8 @@ return require("packer").startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 
 	use({ "dracula/vim", as = "dracula" })
+	use({ "folke/tokyonight.nvim" })
+	use({ "shaunsingh/nord.nvim" })
 
 	use({
 		"nvim-telescope/telescope.nvim",
