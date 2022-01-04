@@ -12,6 +12,7 @@ require("zbindenren.options")
 require("zbindenren.keymaps")
 require("zbindenren.whichkey")
 require("zbindenren.plugins")
+require("zbindenren.colorscheme")
 
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 
@@ -56,5 +57,3 @@ require("go")
 require("statusline")
 require("markdown")
 require("lsp")
-
-vim.cmd([[colorscheme dracula]])
