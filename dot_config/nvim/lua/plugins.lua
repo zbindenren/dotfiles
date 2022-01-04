@@ -183,8 +183,12 @@ return require("packer").startup(function(use)
 					require("null-ls").builtins.diagnostics.golangci_lint,
 					require("null-ls").builtins.formatting.prettier,
 					require("null-ls").builtins.formatting.terraform_fmt,
-					require("null-ls").builtins.formatting.trim_whitespace,
-					require("null-ls").builtins.formatting.trim_newlines,
+					require("null-ls").builtins.formatting.trim_whitespace.with({
+						disabled_filetypes = { "go" },
+					}),
+					require("null-ls").builtins.formatting.trim_newlines.with({
+						disabled_filetypes = { "go" },
+					}),
 				},
 				on_attach = function(client)
 					if client.resolved_capabilities.document_formatting then
