@@ -13,7 +13,6 @@ vim.g.maplocalleader = " "
 -- Normal
 -- nvimtree
 keymap("n", "<c-b>", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<c-e>", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader><leader>f", ":NvimTreeFindFile<cr>", opts)
 
 -- resize windows
