@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
 	})
 	use({ "folke/tokyonight.nvim" })
 	use({ "shaunsingh/nord.nvim" })
-	-- use({ "nyngwang/NeoZoom.lua" })
+	use({ "nyngwang/NeoZoom.lua" })
 
 	use({
 		"nvim-telescope/telescope.nvim",
