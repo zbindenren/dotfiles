@@ -39,6 +39,14 @@ return require("packer").startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 
 	use({ "dracula/vim", as = "dracula" })
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+	})
+	use({
+		"catppuccin/nvim",
+		as = "catppuccin",
+	})
 	use({ "folke/tokyonight.nvim" })
 	use({ "shaunsingh/nord.nvim" })
 	use({ "nyngwang/NeoZoom.lua" })
@@ -226,6 +234,13 @@ return require("packer").startup(function(use)
 
 	use({
 		"hoob3rt/lualine.nvim",
+		config = function()
+			require("lualine").setup({
+				options = {
+					theme = "catppuccin",
+				},
+			})
+		end,
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
