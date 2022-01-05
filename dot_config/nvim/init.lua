@@ -1,18 +1,10 @@
 -- load packer on all machines
-local fn = vim.fn
-
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-if fn.empty(fn.glob(install_path)) > 0 then
-	fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
-	execute("packadd packer.nvim")
-end
-
 require("zbindenren.options")
 require("zbindenren.keymaps")
-require("zbindenren.whichkey")
 require("zbindenren.plugins")
 require("zbindenren.colorscheme")
+require("zbindenren.cmp")
+require("zbindenren.whichkey")
 
 vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 

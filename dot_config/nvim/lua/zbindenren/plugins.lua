@@ -49,7 +49,7 @@ return require("packer").startup(function(use)
 	})
 	use({ "folke/tokyonight.nvim" })
 	use({ "shaunsingh/nord.nvim" })
-	use({ "nyngwang/NeoZoom.lua" })
+	-- use({ "nyngwang/NeoZoom.lua" })
 
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -153,7 +153,19 @@ return require("packer").startup(function(use)
 	use({ "hrsh7th/vim-vsnip-integ" })
 	use({ "golang/vscode-go" })
 
+	-- completion
+	-- snippets
+	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	-- cmp plugins
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use("hrsh7th/cmp-buffer") -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use("hrsh7th/cmp-nvim-lsp")
 	-- autocompletion
+	--[=====[
 	use({
 		"hrsh7th/nvim-compe",
 		config = function()
@@ -175,12 +187,13 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+--]=====]
 
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup()
-			require("nvim-autopairs.completion.compe").setup({
+			require("nvim-autopairs.completion.cmp").setup({
 				map_cr = true, --  map <CR> on insert mode
 				map_complete = true, -- it will auto insert `(` after select function or method item
 			})
