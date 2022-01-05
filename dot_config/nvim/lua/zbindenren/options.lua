@@ -41,5 +41,6 @@ vim.g.nord_contrast = true
 vim.g.nord_borders = true
 vim.g.tokyonight_style = "night"
 
-vim.cmd([[set iskeyword+=-]]) -- this treats dash separated words (i.e: dash-separated) as one word
-vim.cmd([[set whichwrap+=<,>,[,],h,l]]) -- this causes the h and l key to wrap when used at beginning or end of lines
+vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-separated) as one word
+vim.cmd([[ set whichwrap+=<,>,[,],h,l ]]) -- this causes the h and l key to wrap when used at beginning or end of lines
+vim.cmd([[ autocmd InsertLeave * update ]]) -- write buffer on leaving insert mode
