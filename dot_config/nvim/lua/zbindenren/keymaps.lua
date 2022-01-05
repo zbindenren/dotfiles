@@ -58,3 +58,35 @@ keymap("v", ">", ">gv", opts)
 -- EasyAlign
 keymap("n", "ga", "<plug>(EasyAlign)", opts)
 keymap("x", "ga", "<plug>(EasyAlign)", opts)
+
+-- Autocommands
+-- restore cursor position
+vim.cmd([[
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+]])
+
+-- apply chezmoi on write
+vim.cmd([[
+autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
+]])
+
+-- oscyank
+vim.cmd([[
+autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
+]])
+
+-- lightbulp
+vim.cmd([[
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+]])
+
+-- set test strategy to vimux
+vim.g["test#strategy"] = "vimux"
+
+-- nvim.tree settings
+vim.g.nvim_tree_width = "15%"
+
+-- symbols settings
+vim.g.symbols_outline = {
+	auto_close = true,
+}
