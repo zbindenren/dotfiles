@@ -41,6 +41,7 @@ return require("packer").startup(function(use)
 	use({ "dracula/vim", as = "dracula" })
 	use({ "folke/tokyonight.nvim" })
 	use({ "shaunsingh/nord.nvim" })
+	use({ "nyngwang/NeoZoom.lua" })
 
 	use({
 		"nvim-telescope/telescope.nvim",
