@@ -128,12 +128,6 @@ cmp.setup({
 		ghost_text = false,
 		native_menu = false,
 	},
-}).cmdline(":", {
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).

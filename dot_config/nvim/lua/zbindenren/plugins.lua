@@ -208,12 +208,13 @@ return require("packer").startup(function(use)
 		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
 	})
 
-	-- LSP goodies
+	-- LSP stuff
 	use({
 		"onsails/lspkind-nvim",
 		"neovim/nvim-lspconfig",
 		"glepnir/lspsaga.nvim",
 		"ray-x/lsp_signature.nvim",
+		"williamboman/nvim-lsp-installer",
 	})
 
 	use({
