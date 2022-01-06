@@ -136,19 +136,6 @@ return require("packer").startup(function(use)
 	-- show indents
 	use({ "lukas-reineke/indent-blankline.nvim" })
 
-	-- spell checking
-	use({
-		"lewis6991/spellsitter.nvim",
-		config = function()
-			require("spellsitter").setup()
-		end,
-	})
-
-	-- snippets
-	use({ "hrsh7th/vim-vsnip" })
-	use({ "hrsh7th/vim-vsnip-integ" })
-	use({ "golang/vscode-go" })
-
 	-- completion
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -160,30 +147,6 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
-	-- autocompletion
-	--[=====[
-	use({
-		"hrsh7th/nvim-compe",
-		config = function()
-			require("compe").setup({
-				enabled = true,
-				autocomplete = true,
-				debug = false,
-				min_length = 1,
-				preselect = "enable",
-				throttle_time = 80,
-				source_timeout = 200,
-				incomplete_delay = 400,
-				max_abbr_width = 100,
-				max_kind_width = 100,
-				max_menu_width = 100,
-				documentation = true,
-
-				source = { path = true, buffer = false, calc = true, nvim_lsp = true, nvim_lua = true, vsnip = true },
-			})
-		end,
-	})
---]=====]
 
 	use({ "windwp/nvim-autopairs" })
 
