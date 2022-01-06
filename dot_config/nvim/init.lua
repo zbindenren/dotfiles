@@ -5,6 +5,7 @@ require("zbindenren.colorscheme")
 require("zbindenren.cmp")
 require("zbindenren.whichkey")
 require("zbindenren.lsp")
+require("zbindenren.telescope")
 
 -- vim.api.nvim_command("set noswapfile") -- I have OCD file saving issues anyway
 

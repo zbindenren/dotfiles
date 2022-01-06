@@ -12,7 +12,7 @@ wk.register({
 	f = {
 		name = "files",
 		f = {
-			"<cmd>lua require('telescope.builtin').find_files({hidden=true, file_ignore_patterns={'.git/', 'node_modules/'}})<cr>",
+			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, hidden=true, file_ignore_patterns={'.git/', 'node_modules/'} }))<cr>",
 			"list files",
 		},
 		g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "grep in files" },
