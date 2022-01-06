@@ -117,10 +117,6 @@ return require("packer").startup(function(use)
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		config = function()
-			local ts = require("nvim-treesitter.configs")
-			ts.setup({ ensure_installed = "maintained", highlight = { enable = true } })
-		end,
 	})
 
 	-- file tree instead of nerdtree (needs a patched font from: https://www.nerdfonts.com/)

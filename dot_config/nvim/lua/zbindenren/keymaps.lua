@@ -16,7 +16,6 @@ keymap("n", "<c-b>", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader><leader>f", ":NvimTreeFindFile<cr>", opts)
 
 -- neozoom
--- keymap("n", "<cr>", ":NeoZoomToggle<cr>", opts)
 keymap("n", "<leader>z", ":NeoZoomToggle<cr>", opts)
 
 -- resize windows
