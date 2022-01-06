@@ -37,10 +37,10 @@ keymap("n", "<down>", '&diff ? "]c" : "<down>"', { expr = true })
 keymap("i", "jj", "<esc>", opts)
 
 -- code completion
-keymap("i", "<cr>", "compe#confirm('<cr>')", opts_expr)
-keymap("i", "<c-j>", 'pumvisible() ? "\\<c-n>" : "\\<c-j>"', opts_expr)
-keymap("i", "<c-k>", 'pumvisible() ? "\\<c-p>" : "\\<c-j>"', opts_expr)
-keymap("i", "<c-space>", "compe#complete()", opts_expr)
+-- keymap("i", "<cr>", "compe#confirm('<cr>')", opts_expr)
+-- keymap("i", "<c-j>", 'pumvisible() ? "\\<c-n>" : "\\<c-j>"', opts_expr)
+-- keymap("i", "<c-k>", 'pumvisible() ? "\\<c-p>" : "\\<c-j>"', opts_expr)
+-- keymap("i", "<c-space>", "compe#complete()", opts_expr)
 
 -- Visual
 -- OSCYank
