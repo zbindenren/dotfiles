@@ -71,5 +71,6 @@ wk.register({
 		f = { "<cmd>TestNearest -count=1 -v<cr>", "test nearest function" },
 		a = { "<cmd>TestFile -v<cr>", "test all" },
 		i = { "<cmd>TestNearest -count=1 -tags integration -v<cr>", "integration test nearest function" },
+		m = { "<cmd>call VimuxRunCommand('make test')<cr>", "run make test" },
 	},
 }, { prefix = "<leader>" })
