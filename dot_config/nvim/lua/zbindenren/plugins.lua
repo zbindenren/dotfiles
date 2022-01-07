@@ -60,7 +60,7 @@ return require("packer").startup(function(use)
 
 	-- use({ "fatih/vim-go" })
 
-	use({ "ggandor/lightspeed.nvim" })
+	use("ggandor/lightspeed.nvim")
 
 	-- tpope, the legend
 	use({ "tpope/vim-commentary" })
@@ -75,31 +75,11 @@ return require("packer").startup(function(use)
 	-- popup markdown preview
 	use({ "npxbr/glow.nvim", run = ":GlowInstall" })
 
-	require("plenary") -- otherwise neovim crashes on startup opening a file: https://github.com/TimUntersberger/neogit/issues/206
-	use({
-		"TimUntersberger/neogit",
-		requires = { "sindrets/diffview.nvim", "nvim-lua/plenary.nvim" },
-		config = function()
-			require("neogit").setup({
-				disable_commit_confirmation = true,
-				integrations = {
-					diffview = true,
-				},
-			})
-		end,
-	})
-
-	use({
-		"lewis6991/gitsigns.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = function()
-			require("gitsigns").setup()
-		end,
-	})
-
-	use({ "samoshkin/vim-mergetool" })
+	-- git
+	use("sindrets/diffview.nvim")
+	use("TimUntersberger/neogit")
+	use("samoshkin/vim-mergetool")
+	use("lewis6991/gitsigns.nvim")
 
 	-- buffers
 	use({
@@ -159,13 +139,11 @@ return require("packer").startup(function(use)
 	})
 
 	-- LSP stuff
-	use({
-		"onsails/lspkind-nvim",
-		"neovim/nvim-lspconfig",
-		"glepnir/lspsaga.nvim",
-		"ray-x/lsp_signature.nvim",
-		"williamboman/nvim-lsp-installer",
-	})
+	use({ "onsails/lspkind-nvim" })
+	use({ "neovim/nvim-lspconfig" })
+	use({ "glepnir/lspsaga.nvim" })
+	use({ "ray-x/lsp_signature.nvim" })
+	use({ "williamboman/nvim-lsp-installer" })
 
 	use({
 		"jose-elias-alvarez/null-ls.nvim",

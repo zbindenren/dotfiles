@@ -8,5 +8,7 @@ require("zbindenren.lsp")
 require("zbindenren.telescope")
 require("zbindenren.treesitter")
 require("zbindenren.autopairs")
+require("zbindenren.neogit")
+require("zbindenren.gitsigns")
 
 require("markdown")
