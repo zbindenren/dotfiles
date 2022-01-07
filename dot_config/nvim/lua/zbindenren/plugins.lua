@@ -29,7 +29,7 @@ if not status_ok then
 	return
 end
 
-return require("packer").startup(function(use)
+return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- manage packer with packer
 	use("nvim-lua/plenary.nvim") -- almost all plugins need this
 	use("nvim-lua/popup.nvim") -- almost all plugins need this

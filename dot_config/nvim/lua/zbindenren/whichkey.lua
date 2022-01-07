@@ -1,8 +1,20 @@
--- discoverable mappings
-local wk = require("which-key")
+local status_ok, wk = pcall(require, "which-key")
+if not status_ok then
+	vim.notify("whichkey plugin not found!")
+end
 
-wk.register({
+local opts = {
+	mode = "n", -- NORMAL mode
+	prefix = "<leader>",
+	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+	silent = true, -- use `silent` when creating keymaps
+	noremap = true, -- use `noremap` when creating keymaps
+	nowait = true, -- use `nowait` when creating keymaps
+}
+
+local mappings = {
 	n = { "<cmd>lua require('utils').toggleNum()<cr>", "toggle number" },
+	w = { "<cmd>w!<CR>", "Save" },
 	c = {
 		name = "code",
 		d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "show diagnostics" },
@@ -20,7 +32,10 @@ wk.register({
 	},
 	b = {
 		name = "buffers",
-		b = { "<cmd>lua require('telescope.builtin').buffers({sort_lastused=true})<cr>", "list buffers" },
+		b = {
+			"<cmd>lua require'telescope.builtin'.buffers(require('telescope.themes').get_dropdown({ previewer = false, sort_lastused=true }))<cr>",
+			"list buffers",
+		},
 		d = { "<cmd>:BWipeout this<cr>", "delete current buffer" },
 		c = { "<cmd>:BWipeout other<cr>", "close all buffers except current" },
 		C = { "<cmd>:BWipeout all<cr>", "close all buffers" },
@@ -73,4 +88,6 @@ wk.register({
 		i = { "<cmd>TestNearest -count=1 -tags integration -v<cr>", "integration test nearest function" },
 		m = { "<cmd>call VimuxRunCommand('make test')<cr>", "run make test" },
 	},
-}, { prefix = "<leader>" })
+}
+
+wk.register(mappings, opts)
