@@ -36,6 +36,8 @@ o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 
 vim.opt.shortmess:append("c")
 
+vim.api.nvim_command("set noswapfile")
+
 -- colorscheme settings
 vim.g.nord_contrast = true
 vim.g.nord_borders = true
