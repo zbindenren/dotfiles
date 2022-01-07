@@ -10,5 +10,6 @@ require("zbindenren.treesitter")
 require("zbindenren.autopairs")
 require("zbindenren.neogit")
 require("zbindenren.gitsigns")
+require("zbindenren.bufferline")
 
 require("markdown")
