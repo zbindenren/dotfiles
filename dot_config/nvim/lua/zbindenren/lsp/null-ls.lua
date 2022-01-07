@@ -1,0 +1,33 @@
+local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+if not null_ls_status_ok then
+	vim.notify("null-ls not found!")
+	return
+end
+
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+local formatting = null_ls.builtins.formatting
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+local diagnostics = null_ls.builtins.diagnostics
+
+null_ls.setup({
+	debug = false,
+	sources = {
+		formatting.stylua,
+		formatting.goimports,
+		diagnostics.eslint,
+		diagnostics.golangci_lint,
+		formatting.prettier,
+		formatting.terraform_fmt,
+		formatting.trim_whitespace.with({
+			disabled_filetypes = { "go" },
+		}),
+		formatting.trim_newlines.with({
+			disabled_filetypes = { "go" },
+		}),
+	},
+	on_attach = function(client)
+		if client.resolved_capabilities.document_formatting then
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+		end
+	end,
+})

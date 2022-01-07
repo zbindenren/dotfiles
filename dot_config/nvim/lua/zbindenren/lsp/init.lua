@@ -6,4 +6,4 @@ end
 
 require("zbindenren.lsp.lsp-installer")
 require("zbindenren.lsp.handlers").setup()
--- require("zbindenren.lsp.null-ls")
+require("zbindenren.lsp.null-ls")

@@ -50,13 +50,15 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 
+	-- tests
+	use("preservim/vimux")
+	use("vim-test/vim-test")
+
 	-- tpope, the legend
 	use({ "tpope/vim-commentary" })
 	use({ "tpope/vim-repeat" }) -- repeat commands
 	use({ "tpope/vim-vinegar" }) -- press - for local filebrowser
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
-
-	use({ "vim-test/vim-test", requires = { { "preservim/vimux" } } })
 
 	-- popup markdown preview
 	use({ "npxbr/glow.nvim", run = ":GlowInstall" })
@@ -96,35 +98,7 @@ return packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim" })
 	use({ "ray-x/lsp_signature.nvim" })
 	use({ "williamboman/nvim-lsp-installer" })
-
-	use({
-		"jose-elias-alvarez/null-ls.nvim",
-		config = function()
-			require("null-ls").setup({
-				sources = {
-					require("null-ls").builtins.formatting.stylua,
-					require("null-ls").builtins.formatting.goimports,
-					require("null-ls").builtins.diagnostics.eslint,
-					require("null-ls").builtins.completion.spell,
-					require("null-ls").builtins.diagnostics.golangci_lint,
-					require("null-ls").builtins.formatting.prettier,
-					require("null-ls").builtins.formatting.terraform_fmt,
-					require("null-ls").builtins.formatting.trim_whitespace.with({
-						disabled_filetypes = { "go" },
-					}),
-					require("null-ls").builtins.formatting.trim_newlines.with({
-						disabled_filetypes = { "go" },
-					}),
-				},
-				on_attach = function(client)
-					if client.resolved_capabilities.document_formatting then
-						vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()")
-					end
-				end,
-			})
-		end,
-		requires = { "nvim-lua/plenary.nvim" },
-	})
+	use("jose-elias-alvarez/null-ls.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
