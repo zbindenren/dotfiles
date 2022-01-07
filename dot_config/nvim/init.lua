@@ -10,6 +10,8 @@ require("zbindenren.treesitter")
 require("zbindenren.autopairs")
 require("zbindenren.neogit")
 require("zbindenren.gitsigns")
+require("zbindenren.nvim-tree")
 require("zbindenren.bufferline")
+require("zbindenren.lualine")
 
 require("markdown")

@@ -74,11 +74,6 @@ vim.cmd([[
 autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 ]])
 
--- lightbulp
-vim.cmd([[
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-]])
-
 -- set test strategy to vimux
 vim.g["test#strategy"] = "vimux"
 

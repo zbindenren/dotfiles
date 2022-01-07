@@ -30,37 +30,25 @@ if not status_ok then
 end
 
 return require("packer").startup(function(use)
-	use("wbthomason/packer.nvim")
-
+	use("wbthomason/packer.nvim") -- manage packer with packer
+	use("nvim-lua/plenary.nvim") -- almost all plugins need this
+	use("nvim-lua/popup.nvim") -- almost all plugins need this
+	use("kyazdani42/nvim-web-devicons") -- almost all plugins need this
 	use("christoomey/vim-tmux-navigator")
-
 	use("ojroques/vim-oscyank")
-
 	use("simrat39/symbols-outline.nvim")
-
 	use({ "dracula/vim", as = "dracula" })
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-	})
-	use({
-		"catppuccin/nvim",
-		as = "catppuccin",
-	})
-	use({ "folke/tokyonight.nvim" })
-	use({ "shaunsingh/nord.nvim" })
-	use({ "nyngwang/NeoZoom.lua" })
-
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
-
-	use({ "folke/which-key.nvim" })
-
-	-- use({ "fatih/vim-go" })
-
+	use("folke/tokyonight.nvim")
+	use("nyngwang/NeoZoom.lua")
+	use("lukas-reineke/indent-blankline.nvim") -- show identations
+	use("nvim-telescope/telescope.nvim")
+	use("folke/which-key.nvim")
 	use("ggandor/lightspeed.nvim")
+	use("junegunn/vim-easy-align")
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-spectre") -- search and replace over all files
+	use("kyazdani42/nvim-tree.lua")
+	use("hoob3rt/lualine.nvim")
 
 	-- tpope, the legend
 	use({ "tpope/vim-commentary" })
@@ -69,8 +57,6 @@ return require("packer").startup(function(use)
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
 
 	use({ "vim-test/vim-test", requires = { { "preservim/vimux" } } })
-
-	use({ "junegunn/vim-easy-align" })
 
 	-- popup markdown preview
 	use({ "npxbr/glow.nvim", run = ":GlowInstall" })
@@ -86,28 +72,11 @@ return require("packer").startup(function(use)
 	use("kazhala/close-buffers.nvim")
 	use("famiu/bufdelete.nvim")
 
-	-- incremental syntax parsing, the mother of modernity
+	-- incremental syntax parsing
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
-
-	-- file tree instead of nerdtree (needs a patched font from: https://www.nerdfonts.com/)
-	use({
-		"kyazdani42/nvim-tree.lua",
-		requires = "kyazdani42/nvim-web-devicons",
-		config = function()
-			require("nvim-tree").setup({
-				auto_close = true,
-				view = {
-					auto_resize = true,
-				},
-			})
-		end,
-	})
-
-	-- show indents
-	use({ "lukas-reineke/indent-blankline.nvim" })
 
 	-- completion
 	-- snippets
@@ -119,17 +88,7 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
-	use("hrsh7th/cmp-nvim-lsp")
-
-	use({ "windwp/nvim-autopairs" })
-
-	-- show code actions as lightbulb
-	use({ "kosayoda/nvim-lightbulb" })
-
-	use({
-		"windwp/nvim-spectre",
-		requires = { { "nvim-lua/plenary.nvim" }, { "nvim-lua/popup.nvim" } },
-	})
+	use("hrsh7th/cmp-nvim-lsp") -- lsp cmp integartion
 
 	-- LSP stuff
 	use({ "onsails/lspkind-nvim" })
@@ -165,18 +124,6 @@ return require("packer").startup(function(use)
 			})
 		end,
 		requires = { "nvim-lua/plenary.nvim" },
-	})
-
-	use({
-		"hoob3rt/lualine.nvim",
-		config = function()
-			require("lualine").setup({
-				options = {
-					theme = "tokyonight",
-				},
-			})
-		end,
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
