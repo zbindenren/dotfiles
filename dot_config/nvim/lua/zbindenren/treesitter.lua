@@ -17,7 +17,7 @@ configs.setup({
 	incremental_selection = {
 		enable = true,
 		keymaps = {
-			init_selection = "<cr>",
+			init_selection = "gnn",
 			scope_incremental = "<cr>",
 			node_incremental = "<tab>",
 			node_decremental = "<s-tab>",
