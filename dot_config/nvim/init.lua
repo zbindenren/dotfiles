@@ -13,5 +13,6 @@ require("zbindenren.gitsigns")
 require("zbindenren.nvim-tree")
 require("zbindenren.bufferline")
 require("zbindenren.lualine")
+require("zbindenren.comment")
 
 require("markdown")

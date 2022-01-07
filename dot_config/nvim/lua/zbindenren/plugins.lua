@@ -49,13 +49,13 @@ return packer.startup(function(use)
 	use("windwp/nvim-spectre") -- search and replace over all files
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
+	use("numToStr/Comment.nvim")
 
 	-- tests
 	use("preservim/vimux")
 	use("vim-test/vim-test")
 
 	-- tpope, the legend
-	use({ "tpope/vim-commentary" })
 	use({ "tpope/vim-repeat" }) -- repeat commands
 	use({ "tpope/vim-vinegar" }) -- press - for local filebrowser
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
@@ -79,6 +79,7 @@ return packer.startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 	})
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 
 	-- completion
 	-- snippets
