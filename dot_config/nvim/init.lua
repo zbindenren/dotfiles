@@ -1,6 +1,7 @@
 require("zbindenren.options")
 require("zbindenren.keymaps")
 require("zbindenren.plugins")
+require("zbindenren.autocmd")
 require("zbindenren.colorscheme")
 require("zbindenren.cmp")
 require("zbindenren.whichkey")

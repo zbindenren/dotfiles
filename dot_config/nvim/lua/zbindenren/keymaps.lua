@@ -1,6 +1,5 @@
 local opts = { noremap = true, silent = true }
 local opts_expr = { noremap = true, silent = true, expr = true }
-local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -25,22 +24,16 @@ keymap("n", "<a-right>", "<cmd>vertical resize -2<cr>", opts)
 keymap("n", "<a-left>", "<cmd>vertical resize +2<cr>", opts)
 
 -- mergetool
-keymap("n", "<c-left>", '&diff? "<plug>(MergetoolDiffExchangeLeft)" : "\\<c-left>"', { expr = true })
-keymap("n", "<c-right>", '&diff? "<plug>(MergetoolDiffExchangeRight)" : "\\<c-right>"', { expr = true })
-keymap("n", "<c-up>", '&diff? "<plug>(MergetoolDiffExchangeUp)" : "\\<c-up>"', { expr = true })
-keymap("n", "<c-down>", '&diff? "<plug>(MergetoolDiffExchangeDown)" : "\\<c-down>"', { expr = true })
-keymap("n", "<up>", '&diff ? "[c" : "<up>"', { expr = true })
-keymap("n", "<down>", '&diff ? "]c" : "<down>"', { expr = true })
+keymap("n", "<c-left>", '&diff? "<plug>(MergetoolDiffExchangeLeft)" : "\\<c-left>"', opts_expr)
+keymap("n", "<c-right>", '&diff? "<plug>(MergetoolDiffExchangeRight)" : "\\<c-right>"', opts_expr)
+keymap("n", "<c-up>", '&diff? "<plug>(MergetoolDiffExchangeUp)" : "\\<c-up>"', opts_expr)
+keymap("n", "<c-down>", '&diff? "<plug>(MergetoolDiffExchangeDown)" : "\\<c-down>"', opts_expr)
+keymap("n", "<up>", '&diff ? "[c" : "<up>"', opts_expr)
+keymap("n", "<down>", '&diff ? "]c" : "<down>"', opts_expr)
 
 -- Insert
 -- jj as <esc>
 keymap("i", "jj", "<esc>", opts)
-
--- code completion
--- keymap("i", "<cr>", "compe#confirm('<cr>')", opts_expr)
--- keymap("i", "<c-j>", 'pumvisible() ? "\\<c-n>" : "\\<c-j>"', opts_expr)
--- keymap("i", "<c-k>", 'pumvisible() ? "\\<c-p>" : "\\<c-j>"', opts_expr)
--- keymap("i", "<c-space>", "compe#complete()", opts_expr)
 
 -- Visual
 -- OSCYank
@@ -57,22 +50,6 @@ keymap("v", ">", ">gv", opts)
 -- EasyAlign
 keymap("n", "ga", "<plug>(EasyAlign)", opts)
 keymap("x", "ga", "<plug>(EasyAlign)", opts)
-
--- Autocommands
--- restore cursor position
-vim.cmd([[
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-]])
-
--- apply chezmoi on write
-vim.cmd([[
-autocmd BufWritePost ~/.local/share/chezmoi/* ! chezmoi apply --source-path "%"
-]])
-
--- oscyank
-vim.cmd([[
-autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
-]])
 
 -- set test strategy to vimux
 vim.g["test#strategy"] = "vimux"
