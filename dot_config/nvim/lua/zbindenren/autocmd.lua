@@ -22,9 +22,9 @@ vim.cmd([[
   augroup end
 ]])
 
-vim.cmd([[
-  augroup AutoSaveOnInsertLeave
-    autocmd!
-    autocmd InsertLeave * ++nested write
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup AutoSaveOnInsertLeave
+--     autocmd!
+--     autocmd InsertLeave * ++nested write
+--   augroup end
+-- ]])
