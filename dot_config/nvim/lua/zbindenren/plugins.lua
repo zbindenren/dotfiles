@@ -50,6 +50,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("numToStr/Comment.nvim")
+	use("SmiteshP/nvim-gps") -- show context in statusline
 
 	-- tests
 	use("preservim/vimux")
