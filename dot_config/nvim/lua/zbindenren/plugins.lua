@@ -102,6 +102,15 @@ return packer.startup(function(use)
 	use({ "williamboman/nvim-lsp-installer" })
 	use("jose-elias-alvarez/null-ls.nvim")
 
+	use({
+		"abecodes/tabout.nvim",
+		config = function() -- the only way to make it work is to configure it here
+			require("tabout").setup()
+		end,
+		wants = { "nvim-treesitter" }, -- or require if not used so far
+		after = { "nvim-cmp" }, -- if a completion plugin is using tabs load it before
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
