@@ -6,7 +6,7 @@ fi
 
 sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd bat delve gopls
 
-sudo pacman -S --noconfirm --needed kitty fish fisher starship age
+sudo pacman -S --noconfirm --needed kitty fish fisher starship age k9s
 
 
 if ! type jumpapp > /dev/null; then
