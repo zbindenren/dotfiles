@@ -13,6 +13,10 @@ if ! type jumpapp > /dev/null; then
   yay -S aur/jumpapp --noconfirm --needed
 fi
 
+if ! type puppet-lint > /dev/null; then
+  yay -S aur/puppet-lint --noconfirm --needed
+fi
+
 if [! -f /usr/share/tmux-plugin-manager/tpm ]; then
   yay -S aur/tmux-plugin-manager --noconfirm --needed
 fi

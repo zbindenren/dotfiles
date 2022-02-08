@@ -15,9 +15,11 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.goimports,
 		diagnostics.eslint,
+		diagnostics.puppet_lint,
 		diagnostics.golangci_lint,
 		formatting.prettier,
 		formatting.terraform_fmt,
+		diagnostics.puppet_lint,
 		formatting.trim_whitespace.with({
 			disabled_filetypes = { "go" },
 		}),
@@ -27,7 +29,7 @@ null_ls.setup({
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 		end
 	end,
 })
