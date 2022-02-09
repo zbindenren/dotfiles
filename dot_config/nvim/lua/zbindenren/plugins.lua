@@ -105,12 +105,12 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp") -- lsp cmp integartion
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- LSP stuff
 	use({ "onsails/lspkind-nvim" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "glepnir/lspsaga.nvim" })
-	use({ "ray-x/lsp_signature.nvim" })
 	use({ "williamboman/nvim-lsp-installer" })
 	use("jose-elias-alvarez/null-ls.nvim")
 
