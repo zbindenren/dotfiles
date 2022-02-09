@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	use("hoob3rt/lualine.nvim")
 	use("numToStr/Comment.nvim")
 	use("SmiteshP/nvim-gps") -- show context in statusline
+	use("akinsho/toggleterm.nvim")
 
 	-- tests
 	use("preservim/vimux")

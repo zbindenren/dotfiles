@@ -15,5 +15,6 @@ require("zbindenren.nvim-tree")
 require("zbindenren.bufferline")
 require("zbindenren.lualine")
 require("zbindenren.comment")
+require("zbindenren.toggleterm")
 
 require("markdown")

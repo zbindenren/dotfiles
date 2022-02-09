@@ -28,7 +28,7 @@ local setup = {
 
 local mappings = {
 	n = { "<cmd>lua require('utils').toggleNum()<cr>", "toggle number" },
-	w = { "<cmd>w!<CR>", "Save" },
+	w = { "<cmd>w!<cr>", "Save" },
 	c = {
 		name = "code",
 		d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "show diagnostics" },
@@ -61,6 +61,7 @@ local mappings = {
 		name = "version control",
 		f = { "<cmd>lua require('telescope.builtin').git_status()<cr>", "git status (changed files)" },
 		c = { "<cmd>lua require('telescope.builtin').git_commits()<cr>", "git commits" },
+		l = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "open lazygit" },
 		b = { "<cmd>Telescope git_branches<cr>", "show branches" },
 		g = { "<cmd>Telescope git_status<cr>", "current changes" },
 		B = { "<cmd>Gitsigns toggle_current_line_blame<cr>", "blame current line" },
@@ -98,9 +99,10 @@ local mappings = {
 	t = {
 		name = "tests",
 		f = { "<cmd>TestNearest -count=1 -v<cr>", "test nearest function" },
-		a = { "<cmd>TestFile -v<cr>", "test all" },
+		a = { "<cmd>lua _GO_LINT_N_TEST_TOGGLE()<cr>", "go lint and test" },
 		i = { "<cmd>TestNearest -count=1 -tags integration -v<cr>", "integration test nearest function" },
-		m = { "<cmd>call VimuxRunCommand('make test')<cr>", "run make test" },
+		t = { "<cmd>lua _GO_TEST_TOGGLE()<cr>", "go test in toggleterm" },
+		l = { "<cmd>lua _GO_LINT_TOGGLE()<cr>", "golangci-lint in toggleterm" },
 	},
 }
 
