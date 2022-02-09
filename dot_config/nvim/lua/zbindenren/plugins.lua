@@ -108,10 +108,10 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
 
 	-- LSP stuff
-	use({ "onsails/lspkind-nvim" })
-	use({ "neovim/nvim-lspconfig" })
-	use({ "glepnir/lspsaga.nvim" })
-	use({ "williamboman/nvim-lsp-installer" })
+	use("onsails/lspkind-nvim")
+	use("neovim/nvim-lspconfig")
+	use("glepnir/lspsaga.nvim")
+	use("williamboman/nvim-lsp-installer")
 	use("jose-elias-alvarez/null-ls.nvim")
 
 	use({
