@@ -51,9 +51,6 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "ga", "<plug>(EasyAlign)", opts)
 keymap("x", "ga", "<plug>(EasyAlign)", opts)
 
--- set test strategy to vimux
-vim.g["test#strategy"] = "vimux"
-
 -- nvim.tree settings
 vim.g.nvim_tree_width = "15%"
 

@@ -55,7 +55,18 @@ return packer.startup(function(use)
 
 	-- tests
 	use("preservim/vimux")
-	use("vim-test/vim-test")
+	use({
+		"vim-test/vim-test",
+		config = function() -- the only way to make it work is to configure it here
+			vim.cmd([[
+          function! ToggleTermStrategy(cmd) abort
+            call luaeval("require('toggleterm').exec(_A[1])", [a:cmd])
+          endfunction
+          let g:test#custom_strategies = {'toggleterm': function('ToggleTermStrategy')}
+        ]])
+			vim.g["test#strategy"] = "toggleterm"
+		end,
+	})
 
 	-- tpope, the legend
 	use({ "tpope/vim-repeat" }) -- repeat commands
