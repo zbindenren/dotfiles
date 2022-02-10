@@ -54,6 +54,14 @@ function _LAZYGIT_TOGGLE()
 	lazygit:toggle()
 end
 
+function _LAB_OPEN_TOGGLE()
+	toggleterm.exec("lab open")
+end
+
+function _LAB_OPEN_PIPELINE_TOGGLE()
+	toggleterm.exec("lab open -p")
+end
+
 function _GO_TEST_TOGGLE()
 	toggleterm.exec("go test ./...")
 end

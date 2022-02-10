@@ -58,3 +58,6 @@ vim.g.nvim_tree_width = "15%"
 vim.g.symbols_outline = {
 	auto_close = true,
 }
+
+-- toggleterm
+keymap("n", "<leader>T", ":ToggleTerm<cr>", opts)
