@@ -49,7 +49,7 @@ return packer.startup(function(use)
 	use("windwp/nvim-spectre") -- search and replace over all files
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
-	use("numToStr/Comment.nvim")
+	use("b3nj5m1n/kommentary")
 	use("SmiteshP/nvim-gps") -- show context in statusline
 	use("akinsho/toggleterm.nvim")
 
