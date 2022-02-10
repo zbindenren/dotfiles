@@ -18,6 +18,8 @@ alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
 {{- end }}
 
 alias ws='cd (lab ws)'
+alias top="htop"
+alias lg="lazygit"
 
 # vi
 {{- if hasPrefix "/export" .chezmoi.homeDir }}
