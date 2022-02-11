@@ -4,7 +4,7 @@ if ! type pacman > /dev/null; then
   exit 0
 fi
 
-sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd bat delve gopls
+sudo pacman -S --noconfirm --needed noto-fonts noto-fonts-emoji fd bat delve gopls diff-so-fancy
 
 sudo pacman -S --noconfirm --needed kitty fish fisher starship age k9s
 

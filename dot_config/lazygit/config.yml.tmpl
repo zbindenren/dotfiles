@@ -1,0 +1,9 @@
+git:
+  paging:
+    colorArg: always
+    pager: diff-so-fancy
+{{- if hasKey . "email" }}
+services:
+  "git.{{ .domain }}": "gitlab:git.{{ .domain }}"
+  "gitlab.{{ .domain }}": "gitlab:gitlab.{{ .domain }}"
+{{- end }}
