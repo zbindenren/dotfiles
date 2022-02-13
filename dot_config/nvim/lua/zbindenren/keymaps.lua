@@ -37,7 +37,7 @@ keymap("i", "jj", "<esc>", opts)
 
 -- Visual
 -- OSCYank
-keymap("v", "<leader>y", ":OSCYank<cr>", opts)
+-- keymap("v", "<leader>y", ":OSCYank<cr>", opts)
 
 -- Shift + J/K moves selected lines down/up in visual mode
 keymap("v", "J", ":m '>+1<CR>gv=gv", opts)
@@ -61,3 +61,7 @@ vim.g.symbols_outline = {
 
 -- toggleterm
 keymap("n", "<leader>T", ":ToggleTerm<cr>", opts)
+
+-- yode
+keymap("v", "<leader>yy", ":YodeCreateSeditorFloating<cr>", opts)
+keymap("n", "<leader>yd", ":YodeBufferDelete<cr>", opts)
