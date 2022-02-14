@@ -17,7 +17,10 @@ alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
 alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
 {{- end }}
 
+# lab (https://github.com/Ackerr/lab)
 alias ws='cd (lab ws)'
+alias Lab="lab --config $HOME/.config/lab/config-ng.toml"
+
 alias top="btop"
 alias lg="lazygit"
 
