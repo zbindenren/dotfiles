@@ -22,7 +22,7 @@ PACKAGES="noto-fonts \
   lazygit \
 "
 
-AUR_PACKAGES=" jumpapp \
+AUR_PACKAGES="jumpapp \
   puppet-lint \
   tmux-plugin-manager
 "
