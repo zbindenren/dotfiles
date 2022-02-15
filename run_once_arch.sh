@@ -20,6 +20,7 @@ PACKAGES="noto-fonts \
   age \
   k9s \
   lazygit \
+  pettier \
 "
 
 AUR_PACKAGES="jumpapp \
