@@ -45,4 +45,4 @@ vim.g.tokyonight_style = "night"
 
 vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-separated) as one word
 vim.cmd([[ set whichwrap+=<,>,[,],h,l ]]) -- this causes the h and l key to wrap when used at beginning or end of lines
-vim.cmd([[ set diffopt+=internal,algorithm:patience ]]) -- better diff algorithm
+vim.cmd([[ set diffopt+=internal,algorithm:histogram ]]) -- better diff algorithm
