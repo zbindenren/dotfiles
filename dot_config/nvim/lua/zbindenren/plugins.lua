@@ -35,7 +35,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- almost all plugins need this
 	use("kyazdani42/nvim-web-devicons") -- almost all plugins need this
 	use("christoomey/vim-tmux-navigator")
-	use("ojroques/vim-oscyank")
+	-- use("ojroques/vim-oscyank")
 	use("simrat39/symbols-outline.nvim")
 	use({ "dracula/vim", as = "dracula" })
 	use("folke/tokyonight.nvim")
@@ -52,7 +52,7 @@ return packer.startup(function(use)
 	use("b3nj5m1n/kommentary")
 	use("SmiteshP/nvim-gps") -- show context in statusline
 	use("akinsho/toggleterm.nvim")
-  use("hoschi/yode-nvim")
+	use("hoschi/yode-nvim")
 
 	-- tests
 	use("preservim/vimux")

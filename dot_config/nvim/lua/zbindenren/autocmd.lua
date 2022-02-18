@@ -14,13 +14,21 @@ vim.cmd([[
   augroup end
 ]])
 
--- oscyank
+-- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
-  augroup OSCYank
-    autocmd!
-    autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
-  augroup end
+augroup highlight_yank
+autocmd!
+au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+augroup END
 ]])
+
+-- oscyank
+-- vim.cmd([[
+-- augroup OSCYank
+-- autocmd!
+-- autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
+-- augroup end
+-- ]])
 
 -- vim.cmd([[
 --   augroup AutoSaveOnInsertLeave
