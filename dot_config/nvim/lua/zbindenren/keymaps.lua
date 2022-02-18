@@ -24,8 +24,10 @@ keymap("n", "<a-right>", "<cmd>vertical resize -2<cr>", opts)
 keymap("n", "<a-left>", "<cmd>vertical resize +2<cr>", opts)
 
 -- mergetool
-keymap("n", "<c-left>", '&diff? "<plug>(MergetoolDiffExchangeLeft)" : "\\<c-left>"', opts_expr)
-keymap("n", "<c-right>", '&diff? "<plug>(MergetoolDiffExchangeRight)" : "\\<c-right>"', opts_expr)
+-- keymap("n", "<c-left>", '&diff? "<plug>(MergetoolDiffExchangeLeft)" : "\\<c-left>"', opts_expr)
+-- keymap("n", "<c-right>", '&diff? "<plug>(MergetoolDiffExchangeRight)" : "\\<c-right>"', opts_expr)
+keymap("n", "<c-left>", "<cmd>MergetoolDiffExchangeLeft <cr>", opts)
+keymap("n", "<c-right>", "<cmd>MergetoolDiffExchangeRight <cr>", opts)
 keymap("n", "<c-up>", '&diff? "<plug>(MergetoolDiffExchangeUp)" : "\\<c-up>"', opts_expr)
 keymap("n", "<c-down>", '&diff? "<plug>(MergetoolDiffExchangeDown)" : "\\<c-down>"', opts_expr)
 keymap("n", "<up>", '&diff ? "[c" : "<up>"', opts_expr)
