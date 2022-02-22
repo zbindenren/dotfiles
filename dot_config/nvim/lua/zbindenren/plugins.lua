@@ -114,6 +114,7 @@ return packer.startup(function(use)
 	use("glepnir/lspsaga.nvim")
 	use("williamboman/nvim-lsp-installer")
 	use("jose-elias-alvarez/null-ls.nvim")
+	use("j-hui/fidget.nvim") -- show lsp start status message
 
 	use({
 		"abecodes/tabout.nvim",
