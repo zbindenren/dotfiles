@@ -26,6 +26,7 @@ PACKAGES="noto-fonts \
 AUR_PACKAGES="jumpapp \
   puppet-lint \
   tmux-plugin-manager
+  jo
 "
 
 
