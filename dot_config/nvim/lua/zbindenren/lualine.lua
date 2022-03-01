@@ -82,7 +82,7 @@ lualine.setup({
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
-		-- lualine_b = { mode },
+		lualine_b = {},
 		lualine_c = {
 			{ gps.get_location, cond = gps.is_available },
 		},
@@ -93,7 +93,6 @@ lualine.setup({
 	},
 	inactive_sections = {
 		lualine_a = {},
-		lualine_b = {},
 		lualine_c = { "filename" },
 		lualine_x = { "location" },
 		lualine_y = {},
