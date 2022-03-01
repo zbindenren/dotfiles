@@ -20,7 +20,8 @@ PACKAGES="noto-fonts \
   age \
   k9s \
   lazygit \
-  pettier \
+  prettier \
+  onefetch \
 "
 
 AUR_PACKAGES="jumpapp \
@@ -30,7 +31,7 @@ AUR_PACKAGES="jumpapp \
 "
 
 
-sudo pacman -S --noconfirm --needed $PACKAGES
+sudo pacman -Sy --noconfirm --needed $PACKAGES
 
 for p in $AUR_PACKAGES
 do
