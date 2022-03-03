@@ -33,13 +33,6 @@ local diff = {
 	cond = hide_in_width,
 }
 
-local mode = {
-	"mode",
-	fmt = function(str)
-		return "-- " .. str .. " --"
-	end,
-}
-
 local filetype = {
 	"filetype",
 	icons_enabled = false,
