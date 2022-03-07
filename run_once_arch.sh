@@ -12,7 +12,6 @@ PACKAGES="noto-fonts \
   gopls \
   gdu \
   btop \
-  diff-so-fancy \
   kitty \
   fish \
   fisher \
@@ -22,12 +21,18 @@ PACKAGES="noto-fonts \
   lazygit \
   prettier \
   onefetch \
+  gping \
+  dog \
+  ripgrep \
+  broot \
+  git-delta \
 "
 
 AUR_PACKAGES="jumpapp \
   puppet-lint \
   tmux-plugin-manager
-  jo
+  jo \
+  choose-rust-git
 "
 
 
