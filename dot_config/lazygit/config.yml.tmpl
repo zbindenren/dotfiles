@@ -2,7 +2,7 @@
 git:
   paging:
     colorArg: always
-    pager: diff-so-fancy
+    pager: delta --dark --paging=never
 {{- if hasKey . "email" }}
 services:
   "git.{{ .domain }}": "gitlab:git.{{ .domain }}"
