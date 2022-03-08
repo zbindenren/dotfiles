@@ -55,11 +55,11 @@ function _LAZYGIT_TOGGLE()
 end
 
 function _LAB_OPEN_TOGGLE()
-	toggleterm.exec("lab open")
+	toggleterm.exec("Lab open")
 end
 
 function _LAB_OPEN_PIPELINE_TOGGLE()
-	toggleterm.exec("lab open -p")
+	toggleterm.exec("clear && Lab ci")
 end
 
 function _GO_TEST_TOGGLE()
