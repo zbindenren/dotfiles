@@ -59,7 +59,7 @@ function _LAB_OPEN_TOGGLE()
 end
 
 function _LAB_OPEN_PIPELINE_TOGGLE()
-	toggleterm.exec("clear && Lab ci")
+	toggleterm.exec("clear && Lab open -p")
 end
 
 function _GO_TEST_TOGGLE()
