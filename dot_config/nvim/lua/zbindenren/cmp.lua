@@ -17,8 +17,6 @@ ls.load({
 	paths = vim.fn.stdpath("config") .. "/snippets",
 })
 
-print(vim.fn.stdpath("config") .. "/snippets")
-
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
