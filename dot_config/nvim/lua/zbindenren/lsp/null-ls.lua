@@ -28,7 +28,7 @@ null_ls.setup({
 		}),
 	},
 	on_attach = function(client)
-		if client.resolved_capabilities.document_formatting then
+		if client.resolved_capabilities.document_formatting and not vim.api.nvim_win_get_option(0, "diff") then
 			vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
 		end
 	end,
