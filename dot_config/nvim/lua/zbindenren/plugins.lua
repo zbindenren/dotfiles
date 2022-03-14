@@ -39,6 +39,8 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use({ "dracula/vim", as = "dracula" })
 	use("folke/tokyonight.nvim")
+	use("mcchrish/zenbones.nvim")
+	use("rktjmp/lush.nvim")
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use("nvim-telescope/telescope.nvim")
@@ -82,6 +84,7 @@ return packer.startup(function(use)
 	use("TimUntersberger/neogit")
 	use("samoshkin/vim-mergetool")
 	use("lewis6991/gitsigns.nvim")
+	use("whiteinge/diffconflicts")
 
 	-- buffers
 	use("akinsho/nvim-bufferline.lua")
