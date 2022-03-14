@@ -1,0 +1,12 @@
+{
+  "if error": {
+    "prefix": "ie",
+    "body": "if err != nil {\n\treturn err\n}",
+    "description": "Snippet for if err != nil"
+  },
+  "nosec": {
+    "prefix": "nosec",
+    "body": "// #nosec G${1:404}",
+    "description": "Snippet for nosec"
+  }
+}
