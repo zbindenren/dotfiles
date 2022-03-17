@@ -1,63 +1,29 @@
-# PREFIX
+source-file /home/rz/.tmux-inspired_github.conf
+
+# prefix
 unbind C-b
 set -g prefix C-n
 bind-key C-n send-prefix
 
-#set -s escape-time 0
+set -s escape-time 0
 
-# LOOK AND FEEL
-# set -g default-terminal "screen-256color"
-# set-option -ga terminal-overrides ",xterm-256color:Tc"
-
-source-file /home/rz/.tmux-zenbones.conf
+# Colors
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color*:Tc"
+set -as terminal-features ",xterm-256color:RGB"
 
 # shortcut for reloading config
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
-# Toggle Keybindings (turn off keybindings for remote sessions)
-{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
-bind -T root F12  \
-  set prefix None \;\
-  set key-table off \;\
-  set status-style "fg=#7aa2f7,bg=#1f2335" \;\
-  if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
-  refresh-client -S \;\
+# Colors
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color*:Tc"
+set -as terminal-features ",xterm-256color:RGB"
 
-bind -T off F12 \
-  set -u prefix \;\
-  set -u key-table \;\
-  set -u status-style \;\
-  set -u window-status-current-style \;\
-  set -u window-status-current-format \;\
-  refresh-client -S
+set -g clock-mode-colour default
 
-wg_is_keys_off="#[fg=$color_light,bg=$color_window_off_indicator]#([ $(tmux show-option -qv key-table) = 'off' ] && echo 'OFF')#[default]"
-{{- end }}
-
-# status bar info
-set -g status-left "#h:[#S]"
-{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
-set -g status-right "$wg_is_keys_off #(kube-tmux) %H:%M %d-%h-%Y"
-{{- else}}
-set -g status-right "#(kube-tmux) %H:%M %d-%h-%Y"
-{{- end }}
-setw -g window-status-current-format "|#I:#W|"
-set-window-option -g automatic-rename off
-set -g status-interval 5
-
-# listen to alerts from all windows
-set -g bell-action any
-
-# start window numbering at 1 for easier switching
-set -g base-index 1
-
-# this will renumber windows automatically when one gets deleted
-#set-option -g renumber-windows on
-
-# bind key for synchronizing panes
-bind-key a set-window-option synchronize-panes
-
-# VIM FEELING
+# key bindings
+# vi feeling
 setw -g mode-keys vi
 unbind-key j
 bind-key j select-pane -D
@@ -71,12 +37,8 @@ unbind [
 bind Escape copy-mode
 unbind p
 bind p paste-buffer
-# bind -t vi-copy v begin-selection
 bind -Tcopy-mode-vi v send-keys -X begin-selection
-# the plugin yank performs copy to clipboard
-# y - copy selection to system clipboard
-# Ctrl-y - "put" selection - equivalent to copying a selection, and pasting it to the command line
-# Alt-y - performs both of the above: copy to system clipboard and put to command line
+
 
 # http://robots.thoughtbot.com/post/53022241323/seamlessly-navigate-vim-and-tmux-splits
 # smart pane switching with awareness of vim splits
@@ -84,28 +46,65 @@ bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq v
 bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
 bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
 bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
-#bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
 
-
-# PANEs
+# panes
 bind 7 split-window -h
 bind - split-window -v
 
+# bind key for synchronizing panes
+bind-key a set-window-option synchronize-panes
 
-# RESURRECT
-set -g @resurrect-save 'S'
-set -g @resurrect-restore 'R'
+# Toggle Keybindings (turn off keybindings for remote sessions)
+{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
+color_black="#383a42"
+color_cyan="#489FC1"
+mode_separator=" "
 
-# PLUGIN MANAGER
-# Supports `github_username/repo` or full git URLs
-set -g @tpm_plugins "              \
-  tmux-plugins/tpm                 \
-  tmux-plugins/tmux-sensible       \
-  tmux-plugins/tmux-yank           \
-  tmux-plugins/tmux-resurrect      \
-"
-# Initializes TMUX plugin manager.
-# Keep this line at the very bottom of tmux.conf.
-# run-shell ~/.tmux/plugins/tpm/tpm
+bind -T root F12  \
+  set prefix None \;\
+  set key-table off \;\
+  set @mode_indicator_custom_prompt "  OFF #[default]#[fg=$color_cyan]$mode_separator" \;\
+  set @mode_indicator_custom_mode_style bg=$color_cyan,fg=$color_black \;\
+  if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
+  refresh-client -S \;\
+{{- end }}
 
+bind -T off F12 \
+  set -u prefix \;\
+  set -u key-table \;\
+  set -u @mode_indicator_custom_prompt \;\
+  set -u @mode_indicator_custom_mode_style \;\
+  refresh-client -S
+
+#Start window indexing at 1, not 0
+set -g base-index 1
+set -g renumber-windows on
+set -g pane-base-index 1
+set -g display-panes-time 350
+set-option -sg escape-time 10
+set-option -g focus-events on
+
+module_separator_right=''
+module_separator_left=''
+
+set -g status-left '
+    #{tmux_mode_indicator}'
+
+set -g status-right "#h | #(kube-tmux) | "
+set -ag status-right '
+    %H:%M %d-%h-%Y | CPU: #{cpu_percentage} '
+set -g status on
+set -g status-interval 2
+set -g status-left-length 90
+set -g status-right-length 90
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-cpu'
+set -g @plugin 'tmux-plugins/tmux-sidebar'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'MunifTanjim/tmux-mode-indicator'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '/usr/share/tmux-plugin-manager/tpm'

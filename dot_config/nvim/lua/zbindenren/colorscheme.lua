@@ -1,5 +1,4 @@
 vim.opt.background = "light"
-vim.g.zenbones_lightness = "bright"
 vim.g.zenbones = {
 	lightness = "bright",
 	darken_noncurrent_window = true,
