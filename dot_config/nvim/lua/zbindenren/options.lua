@@ -43,3 +43,9 @@ vim.api.nvim_command("set noswapfile")
 vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-separated) as one word
 vim.cmd([[ set whichwrap+=<,>,[,],h,l ]]) -- this causes the h and l key to wrap when used at beginning or end of lines
 vim.cmd([[ set diffopt+=internal,algorithm:histogram ]]) -- better diff algorithm
+
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldnestmax = 5
+o.foldminlines = 1
+o.foldenable = false -- folds are open per default. use zx to fold when opend with telescope

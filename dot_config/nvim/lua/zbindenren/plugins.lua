@@ -56,6 +56,13 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 	use("hoschi/yode-nvim")
 
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup({})
+			require("pretty-fold.preview").setup()
+		end,
+	})
 	-- tests
 	use("preservim/vimux")
 	use({
