@@ -55,7 +55,7 @@ function _LAZYGIT_TOGGLE()
 end
 
 function _LAB_OPEN_TOGGLE()
-	toggleterm.exec("Lab open")
+	toggleterm.exec("lab open")
 end
 
 function _LAB_OPEN_PIPELINE_TOGGLE()
