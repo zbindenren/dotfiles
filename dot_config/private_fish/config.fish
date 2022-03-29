@@ -4,6 +4,6 @@ if status is-interactive
   bind -k nul accept-autosuggestion
 end
 
-set -x PATH $PATH ~/golang/bin ~/bin
+set -x PATH $PATH ~/go/bin ~/bin
 
 starship init fish | source
