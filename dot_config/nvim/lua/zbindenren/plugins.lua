@@ -35,12 +35,7 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- almost all plugins need this
 	use("kyazdani42/nvim-web-devicons") -- almost all plugins need this
 	use("christoomey/vim-tmux-navigator")
-	-- use("ojroques/vim-oscyank")
 	use("simrat39/symbols-outline.nvim")
-	use({ "dracula/vim", as = "dracula" })
-	use("folke/tokyonight.nvim")
-	use("mcchrish/zenbones.nvim")
-	use("rktjmp/lush.nvim")
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use("nvim-telescope/telescope.nvim")
@@ -55,6 +50,19 @@ return packer.startup(function(use)
 	use("SmiteshP/nvim-gps") -- show context in statusline
 	use("akinsho/toggleterm.nvim")
 	use("hoschi/yode-nvim")
+	use({
+		"norcalli/nvim-colorizer.lua",
+		config = function()
+			require("colorizer").setup({})
+		end,
+	})
+
+	-- color schemes
+	use("mcchrish/zenbones.nvim")
+	use("rktjmp/lush.nvim")
+	use({ "dracula/vim", as = "dracula" })
+	use("folke/tokyonight.nvim")
+	use("projekt0n/github-nvim-theme")
 
 	use({
 		"anuvyklack/pretty-fold.nvim",
@@ -104,6 +112,7 @@ return packer.startup(function(use)
 		run = ":TSUpdate",
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("RRethy/nvim-treesitter-textsubjects")
 
 	-- completion
 	-- snippets
