@@ -63,6 +63,7 @@ return packer.startup(function(use)
 	use({ "dracula/vim", as = "dracula" })
 	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
+	use("mvpopuk/inspired-github.vim")
 
 	use({
 		"anuvyklack/pretty-fold.nvim",
