@@ -57,14 +57,15 @@ bind-key a set-window-option synchronize-panes
 # Toggle Keybindings (turn off keybindings for remote sessions)
 {{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
 color_black="#383A42"
-color_cyan="#489FC1"
-mode_separator=" "
+color_white="#ffffff"
+color_cyan="#ca1243"
+mode_separator=""
 
 bind -T root F12  \
   set prefix None \;\
   set key-table off \;\
   set @mode_indicator_custom_prompt "  OFF #[default]#[fg=$color_cyan]$mode_separator" \;\
-  set @mode_indicator_custom_mode_style bg=$color_cyan,fg=$color_black \;\
+  set @mode_indicator_custom_mode_style bg=$color_cyan,fg=$color_white \;\
   if -F '#{pane_in_mode}' 'send-keys -X cancel' \;\
   refresh-client -S \;\
 {{- end }}
@@ -83,9 +84,6 @@ set -g pane-base-index 1
 set -g display-panes-time 350
 set-option -sg escape-time 10
 set-option -g focus-events on
-
-#module_separator_right=''
-#module_separator_left=''
 
 set -g status-left '
     #{tmux_mode_indicator}'
