@@ -56,7 +56,7 @@ bind-key a set-window-option synchronize-panes
 
 # Toggle Keybindings (turn off keybindings for remote sessions)
 {{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
-color_black="#383a42"
+color_black="#383A42"
 color_cyan="#489FC1"
 mode_separator=" "
 
@@ -84,13 +84,13 @@ set -g display-panes-time 350
 set-option -sg escape-time 10
 set-option -g focus-events on
 
-module_separator_right=''
-module_separator_left=''
+#module_separator_right=''
+#module_separator_left=''
 
 set -g status-left '
     #{tmux_mode_indicator}'
 
-set -g status-right "#h | #(kube-tmux) | "
+set -g status-right '#h | #(kube-tmux) | '
 set -ag status-right '
     %H:%M %d-%h-%Y | CPU: #{cpu_percentage} '
 set -g status on
