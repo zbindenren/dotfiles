@@ -88,9 +88,7 @@ set-option -g focus-events on
 set -g status-left '
     #{tmux_mode_indicator}'
 
-set -g status-right '#h | #(kube-tmux) | '
-set -ag status-right '
-    %H:%M %d-%h-%Y | CPU: #{cpu_percentage} '
+set -g status-right '#(kube-tmux) | %H:%M %d-%h-%Y | #{uptime}'
 set -g status on
 set -g status-interval 2
 set -g status-left-length 90
@@ -99,9 +97,9 @@ set -g status-right-length 90
 # List of plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
-set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-sidebar'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'robhurring/tmux-uptime'
 set -g @plugin 'MunifTanjim/tmux-mode-indicator'
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
