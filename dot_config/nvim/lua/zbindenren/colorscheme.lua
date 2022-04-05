@@ -1,11 +1,15 @@
 vim.opt.background = "light"
-vim.g.zenbones = {
+vim.g.zenwritten = {
 	lightness = "bright",
 	darken_noncurrent_window = true,
 }
 
--- local colorscheme = "tokyonight"
-local colorscheme = "github_light_default"
+vim.g.tokyobones = {
+	lightness = "bright",
+	darken_noncurrent_window = true,
+}
+
+local colorscheme = "zenwritten"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
