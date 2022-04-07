@@ -31,8 +31,8 @@ o.list = false -- Show some invisible characters (tabs...)
 o.number = true -- Print line number
 o.relativenumber = true -- Relative line numbers
 o.wrap = true -- Enable line wrap
-o.cmdheight = 2 -- More space to display messages
-o.timeoutlen = 150 -- Don't wait more that 150ms for normal mode commands
+o.cmdheight = 1 -- More space to display messages
+o.timeoutlen = 300 -- Don't wait more that 150ms for normal mode commands
 o.termguicolors = true -- True color support
 o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 
@@ -41,7 +41,6 @@ vim.opt.shortmess:append("c")
 vim.api.nvim_command("set noswapfile")
 
 vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-separated) as one word
-vim.cmd([[ set whichwrap+=<,>,[,],h,l ]]) -- this causes the h and l key to wrap when used at beginning or end of lines
 vim.cmd([[ set diffopt+=internal,algorithm:histogram ]]) -- better diff algorithm
 
 o.foldmethod = "expr"
