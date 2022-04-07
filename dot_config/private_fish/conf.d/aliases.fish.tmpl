@@ -33,3 +33,6 @@ alias vi='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
 alias vim='nvim'
 alias vi='nvim'
 {{ end }}
+{{- if hasKey . "email" }}
+alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshshuttlehost }} --remote {{ .sshshuttlehost }} {{ .sshshuttlenetwork }}'
+{{- end }}
