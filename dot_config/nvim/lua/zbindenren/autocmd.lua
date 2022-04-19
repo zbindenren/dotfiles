@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 
 -- apply chezmoi on write
 vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "./dot_config/*",
+	pattern = "*/dot_config/*",
 	command = '! chezmoi apply --source-path "%"',
 	group = vim.api.nvim_create_augroup("ApplyChezmoi", { clear = false }),
 })
