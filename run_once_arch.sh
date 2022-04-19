@@ -9,7 +9,6 @@ PACKAGES="noto-fonts \
   fd \
   bat \
   delve \
-  gopls \
   gdu \
   btop \
   kitty \
