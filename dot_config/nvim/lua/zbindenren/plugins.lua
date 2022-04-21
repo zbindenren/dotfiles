@@ -47,7 +47,6 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("b3nj5m1n/kommentary")
-	use("SmiteshP/nvim-gps") -- show context in statusline
 	use("akinsho/toggleterm.nvim")
 	use("hoschi/yode-nvim")
 	use({
