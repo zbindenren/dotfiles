@@ -100,6 +100,7 @@ return packer.startup(function(use)
 	use("samoshkin/vim-mergetool")
 	use("lewis6991/gitsigns.nvim")
 	use("whiteinge/diffconflicts")
+	use("akinsho/git-conflict.nvim")
 
 	-- buffers
 	use("akinsho/nvim-bufferline.lua")
