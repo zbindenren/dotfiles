@@ -38,7 +38,13 @@ return packer.startup(function(use)
 	use("simrat39/symbols-outline.nvim")
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
-	use("nvim-telescope/telescope.nvim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		requires = {
+			{ "nvim-telescope/telescope-live-grep-raw.nvim" },
+		},
+	})
+
 	use("folke/which-key.nvim")
 	use("ggandor/lightspeed.nvim")
 	use("junegunn/vim-easy-align")

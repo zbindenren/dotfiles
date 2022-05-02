@@ -5,6 +5,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
+telescope.load_extension("live_grep_raw")
 
 telescope.setup({
 	defaults = {
