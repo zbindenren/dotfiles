@@ -72,6 +72,7 @@ return packer.startup(function(use)
 
 	use({
 		"anuvyklack/pretty-fold.nvim",
+		requires = "anuvyklack/nvim-keymap-amend",
 		config = function()
 			require("pretty-fold").setup({})
 			require("pretty-fold.preview").setup()
