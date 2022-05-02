@@ -5,9 +5,6 @@ if not status_ok then
 end
 
 nvim_tree.setup({
-	view = {
-		auto_resize = true,
-	},
 	diagnostics = {
 		enable = true,
 	},
