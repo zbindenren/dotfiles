@@ -121,6 +121,7 @@ return packer.startup(function(use)
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("RRethy/nvim-treesitter-textsubjects")
+	use("nvim-treesitter/nvim-treesitter-textobjects")
 
 	-- completion
 	-- snippets
