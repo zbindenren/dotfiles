@@ -1,0 +1,3 @@
+[keys.insert]
+j = { j = "normal_mode" } # maps `jj` to exit insert mode
+C-h = "jump_view_left"
