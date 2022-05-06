@@ -145,6 +145,15 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("j-hui/fidget.nvim") -- show lsp start status message
 
+	-- DAP
+	use("mfussenegger/nvim-dap")
+	use("leoluz/nvim-dap-go")
+	use({
+		"rcarriga/nvim-dap-ui",
+		requires = { "mfussenegger/nvim-dap" },
+	})
+  use("theHamsta/nvim-dap-virtual-text")
+
 	use({
 		"abecodes/tabout.nvim",
 		config = function() -- the only way to make it work is to configure it here

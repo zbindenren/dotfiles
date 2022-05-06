@@ -102,11 +102,20 @@ local mappings = {
 		i = { "<cmd>TestNearest -count=1 -tags integration -v<cr>", "integration test nearest function" },
 		t = { "<cmd>lua _GO_LINT_N_TEST_TOGGLE()<cr>", "go lint and test" },
 		l = { "<cmd>lua _GO_LINT_TOGGLE()<cr>", "golangci-lint in toggleterm" },
+		d = { "<cmd>lua require('dap-go').debug_test()<cr>", "debug test nearest function" },
 	},
 	p = {
 		name = "project",
 		p = { "<cmd>lua _LAB_OPEN_PIPELINE_TOGGLE()<cr>", "open pipeline in webbrowser" },
 		o = { "<cmd>lua _LAB_OPEN_TOGGLE()<cr>", "open project in webbrowser" },
+	},
+	d = {
+		name = "debug",
+		b = { "<cmd>DapToggleBreakpoint<cr>", "toggle breakpoint" },
+		n = { "<cmd>DapStepOver<cr>", "step over" },
+		i = { "<cmd>DapStepInto<cr>", "step into" },
+		q = { "<cmd>DapTerminate<cr>", "terminate debug session" },
+		s = { "<cmd>lua require('dap').continue()<cr>", "start debug session" },
 	},
 }
 
