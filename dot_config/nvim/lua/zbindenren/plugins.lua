@@ -46,6 +46,7 @@ return packer.startup(function(use)
 	})
 
 	use("folke/which-key.nvim")
+	use("romainl/vim-cool")
 	use("ggandor/lightspeed.nvim")
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
