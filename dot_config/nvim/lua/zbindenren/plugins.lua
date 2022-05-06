@@ -46,11 +46,11 @@ return packer.startup(function(use)
 	})
 
 	use("folke/which-key.nvim")
-	use("romainl/vim-cool")
 	use("ggandor/lightspeed.nvim")
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
+	use("romainl/vim-cool") -- disables search highlighting when you are done searching
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("b3nj5m1n/kommentary")
