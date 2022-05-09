@@ -123,7 +123,7 @@ return packer.startup(function(use)
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("RRethy/nvim-treesitter-textsubjects")
-	use("nvim-treesitter/nvim-treesitter-textobjects")
+	-- use("nvim-treesitter/nvim-treesitter-textobjects") -- currently disabled because it can make neovim unresponsive
 
 	-- completion
 	-- snippets
