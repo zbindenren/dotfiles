@@ -70,7 +70,7 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 	use("mvpopuk/inspired-github.vim")
-  use("buoto/gotests-vim") -- create go tests very quickly
+	use("buoto/gotests-vim") -- create go tests very quickly
 
 	use({
 		"anuvyklack/pretty-fold.nvim",
