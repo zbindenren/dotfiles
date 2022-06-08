@@ -39,14 +39,19 @@ return packer.startup(function(use)
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").set_default_keymaps()
+		end,
+	})
+	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
-			{ "nvim-telescope/telescope-live-grep-raw.nvim" },
+			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		},
 	})
 
 	use("folke/which-key.nvim")
-	use("ggandor/lightspeed.nvim")
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
@@ -123,6 +128,7 @@ return packer.startup(function(use)
 	})
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("RRethy/nvim-treesitter-textsubjects")
+	use("nvim-treesitter/nvim-treesitter-context")
 	-- use("nvim-treesitter/nvim-treesitter-textobjects") -- currently disabled because it can make neovim unresponsive
 
 	-- completion

@@ -41,7 +41,7 @@ local mappings = {
 			"<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false, hidden=true, file_ignore_patterns={'.git/', 'node_modules/'} }))<cr>",
 			"list files",
 		},
-		g = { "<cmd>lua require('telescope').extensions.live_grep_raw.live_grep_raw()<cr>", "grep in files" },
+		g = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_raw()<cr>", "grep in files" },
 		s = { "<cmd>lua require('spectre').open_visual()<cr>", "search and replace in  files" },
 	},
 	b = {
