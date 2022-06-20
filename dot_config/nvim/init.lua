@@ -19,5 +19,6 @@ require("zbindenren.toggleterm")
 require("zbindenren.yode")
 require("zbindenren.git-conflict")
 require("zbindenren.dap")
+require("zbindenren.ufo")
 
 require("markdown")

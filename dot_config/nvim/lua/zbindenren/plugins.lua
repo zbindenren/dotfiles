@@ -61,6 +61,7 @@ return packer.startup(function(use)
 	use("b3nj5m1n/kommentary")
 	use("akinsho/toggleterm.nvim")
 	use("hoschi/yode-nvim")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- fold plugin
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -77,14 +78,6 @@ return packer.startup(function(use)
 	use("mvpopuk/inspired-github.vim")
 	use("buoto/gotests-vim") -- create go tests very quickly
 
-	use({
-		"anuvyklack/pretty-fold.nvim",
-		requires = "anuvyklack/nvim-keymap-amend",
-		config = function()
-			require("pretty-fold").setup({})
-			require("pretty-fold.preview").setup()
-		end,
-	})
 	-- tests
 	use("preservim/vimux")
 	use({
