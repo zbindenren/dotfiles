@@ -10,3 +10,9 @@ ngit.setup({
 		diffview = true,
 	},
 })
+
+vim.api.nvim_create_autocmd("User", {
+	pattern = "NeogitPushComplete",
+	callback = ngit.close,
+	group = vim.api.nvim_create_augroup("NeogitCloseAfterPush", { clear = true }),
+})
