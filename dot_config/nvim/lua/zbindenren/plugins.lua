@@ -59,7 +59,10 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("b3nj5m1n/kommentary")
-	use("akinsho/toggleterm.nvim")
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "v2.0.0", -- see https://github.com/akinsho/toggleterm.nvim/issues/246
+	})
 	use("hoschi/yode-nvim")
 	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- fold plugin
 	use({
