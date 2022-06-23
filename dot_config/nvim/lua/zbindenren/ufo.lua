@@ -7,12 +7,6 @@ end
 vim.wo.foldlevel = 99
 vim.wo.foldenable = true
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.foldingRange = {
-	dynamicRegistration = false,
-	lineFoldingOnly = true,
-}
-
 local handler = function(virtText, lnum, endLnum, width, truncate)
 	local newVirtText = {}
 	local suffix = ("  %d "):format(endLnum - lnum)
