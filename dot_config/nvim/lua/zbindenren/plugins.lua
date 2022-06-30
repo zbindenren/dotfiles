@@ -64,11 +64,18 @@ return packer.startup(function(use)
 		tag = "v2.0.0", -- see https://github.com/akinsho/toggleterm.nvim/issues/246
 	})
 	use("hoschi/yode-nvim")
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- fold plugin
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({})
+		end,
+	})
+	use({
+		"anuvyklack/pretty-fold.nvim",
+		requires = "anuvyklack/nvim-keymap-amend",
+		config = function()
+			require("pretty-fold").setup({})
+			require("pretty-fold.preview").setup()
 		end,
 	})
 

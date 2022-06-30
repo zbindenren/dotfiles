@@ -37,6 +37,13 @@ o.termguicolors = true -- True color support
 o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 o.laststatus = 3 -- use global status line
 
+-- folds
+o.foldmethod = "expr"
+o.foldexpr = "nvim_treesitter#foldexpr()"
+o.foldnestmax = 5
+o.foldminlines = 1
+o.foldenable = false
+
 vim.opt.shortmess:append("c")
 
 vim.api.nvim_command("set noswapfile")
