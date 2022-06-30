@@ -22,6 +22,16 @@ M.toggleNum = function()
 	end
 end
 
+M.toggleClipboard = function()
+	if vim.o.clipboard == "unnamedplus" then
+		vim.o.clipboard = "unnamed"
+		vim.notify("set clipboard to unamed")
+	else
+		vim.o.clipboard = "unnamedplus"
+		vim.notify("set clipboard to unamedplus (default)")
+	end
+end
+
 M.copyLineInfo = function()
 	local lineName = vim.fn.expand("%")
 	local lineNumber = vim.fn.line(".")

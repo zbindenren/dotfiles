@@ -9,7 +9,7 @@ o.smartcase = true -- Don't ignore case with capitals
 o.mouse = "" -- Disable mouse
 o.autoread = true -- Reload file after it changes on disk.
 -- o.clipboard = "unnamedplus" -- Put those yanks in my os clipboards
-o.clipboard = "unnamed" -- Put those yanks in my os clipboards
+o.clipboard = "unnamedplus" -- Put those yanks in my os clipboards
 o.completeopt = "menuone,noselect" -- Completion options (for compe)
 o.hidden = true -- Enable modified buffers in background
 o.ignorecase = true -- Ignore case
@@ -50,3 +50,5 @@ vim.api.nvim_command("set noswapfile")
 
 vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-separated) as one word
 vim.cmd([[ set diffopt+=internal,algorithm:histogram ]]) -- better diff algorithm
+
+vim.api.nvim_create_user_command("ToggleClipboard", require("utils").toggleClipboard, { nargs = 0 })
