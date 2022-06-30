@@ -35,7 +35,20 @@ local handler = function(virtText, lnum, endLnum, width, truncate)
 	return newVirtText
 end
 
+local ftMap = {
+	vim = "indent",
+	git = "",
+	NEOGIT_COMMIT_EDITMSG = "",
+}
+
 -- global handler
 ufo.setup({
 	fold_virt_text_handler = handler,
+	provider_selector = function(bufnr, filetype)
+		-- return a string type use internal providers
+		-- return a string in a table like a string type
+		-- return empty string '' will disable any providers
+		-- return `nil` will use default value {'lsp', 'indent'}
+		return ftMap[filetype]
+	end,
 })
