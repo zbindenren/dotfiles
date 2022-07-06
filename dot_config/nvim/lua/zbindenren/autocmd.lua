@@ -17,3 +17,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	command = 'silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})',
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.go" },
+	callback = function()
+		vim.lsp.buf.formatting_sync(nil, 3000)
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = { "*.go" },
+	callback = require("utils").go_organize_imports_sync,
+})

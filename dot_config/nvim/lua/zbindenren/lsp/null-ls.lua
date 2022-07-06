@@ -13,7 +13,7 @@ null_ls.setup({
 	debug = false,
 	sources = {
 		formatting.stylua,
-		formatting.goimports,
+		-- formatting.goimports,
 		diagnostics.eslint,
 		diagnostics.puppet_lint,
 		diagnostics.golangci_lint,
