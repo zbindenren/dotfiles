@@ -1,6 +1,10 @@
 return {
 	settings = {
 		Lua = {
+			format = {
+				enable = false, -- let null-ls handle the formatting
+			},
+			filetypes = { "lua" },
 			diagnostics = {
 				globals = { "vim" },
 			},
