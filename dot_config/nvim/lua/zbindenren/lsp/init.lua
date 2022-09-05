@@ -4,7 +4,7 @@ if not status_ok then
 	return
 end
 
-require("zbindenren.lsp.lsp-installer")
+require("zbindenren.lsp.mason")
 require("zbindenren.lsp.handlers").setup()
 require("zbindenren.lsp.null-ls")
 
