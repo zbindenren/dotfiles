@@ -45,7 +45,10 @@ return packer.startup(function(use)
 		},
 	})
 
-	use("folke/which-key.nvim")
+	use({
+		"folke/which-key.nvim",
+		commit = "9c190ea91939eba8c2d45660127e0403a5300b5a~1",
+	})
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
