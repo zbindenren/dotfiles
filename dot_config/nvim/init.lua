@@ -16,7 +16,6 @@ require("zbindenren.indent-blankline")
 require("zbindenren.bufferline")
 require("zbindenren.lualine")
 require("zbindenren.toggleterm")
-require("zbindenren.yode")
 require("zbindenren.git-conflict")
 require("zbindenren.dap")
 
