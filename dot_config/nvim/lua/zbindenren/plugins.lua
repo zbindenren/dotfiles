@@ -39,12 +39,6 @@ return packer.startup(function(use)
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use({
-		"ggandor/leap.nvim",
-		config = function()
-			require("leap").set_default_keymaps()
-		end,
-	})
-	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
@@ -98,6 +92,22 @@ return packer.startup(function(use)
 					pattern = [[\b(KEYWORDS):(]], -- ripgrep regex
 					-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 				},
+			})
+		end,
+	})
+
+	-- navigation
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").set_default_keymaps()
+		end,
+	})
+	use({
+		"jinh0/eyeliner.nvim",
+		config = function()
+			require("eyeliner").setup({
+				highlight_on_key = true,
 			})
 		end,
 	})

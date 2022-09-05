@@ -52,3 +52,7 @@ vim.cmd([[ set iskeyword+=- ]]) -- this treats dash separated words (i.e: dash-s
 vim.cmd([[ set diffopt+=internal,algorithm:histogram ]]) -- better diff algorithm
 
 vim.api.nvim_create_user_command("ToggleClipboard", require("utils").toggleClipboard, { nargs = 0 })
+
+-- exliner colors
+vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#B279A7", bold = true, underline = true })
+vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#B279A7", underline = true })
