@@ -53,11 +53,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("b3nj5m1n/kommentary")
-	use({
-		"akinsho/toggleterm.nvim",
-		tag = "v2.0.0", -- see https://github.com/akinsho/toggleterm.nvim/issues/246
-	})
-	use("hoschi/yode-nvim")
+	use("akinsho/toggleterm.nvim")
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
