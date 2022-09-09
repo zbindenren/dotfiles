@@ -39,19 +39,16 @@ return packer.startup(function(use)
 	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use({
-		"ggandor/leap.nvim",
-		config = function()
-			require("leap").set_default_keymaps()
-		end,
-	})
-	use({
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-telescope/telescope-live-grep-args.nvim" },
 		},
 	})
 
-	use("folke/which-key.nvim")
+	use({
+		"folke/which-key.nvim",
+		commit = "9c190ea91939eba8c2d45660127e0403a5300b5a~1",
+	})
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
@@ -59,11 +56,7 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-tree.lua")
 	use("hoob3rt/lualine.nvim")
 	use("b3nj5m1n/kommentary")
-	use({
-		"akinsho/toggleterm.nvim",
-		tag = "v2.0.0", -- see https://github.com/akinsho/toggleterm.nvim/issues/246
-	})
-	use("hoschi/yode-nvim")
+	use("akinsho/toggleterm.nvim")
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -98,6 +91,22 @@ return packer.startup(function(use)
 					pattern = [[\b(KEYWORDS):(]], -- ripgrep regex
 					-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 				},
+			})
+		end,
+	})
+
+	-- navigation
+	use({
+		"ggandor/leap.nvim",
+		config = function()
+			require("leap").set_default_keymaps()
+		end,
+	})
+	use({
+		"jinh0/eyeliner.nvim",
+		config = function()
+			require("eyeliner").setup({
+				highlight_on_key = true,
 			})
 		end,
 	})
