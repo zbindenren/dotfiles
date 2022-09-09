@@ -84,6 +84,23 @@ return packer.startup(function(use)
 			require("fold-preview").setup()
 		end,
 	})
+	use({
+		"folke/todo-comments.nvim",
+		requires = "nvim-lua/plenary.nvim",
+		config = function()
+			require("todo-comments").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+				search = {
+					-- regex that will be used to match keywords.
+					-- don't replace the (KEYWORDS) placeholder
+					pattern = [[\b(KEYWORDS):(]], -- ripgrep regex
+					-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
+				},
+			})
+		end,
+	})
 
 	-- color schemes
 	use("mcchrish/zenbones.nvim")
@@ -157,7 +174,8 @@ return packer.startup(function(use)
 	use("onsails/lspkind-nvim")
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
-	use("williamboman/nvim-lsp-installer")
+	use({ "williamboman/mason.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("j-hui/fidget.nvim") -- show lsp start status message
 
