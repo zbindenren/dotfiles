@@ -27,6 +27,19 @@ function proxyuser
   set -x https_proxy http://$username:$password@$proxyname
 end
 
+function paam-fzf
+  set hosts (cat $HOME/nodes.txt | fzf -m)
+
+  tmux new-window "ssh $hosts[1]"
+  for i in $hosts[2..]
+    tmux split-window -h  "ssh $i"
+    tmux select-layout tiled > /dev/null
+  end
+
+  tmux select-pane -t 0
+  #tmux set-window-option synchronize-panes on > /dev/null
+end
+
 function proxyoff
   set -e ftp_proxy
   set -e http_proxy
