@@ -35,4 +35,5 @@ alias vi='nvim'
 {{ end }}
 {{- if hasKey . "email" }}
 alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host }} --remote {{ .sshuttle_host }} {{ .sshuttle_network }}'
+alias paam_shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host_paam }} --remote {{ .sshuttle_host_paam }} {{ .sshuttle_network_paam }}'
 {{- end }}
