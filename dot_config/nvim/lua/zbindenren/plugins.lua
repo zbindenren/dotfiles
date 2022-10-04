@@ -138,7 +138,7 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
 
 	-- popup markdown preview
-	use({ "npxbr/glow.nvim", run = ":GlowInstall" })
+	use({ "npxbr/glow.nvim"})
 
 	-- git
 	use("sindrets/diffview.nvim")

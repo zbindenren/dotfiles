@@ -36,6 +36,8 @@ o.timeoutlen = 300 -- Don't wait more that 150ms for normal mode commands
 o.termguicolors = true -- True color support
 o.shada = { "!", "'1000", "<50", "s10", "h" } -- remember stuff across sessions
 o.laststatus = 3 -- use global status line
+o.cmdheight = 0 -- disable command line
+o.laststatus = 0 -- disable last status
 
 -- folds
 o.foldmethod = "expr"
