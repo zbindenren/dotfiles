@@ -23,6 +23,10 @@ keymap("n", "<a-down>", "<cmd>resize +2<cr>", opts)
 keymap("n", "<a-right>", "<cmd>vertical resize -2<cr>", opts)
 keymap("n", "<a-left>", "<cmd>vertical resize +2<cr>", opts)
 
+-- prevent unintentional macro record functionality
+keymap("n", "qq", "q", opts)
+keymap("n", "q", "<nop>", opts)
+
 -- mergetool
 -- keymap("n", "<c-left>", '&diff? "<plug>(MergetoolDiffExchangeLeft)" : "\\<c-left>"', opts_expr)
 -- keymap("n", "<c-right>", '&diff? "<plug>(MergetoolDiffExchangeRight)" : "\\<c-right>"', opts_expr)
