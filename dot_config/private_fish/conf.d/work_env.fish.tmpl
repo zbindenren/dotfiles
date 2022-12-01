@@ -40,6 +40,19 @@ function paam-fzf
   #tmux set-window-option synchronize-panes on > /dev/null
 end
 
+function paam-hosts
+  set hosts $argv
+
+  tmux new-window "ssh $hosts[1]"
+  for i in $hosts[2..]
+    tmux split-window -h  "ssh $i"
+    tmux select-layout tiled > /dev/null
+  end
+
+  tmux select-pane -t 0
+  #tmux set-window-option synchronize-panes on > /dev/null
+end
+
 function proxyoff
   set -e ftp_proxy
   set -e http_proxy
