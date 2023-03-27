@@ -20,7 +20,7 @@ local servers = {
 	"gopls",
 	"yamlls",
 	"jsonls",
-	"sumneko_lua",
+	"lua_ls",
 }
 
 mason.setup()
