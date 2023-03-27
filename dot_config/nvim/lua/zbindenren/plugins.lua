@@ -36,7 +36,6 @@ return packer.startup(function(use)
 	use("kyazdani42/nvim-web-devicons") -- almost all plugins need this
 	use("christoomey/vim-tmux-navigator")
 	use("simrat39/symbols-outline.nvim")
-	use("nyngwang/NeoZoom.lua")
 	use("lukas-reineke/indent-blankline.nvim") -- show identations
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -109,10 +108,10 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("projekt0n/github-nvim-theme")
 	use("mvpopuk/inspired-github.vim")
-	use("buoto/gotests-vim") -- create go tests very quickly
 
 	-- tests
 	use("preservim/vimux")
+	use("buoto/gotests-vim") -- create go tests very quickly
 	use({
 		"vim-test/vim-test",
 		config = function() -- the only way to make it work is to configure it here
