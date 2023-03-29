@@ -86,18 +86,18 @@ return packer.startup(function(use)
 	})
 
 	-- navigation
+  -- with s/S
 	use({
 		"ggandor/leap.nvim",
 		config = function()
 			require("leap").set_default_keymaps()
 		end,
 	})
+  -- with f/F
 	use({
-		"jinh0/eyeliner.nvim",
+		"ggandor/flit.nvim",
 		config = function()
-			require("eyeliner").setup({
-				highlight_on_key = true,
-			})
+			require("flit").setup()
 		end,
 	})
 
