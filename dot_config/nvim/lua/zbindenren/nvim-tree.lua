@@ -8,4 +8,5 @@ nvim_tree.setup({
 	diagnostics = {
 		enable = true,
 	},
+  reload_on_bufenter = true,
 })
