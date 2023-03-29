@@ -32,8 +32,7 @@ local mappings = {
 	c = {
 		name = "code",
 		d = { "<cmd>lua require('telescope.builtin').diagnostics()<cr>", "show diagnostics" },
-		r = { "<cmd>lua require('telescope.builtin').lsp_references()<cr>", "show references" },
-		s = { "<cmd>SymbolsOutline<cr>", "show tags" },
+		c = { "<cmd>lua require('nvim-navbuddy').open()<cr>", "open navbuddy" },
 	},
 	f = {
 		name = "files",

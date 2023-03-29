@@ -177,6 +177,14 @@ return packer.startup(function(use)
 	use({ "williamboman/mason-lspconfig.nvim" })
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("j-hui/fidget.nvim") -- show lsp start status message
+  use {
+    "SmiteshP/nvim-navbuddy",
+    requires = {
+        "neovim/nvim-lspconfig",
+        "SmiteshP/nvim-navic",
+        "MunifTanjim/nui.nvim"
+    }
+}
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
