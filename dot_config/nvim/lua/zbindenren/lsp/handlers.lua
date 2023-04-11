@@ -82,7 +82,6 @@ local navbuddy = require("nvim-navbuddy")
 
 M.on_attach = function(client, bufnr)
   navbuddy.attach(client, bufnr)
-	-- disable lsp formatting for tsserver and gopls - this is done by null-ls
 	if client.name == "tsserver" then
 		client.server_capabilities.document_formatting = false
 	end
