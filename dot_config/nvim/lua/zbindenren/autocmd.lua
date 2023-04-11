@@ -21,7 +21,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = { "*.go" },
 	callback = function()
-		vim.lsp.buf.formatting_sync(nil, 3000)
+		vim.lsp.buf.format({
+      timeout_ms=3000
+    })
 	end,
 })
 
