@@ -11,6 +11,7 @@ local diagnostics = null_ls.builtins.diagnostics
 
 null_ls.setup({
 	debug = false,
+  timeout_ms = 20000,
 	sources = {
 		formatting.stylua,
 		-- formatting.goimports,
