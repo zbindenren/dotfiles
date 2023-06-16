@@ -189,6 +189,15 @@ return packer.startup(function(use)
     }
 }
 
+use({
+  "jackMort/ChatGPT.nvim",
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+})
+
 	-- DAP
 	use("mfussenegger/nvim-dap")
 	use("leoluz/nvim-dap-go")

@@ -18,5 +18,6 @@ require("zbindenren.lualine")
 require("zbindenren.toggleterm")
 require("zbindenren.git-conflict")
 require("zbindenren.dap")
+require("zbindenren.chatgpt")
 
 require("markdown")
