@@ -140,6 +140,7 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim")
 	use("whiteinge/diffconflicts")
 	use("akinsho/git-conflict.nvim")
+	use("wintermute-cell/gitignore.nvim")
 
 	-- buffers
 	use("akinsho/nvim-bufferline.lua")
