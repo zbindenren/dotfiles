@@ -6,4 +6,9 @@ end
 
 chatgpt.setup({
   api_key_cmd = "cat /home/rz/.chatgpt.nvim",
+  chat = {
+    keymaps = {
+      new_session = "<C-e>",
+    }
+  }
 })
