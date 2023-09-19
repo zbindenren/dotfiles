@@ -45,6 +45,15 @@ return packer.startup(function(use)
 	})
 
 	use("folke/which-key.nvim")
+	use({
+    "mfussenegger/nvim-lint",
+		config = function()
+			require("lint").linters_by_ft = {
+        go = {'golangcilint',},
+        yaml = {'yamllint',}
+      }
+		end,
+  })
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
@@ -182,7 +191,6 @@ return packer.startup(function(use)
 	use("glepnir/lspsaga.nvim")
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use("jose-elias-alvarez/null-ls.nvim")
   use{
     "j-hui/fidget.nvim", -- show lsp start status message 
     tag="legacy"
