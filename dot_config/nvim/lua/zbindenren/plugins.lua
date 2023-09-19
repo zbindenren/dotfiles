@@ -132,6 +132,12 @@ return packer.startup(function(use)
 
 	-- popup markdown preview
 	use({ "npxbr/glow.nvim"})
+	use({
+		"richardbizik/nvim-toc",
+		config = function()
+			require("nvim-toc").setup()
+		end
+	})
 
 	-- git
 	use("sindrets/diffview.nvim")
