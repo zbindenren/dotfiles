@@ -45,15 +45,30 @@ return packer.startup(function(use)
 	})
 
 	use("folke/which-key.nvim")
+
+	-- lint and format
 	use({
-    "mfussenegger/nvim-lint",
+		"mfussenegger/nvim-lint",
 		config = function()
 			require("lint").linters_by_ft = {
-        go = {'golangcilint',},
-        yaml = {'yamllint',}
-      }
+				go = { "golangcilint" },
+				yaml = { "yamllint" },
+			}
 		end,
-  })
+	})
+	use({
+		"stevearc/conform.nvim",
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					javascript = { { "prettierd", "prettier" } },
+					html = { { "djlint",  } },
+				},
+			})
+		end,
+	})
+
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
@@ -88,21 +103,21 @@ return packer.startup(function(use)
 		config = function()
 			require("todo-comments").setup({
 				search = {
-          pattern = "\\b(KEYWORDS)[:(]" -- ripgrep regex
+					pattern = "\\b(KEYWORDS)[:(]", -- ripgrep regex
 				},
 			})
 		end,
 	})
 
 	-- navigation
-  -- with s/S
+	-- with s/S
 	use({
 		"ggandor/leap.nvim",
 		config = function()
 			require("leap").set_default_keymaps()
 		end,
 	})
-  -- with f/F
+	-- with f/F
 	use({
 		"ggandor/flit.nvim",
 		config = function()
@@ -140,12 +155,12 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
 
 	-- popup markdown preview
-	use({ "npxbr/glow.nvim"})
+	use({ "npxbr/glow.nvim" })
 	use({
 		"richardbizik/nvim-toc",
 		config = function()
 			require("nvim-toc").setup()
-		end
+		end,
 	})
 
 	-- git
@@ -191,27 +206,27 @@ return packer.startup(function(use)
 	use("glepnir/lspsaga.nvim")
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-  use{
-    "j-hui/fidget.nvim", -- show lsp start status message 
-    tag="legacy"
-  }
-  use {
-    "SmiteshP/nvim-navbuddy",
-    requires = {
-        "neovim/nvim-lspconfig",
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim"
-    }
-}
+	use({
+		"j-hui/fidget.nvim", -- show lsp start status message
+		tag = "legacy",
+	})
+	use({
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+		},
+	})
 
-use({
-  "jackMort/ChatGPT.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-})
+	use({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
