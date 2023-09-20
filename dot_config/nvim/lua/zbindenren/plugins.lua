@@ -202,6 +202,7 @@ return packer.startup(function(use)
 
 	-- LSP stuff
 	use("onsails/lspkind-nvim")
+  use("b0o/schemastore.nvim") -- for json and yaml schemas
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
 	use({ "williamboman/mason.nvim" })
