@@ -63,7 +63,12 @@ return packer.startup(function(use)
 				formatters_by_ft = {
 					lua = { "stylua" },
 					javascript = { { "prettierd", "prettier" } },
-					html = { { "djlint",  } },
+					html = { { "djlint" } },
+				},
+				format_on_save = {
+					-- These options will be passed to conform.format()
+					timeout_ms = 500,
+					lsp_fallback = true,
 				},
 			})
 		end,
@@ -202,7 +207,7 @@ return packer.startup(function(use)
 
 	-- LSP stuff
 	use("onsails/lspkind-nvim")
-  use("b0o/schemastore.nvim") -- for json and yaml schemas
+	use("b0o/schemastore.nvim") -- for json and yaml schemas
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
 	use({ "williamboman/mason.nvim" })

@@ -22,10 +22,6 @@ M.toggleNum = function()
 	end
 end
 
-M.format = function ()
-  require("conform").format({ bufnr = vim.api.nvim_get_current_buf() })
-end
-
 M.toggleClipboard = function()
 	if vim.o.clipboard == "unnamedplus" then
 		vim.o.clipboard = "unnamed"
