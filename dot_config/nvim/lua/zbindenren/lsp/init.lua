@@ -6,7 +6,6 @@ end
 
 require("zbindenren.lsp.mason")
 require("zbindenren.lsp.handlers").setup()
-require("zbindenren.lsp.null-ls")
 
 local fidget_ok, fidget = pcall(require, "fidget")
 if not fidget_ok then
