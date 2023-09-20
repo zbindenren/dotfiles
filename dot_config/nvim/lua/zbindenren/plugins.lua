@@ -53,6 +53,7 @@ return packer.startup(function(use)
 			require("lint").linters_by_ft = {
 				go = { "golangcilint" },
 				yaml = { "yamllint" },
+				markdown = { "markdownlint" },
 			}
 		end,
 	})
