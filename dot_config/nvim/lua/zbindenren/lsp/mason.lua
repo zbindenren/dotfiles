@@ -21,6 +21,7 @@ local servers = {
 	"yamlls",
 	"jsonls",
 	"lua_ls",
+	-- "templ",
 }
 
 mason.setup()
@@ -41,3 +42,23 @@ end
 for _, server in ipairs(servers) do
 	lspconfig[server].setup(opts)
 end
+
+local util = require("lspconfig.util")
+local configs = require("lspconfig.configs")
+
+-- Check if the config is already defined (useful when reloading this file)
+if not configs.templ then
+	configs.templ = {
+		default_config = {
+			cmd = { "templ", "lsp" },
+			filetypes = { "templ" },
+			root_dir = util.root_pattern("go.mod", ".git"),
+			--[[ root_dir = function(fname)
+				return lspconfig.util.find_git_ancestor(fname)
+			end, ]]
+			settings = {},
+		},
+	}
+end
+
+lspconfig["templ"].setup(opts)
