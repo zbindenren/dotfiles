@@ -61,8 +61,15 @@ return packer.startup(function(use)
 		"stevearc/conform.nvim",
 		config = function()
 			require("conform").setup({
+				formatters = {
+					templ = {
+						command = "templ",
+						args = { "fmt" },
+					},
+				},
 				formatters_by_ft = {
 					lua = { "stylua" },
+					templ = { "templ" },
 					javascript = { { "prettierd", "prettier" } },
 					html = { { "djlint" } },
 				},
