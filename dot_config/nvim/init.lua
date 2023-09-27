@@ -19,5 +19,7 @@ require("zbindenren.toggleterm")
 require("zbindenren.git-conflict")
 require("zbindenren.dap")
 require("zbindenren.chatgpt")
+require("zbindenren.conform")
+require("zbindenren.nvim-lint")
 
 require("markdown")

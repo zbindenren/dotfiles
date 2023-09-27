@@ -47,40 +47,8 @@ return packer.startup(function(use)
 	use("folke/which-key.nvim")
 
 	-- lint and format
-	use({
-		"mfussenegger/nvim-lint",
-		config = function()
-			require("lint").linters_by_ft = {
-				go = { "golangcilint" },
-				yaml = { "yamllint" },
-				markdown = { "markdownlint" },
-			}
-		end,
-	})
-	use({
-		"stevearc/conform.nvim",
-		config = function()
-			require("conform").setup({
-				formatters = {
-					templ = {
-						command = "templ",
-						args = { "fmt" },
-					},
-				},
-				formatters_by_ft = {
-					lua = { "stylua" },
-					templ = { "templ" },
-					javascript = { { "prettierd", "prettier" } },
-					html = { { "djlint" } },
-				},
-				format_on_save = {
-					-- These options will be passed to conform.format()
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
-			})
-		end,
-	})
+	use("mfussenegger/nvim-lint")
+	use("stevearc/conform.nvim")
 
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
