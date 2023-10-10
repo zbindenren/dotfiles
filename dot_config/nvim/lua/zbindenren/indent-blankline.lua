@@ -5,5 +5,7 @@ if not ok then
 end
 
 blankline.setup({
-	buftype_exclude = { "terminal" },
+	scope = {
+		enabled = false,
+	},
 })
