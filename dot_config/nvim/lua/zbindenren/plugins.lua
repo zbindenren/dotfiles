@@ -45,6 +45,11 @@ return packer.startup(function(use)
 	})
 
 	use("folke/which-key.nvim")
+
+	-- lint and format
+	use("mfussenegger/nvim-lint")
+	use("stevearc/conform.nvim")
+
 	use("junegunn/vim-easy-align")
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-spectre") -- search and replace over all files
@@ -79,21 +84,21 @@ return packer.startup(function(use)
 		config = function()
 			require("todo-comments").setup({
 				search = {
-          pattern = "\\b(KEYWORDS)[:(]" -- ripgrep regex
+					pattern = "\\b(KEYWORDS)[:(]", -- ripgrep regex
 				},
 			})
 		end,
 	})
 
 	-- navigation
-  -- with s/S
+	-- with s/S
 	use({
 		"ggandor/leap.nvim",
 		config = function()
 			require("leap").set_default_keymaps()
 		end,
 	})
-  -- with f/F
+	-- with f/F
 	use({
 		"ggandor/flit.nvim",
 		config = function()
@@ -131,12 +136,12 @@ return packer.startup(function(use)
 	use({ "tpope/vim-surround" }) -- cs)] turns surrounding ) into ]
 
 	-- popup markdown preview
-	use({ "npxbr/glow.nvim"})
+	use({ "npxbr/glow.nvim" })
 	use({
 		"richardbizik/nvim-toc",
 		config = function()
 			require("nvim-toc").setup()
-		end
+		end,
 	})
 
 	-- git
@@ -178,32 +183,32 @@ return packer.startup(function(use)
 
 	-- LSP stuff
 	use("onsails/lspkind-nvim")
+	use("b0o/schemastore.nvim") -- for json and yaml schemas
 	use("neovim/nvim-lspconfig")
 	use("glepnir/lspsaga.nvim")
 	use({ "williamboman/mason.nvim" })
 	use({ "williamboman/mason-lspconfig.nvim" })
-	use("jose-elias-alvarez/null-ls.nvim")
-  use{
-    "j-hui/fidget.nvim", -- show lsp start status message 
-    tag="legacy"
-  }
-  use {
-    "SmiteshP/nvim-navbuddy",
-    requires = {
-        "neovim/nvim-lspconfig",
-        "SmiteshP/nvim-navic",
-        "MunifTanjim/nui.nvim"
-    }
-}
+	use({
+		"j-hui/fidget.nvim", -- show lsp start status message
+		tag = "legacy",
+	})
+	use({
+		"SmiteshP/nvim-navbuddy",
+		requires = {
+			"neovim/nvim-lspconfig",
+			"SmiteshP/nvim-navic",
+			"MunifTanjim/nui.nvim",
+		},
+	})
 
-use({
-  "jackMort/ChatGPT.nvim",
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-})
+	use({
+		"jackMort/ChatGPT.nvim",
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 
 	-- DAP
 	use("mfussenegger/nvim-dap")

@@ -58,3 +58,10 @@ vim.api.nvim_create_user_command("ToggleClipboard", require("utils").toggleClipb
 -- exliner colors
 vim.api.nvim_set_hl(0, "EyelinerPrimary", { fg = "#B279A7", bold = true, underline = true })
 vim.api.nvim_set_hl(0, "EyelinerSecondary", { fg = "#B279A7", underline = true })
+
+-- additional filetypes
+vim.filetype.add({
+	extension = {
+		templ = "templ",
+	},
+})

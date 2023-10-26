@@ -2,7 +2,7 @@ return {
 	settings = {
 		Lua = {
 			format = {
-				enable = false, -- let null-ls handle the formatting
+				enable = false, -- let formatter handle the formatting
 			},
 			filetypes = { "lua" },
 			diagnostics = {

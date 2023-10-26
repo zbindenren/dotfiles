@@ -21,6 +21,7 @@ local servers = {
 	"yamlls",
 	"jsonls",
 	"lua_ls",
+	"templ",
 }
 
 mason.setup()

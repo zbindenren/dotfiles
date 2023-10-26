@@ -11,8 +11,9 @@ ngit.setup({
 	},
 })
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "NeogitPushComplete",
+local group = vim.api.nvim_create_augroup('CloseNeoginOnPush', { clear = true })
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'NeogitPushComplete',
+  group = group,
 	callback = ngit.close,
-	group = vim.api.nvim_create_augroup("NeogitCloseAfterPush", { clear = true }),
 })
