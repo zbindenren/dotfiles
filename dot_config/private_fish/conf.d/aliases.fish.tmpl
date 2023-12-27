@@ -15,6 +15,7 @@ alias ke="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
 {{- if hasKey . "sshuser" }}
 alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
+alias kl="stern --as={{ .sshuser }} --as-group=system:masters"
 {{- end }}
 
 # lab (https://github.com/Ackerr/lab)
