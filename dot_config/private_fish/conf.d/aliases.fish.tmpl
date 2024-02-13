@@ -1,5 +1,5 @@
 alias kc="killall chromium && killall chromium && killall chromium"
-alias cat="bat --paging never -p --theme=GitHub"
+alias cat="bat -p --theme=GitHub"
 alias task="go-task"
 
 # systemctl
@@ -41,3 +41,6 @@ alias lvim="NVIM_APPNAME=lazyvim nvim"
 alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host }} --remote {{ .sshuttle_host }} {{ .sshuttle_network }}'
 alias paam_shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host_paam }} --remote {{ .sshuttle_host_paam }} {{ .sshuttle_network_paam }}'
 {{- end }}
+
+# git
+alias gb='git blabe -w -C -C -C'
