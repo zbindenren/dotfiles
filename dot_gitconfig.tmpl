@@ -3,7 +3,7 @@
   name = Rene Zbinden
 {{- if hasKey . "email" }}
   email = {{ .email }}
-  signingkey = 2F6C55A5233C1A7A
+	signingKey = /home/rz/.ssh/id_rsa.pub
 {{- else }}
   email = rene.zbinden@gmail.com
 {{- end }}
@@ -49,3 +49,17 @@
   light = true
 [init]
   defaultBranch = main
+
+# https://blog.gitbutler.com/git-tips-and-tricks/
+[rerere]
+	enabled = true
+  autoUpdate = true
+
+[branch]
+	sort = -committerdate
+
+[alias]
+	fpush = push --force-with-lease
+  lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all
+  lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  lg = lg1

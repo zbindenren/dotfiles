@@ -44,6 +44,6 @@ do
   fi
 done
 
-fish -c 'fisher install jethrokuan/fzf'
 fish -c 'fisher install dracula/fish'
 fish -c 'fisher install 2m/fish-history-merge'
+fish -c 'fisher install danhper/fish-ssh-agent'
