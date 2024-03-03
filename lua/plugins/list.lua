@@ -59,6 +59,15 @@ local plugins = {
         config = load_config('ui.telescope'),
         cmd = 'Telescope',
     },
+    {
+        'gelguy/wilder.nvim',
+        build = function()
+            vim.cmd([[silent UpdateRemotePlugins]])
+        end,
+        config = load_config('ui.wilder'),
+        keys = { ':', '/', '?' },
+    },
+
 
     -- Language
    {

@@ -33,5 +33,6 @@
   "telescope.nvim": { "branch": "master", "commit": "aa83606299c5beeaf80e656efbf07bde258db7be" },
   "tmux.nvim": { "branch": "main", "commit": "9c02adf16ff2f18c8e236deba91e9cf4356a02d2" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
+  "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" },
   "zenbones.nvim": { "branch": "main", "commit": "33672310aac6b823c88cf16d5d99472439111f9c" }
 }
