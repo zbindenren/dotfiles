@@ -63,9 +63,11 @@ local plugins = {
     -- Language
    {
         'VonHeikemen/lsp-zero.nvim',
+        branch = 'v3.x',
         dependencies = {
             'neovim/nvim-lspconfig',
             'williamboman/mason-lspconfig.nvim',
+            'j-hui/fidget.nvim',
         },
         config = load_config('lang.lsp-zero'),
         event = { 'BufReadPre', 'BufNewFile' },

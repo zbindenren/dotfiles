@@ -6,7 +6,7 @@ end
 local icons = require('lib.icons')
 
 dashboard.setup({
-    --theme = 'hyper',
+    theme = 'hyper',
     disable_move = false,
     shortcut_type = 'letter',
     change_to_vcs_root = true,
@@ -18,7 +18,6 @@ dashboard.setup({
     config = {
         week_header = {
             enable = true,
-            append = { '', icons.ui.Circle .. ' nvim2K: Learn, Make, Explore! ' .. icons.ui.Circle },
         },
         packages = { enable = true },
         project = { enable = true, limit = 8 },

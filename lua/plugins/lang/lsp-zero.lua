@@ -3,33 +3,32 @@ if not status_ok then
     return
 end
 
-lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({ buffer = bufnr })
-end)
-
-local auto_install = require('lib.util').get_user_config('auto_install', true)
-local installed_servers = {}
-if auto_install then
-    installed_servers = require('plugins.list').lsp_servers
+lsp_zero.on_attach(function(_, bufnr)
+  -- see :help lsp-zero-keybindings
+  -- to learn the available actions
+  lsp_zero.default_keymaps({
+    buffer = bufnr,
+    preserve_mappings = false,
+  })
 end
+)
 
+local installed_servers = require('plugins.list').lsp_servers
+
+-- to learn how to use mason.nvim with lsp-zero
+-- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
 require('mason').setup({})
 require('mason-lspconfig').setup({
-    ensure_installed = installed_servers,
-    handlers = {
-        lsp_zero.default_setup,
-        lua_ls = function()
-            local lua_opts = lsp_zero.nvim_lua_ls()
-            local custom_options = {
-                enable = true,
-                defaultConfig = {
-                    align_continuous_assign_statement = false,
-                    align_continuous_rect_table_field = false,
-                    align_array_table = false,
-                },
-            }
-            lua_opts.settings.Lua.format = custom_options
-            require('lspconfig').lua_ls.setup(lua_opts)
-        end,
-    },
+  ensure_installed = installed_servers,
+  handlers = {
+    lsp_zero.default_setup,
+  },
 })
+
+local fidget_ok, fidget = pcall(require, "fidget")
+if not fidget_ok then
+	vim.notify("fidget not found!")
+	return
+end
+
+fidget.setup()
