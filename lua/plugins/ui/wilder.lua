@@ -3,7 +3,11 @@ if not status_ok then
     return
 end
 
-wilder.setup({ modes = { ':', '/', '?' } })
+wilder.setup({
+  modes = { ':', '/', '?' },
+  next_key = '<C-j>',
+  previous_key = '<C-k>',
+})
 
 wilder.set_option('pipeline', {
     wilder.branch(
