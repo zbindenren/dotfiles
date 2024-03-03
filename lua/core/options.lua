@@ -24,19 +24,17 @@ local options = {
     splitbelow = true, -- Put new windows below current
     splitright = true, -- Put new windows right of current
     termguicolors = true, -- True color support
-    wildmode = "list:longest", -- Command-line completion mode
+    --wildmode = "list:longest", -- Command-line completion mode
     list = false, -- Show some invisible characters (tabs...)
     number = true, -- Print line number
     relativenumber = true, -- Relative line numbers
     wrap = true, -- Enable line wrap
     cmdheight = 1, -- More space to display messages
     timeoutlen = 300, -- Don't wait more that 150ms for normal mode commands
-    termguicolors = true, -- True color support
     shada = { "!", "'1000", "<50", "s10", "h" }, -- remember stuff across sessions
-    laststatus = 3, -- use global status line
     -- cmdheight = 1 -- disable command line
     laststatus = 0, -- disable last status
-    
+
     -- folds
     foldmethod = "expr",
     foldexpr = "nvim_treesitter#foldexpr()",
