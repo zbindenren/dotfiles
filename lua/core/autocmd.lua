@@ -109,6 +109,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
 })
 
 
+-- LSP format on save.
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go", "*.lua" },
   callback = function()
@@ -116,9 +117,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       timeout_ms = 3000
     })
   end,
-}
+})
 
-)
+
+-- Go organize imports on save.
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
@@ -136,4 +138,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
       end
     end
   end
+})
+
+-- Lint when writing file.
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
 })

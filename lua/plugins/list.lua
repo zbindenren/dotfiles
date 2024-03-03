@@ -146,6 +146,11 @@ local plugins = {
       end
     end,
   },
+  {
+    'mfussenegger/nvim-lint',
+    config = load_config('tools.nvim-lint'),
+    event = { 'BufReadPre', 'BufNewFile' },
+  },
 }
 
 local ts_parsers = {
