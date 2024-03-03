@@ -1,6 +1,6 @@
 local status_ok, lsp_zero = pcall(require, 'lsp-zero')
 if not status_ok then
-    return
+  return
 end
 
 lsp_zero.on_attach(function(_, bufnr)
@@ -22,13 +22,26 @@ require('mason-lspconfig').setup({
   ensure_installed = installed_servers,
   handlers = {
     lsp_zero.default_setup,
+    lua_ls = function()
+      local lua_opts = lsp_zero.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+    gopls = function()
+      require('lspconfig').gopls.setup({
+        settings = {
+          gopls = {
+            gofumpt = true,
+          },
+        },
+      })
+    end
   },
 })
 
 local fidget_ok, fidget = pcall(require, "fidget")
 if not fidget_ok then
-	vim.notify("fidget not found!")
-	return
+  vim.notify("fidget not found!")
+  return
 end
 
 fidget.setup()
