@@ -13,7 +13,7 @@ vim.diagnostic.config({
     end,
   },
 }, neotest_ns)
-require("neotest").setup({
+neotest.setup({
   diagnostic = {
     enabled = true,
     severity = 4,
