@@ -123,6 +123,16 @@ local plugins = {
     build = 'make install_jsregexp',
     event = 'InsertEnter',
   },
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-neotest/neotest-plenary',
+      'nvim-neotest/neotest-go',
+    },
+    config = load_config('lang.neotest'),
+    cmd = 'Neotest',
+  },
 
   -- Tools
   {
