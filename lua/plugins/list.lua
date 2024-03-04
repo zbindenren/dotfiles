@@ -126,8 +126,9 @@ local plugins = {
   {
     'nvim-neotest/neotest',
     dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
-      'nvim-neotest/neotest-plenary',
       'nvim-neotest/neotest-go',
     },
     config = load_config('lang.neotest'),
