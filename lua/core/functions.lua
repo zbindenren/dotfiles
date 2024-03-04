@@ -1,31 +1,31 @@
 -- Reload neovim config
-vim.api.nvim_create_user_command('ReloadConfig', function()
+vim.api.nvim_create_user_command("ReloadConfig", function()
   for name, _ in pairs(package.loaded) do
-    if name:match('^plugins') then
+    if name:match("^plugins") then
       package.loaded[name] = nil
     end
   end
 
   dofile(vim.env.MYVIMRC)
-  vim.notify('Nvim configuration reloaded!', vim.log.levels.INFO)
+  vim.notify("Nvim configuration reloaded!", vim.log.levels.INFO)
 end, {})
 
 -- Copy relative path
-vim.api.nvim_create_user_command('CRpath', function()
-  local path = vim.fn.expand('%')
-  vim.fn.setreg('+', path)
+vim.api.nvim_create_user_command("CRpath", function()
+  local path = vim.fn.expand("%")
+  vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
 -- Copy absolute path
-vim.api.nvim_create_user_command('CApath', function()
-  local path = vim.fn.expand('%:p')
-  vim.fn.setreg('+', path)
+vim.api.nvim_create_user_command("CApath", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
   vim.notify('Copied "' .. path .. '" to the clipboard!')
 end, {})
 
-
-vim.api.nvim_create_user_command('ToggleNum', function()
+-- Toggle line numbers.
+vim.api.nvim_create_user_command("ToggleNum", function()
   vim.cmd("Gitsigns toggle_signs")
   if vim.o.number then
     vim.opt.number = false
@@ -36,7 +36,17 @@ vim.api.nvim_create_user_command('ToggleNum', function()
   end
 end, {})
 
-vim.api.nvim_create_user_command('ToggleClipboard', function()
+-- Toggle list chars.
+vim.api.nvim_create_user_command("ToggleList", function()
+  if vim.o.list then
+    vim.opt.list = false
+  else
+    vim.opt.list = true
+  end
+end, {})
+
+-- Toggle clipboard.
+vim.api.nvim_create_user_command("ToggleClipboard", function()
   if vim.o.clipboard == "unnamedplus" then
     vim.o.clipboard = "unnamed"
     vim.notify("set clipboard to unamed")
