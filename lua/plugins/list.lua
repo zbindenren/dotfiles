@@ -177,6 +177,28 @@ local plugins = {
     config = load_config('tools.autopairs'),
     event = 'InsertEnter',
   },
+  {
+    'numToStr/Comment.nvim',
+    config = load_config('tools.comment'),
+    keys = {
+      {
+        'gcc',
+        mode = { 'n' },
+        function()
+          require('Comment').toggle()
+        end,
+        desc = 'Comment',
+      },
+      {
+        'gc',
+        mode = { 'v' },
+        function()
+          require('Comment').toggle()
+        end,
+        desc = 'Comment',
+      },
+    },
+  },
 }
 
 local ts_parsers = {
