@@ -172,6 +172,11 @@ local plugins = {
     config = load_config('tools.nvim-lint'),
     event = { 'BufReadPre', 'BufNewFile' },
   },
+  {
+    'windwp/nvim-autopairs',
+    config = load_config('tools.autopairs'),
+    event = 'InsertEnter',
+  },
 }
 
 local ts_parsers = {
