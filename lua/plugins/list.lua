@@ -144,6 +144,11 @@ local plugins = {
       },
     },
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    config = load_config('ui.lualine'),
+    event = { 'BufReadPre', 'BufNewFile' },
+  },
 
   -- Language
   {
@@ -248,6 +253,11 @@ local plugins = {
     'mfussenegger/nvim-lint',
     config = load_config('tools.nvim-lint'),
     event = { 'BufReadPre', 'BufNewFile' },
+  },
+  {
+    'stevearc/conform.nvim',
+    config = load_config('tools.conform'),
+    cmd = 'ConformInfo',
   },
   {
     'windwp/nvim-autopairs',
