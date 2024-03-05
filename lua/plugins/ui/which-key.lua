@@ -190,7 +190,7 @@ local mappings = {
   v = {
     name = icons.git.Octoface .. 'Git',
     a = { '<cmd>Gitsigns stage_hunk<cr>', 'Stage Hunk' },
-    l = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Open lazygit" },
+    l = { "<cmd>Fterm lazygit<cr>", "Open lazygit" },
     b = { '<cmd>Gitsigns blame_line<cr>', 'Blame current line' },
     o = { "<cmd>Neogit<cr>", "Open neogit" },
     d = { "<cmd>DiffviewOpen<cr>", "Open diffsplit" },
@@ -245,9 +245,9 @@ local mappings = {
   },
   p = {
     name = icons.ui.Project .. 'Project',
-    c = { '<cmd>Lazy check<cr>', 'Check' },
-    p = { "<cmd>lua _LAB_OPEN_PIPELINE_TOGGLE()<cr>", "Open pipeline" },
-    o = { "<cmd>lua _LAB_OPEN_TOGGLE()<cr>", "Open project" },
+    o = { "<cmd>Fterm lab open; sleep 1<cr>", "Open project in browser" },
+    p = { "<cmd>Fterm lab open -p; sleep 1<cr>", "Open pipeline in browser" },
+    P = { "<cmd>Fterm lab ci<cr>", "Open pipeline in browser" },
   },
   r = {
     name = icons.diagnostics.Hint .. 'Refactor',
@@ -271,10 +271,6 @@ local mappings = {
   },
   T = {
     name = icons.ui.Terminal .. 'Terminal',
-    ['`'] = { '<cmd>Sterm<cr>', 'Horizontal Terminal' },
-    n = { '<cmd>Sterm node<cr>', 'Node' },
-    p = { '<cmd>Sterm bpython<cr>', 'Python' },
-    r = { '<cmd>Sterm irb<cr>', 'Ruby' },
     s = { '<cmd>Sterm<cr>', 'Horizontal Terminal' },
     t = { '<cmd>Fterm<cr>', 'Terminal' },
     v = { '<cmd>Vterm<cr>', 'Vertical Terminal' },

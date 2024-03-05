@@ -218,6 +218,10 @@ local plugins = {
       },
     },
   },
+  {
+    '2kabhishek/termim.nvim',
+    cmd = { 'Fterm', 'FTerm', 'Sterm', 'STerm', 'Vterm', 'VTerm' },
+  },
 }
 
 local ts_parsers = {

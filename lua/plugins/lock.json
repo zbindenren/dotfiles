@@ -44,6 +44,7 @@
   "telescope-symbols.nvim": { "branch": "master", "commit": "a6d0127a53d39b9fc2af75bd169d288166118aec" },
   "telescope-undo.nvim": { "branch": "main", "commit": "d3afc1c105535a90caec092ce27a113f77ba7b84" },
   "telescope.nvim": { "branch": "master", "commit": "dc1ea28cc2a02cd1cebb9d80e967807d668f78f8" },
+  "termim.nvim": { "branch": "main", "commit": "2dba526e99c32a65db9599cfa90e85db13724a44" },
   "tmux.nvim": { "branch": "main", "commit": "9c02adf16ff2f18c8e236deba91e9cf4356a02d2" },
   "which-key.nvim": { "branch": "main", "commit": "4433e5ec9a507e5097571ed55c02ea9658fb268a" },
   "wilder.nvim": { "branch": "master", "commit": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf" },
