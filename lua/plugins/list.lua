@@ -107,6 +107,18 @@ local plugins = {
       'neovim/nvim-lspconfig',
       'williamboman/mason-lspconfig.nvim',
       'j-hui/fidget.nvim',
+      {
+        'SmiteshP/nvim-navbuddy',
+        dependencies = {
+          "SmiteshP/nvim-navic",
+          "MunifTanjim/nui.nvim"
+        },
+        opts = {
+          lsp = {
+            auto_attach = true,
+          },
+        }
+      },
     },
     config = load_config('lang.lsp-zero'),
     event = { 'BufReadPre', 'BufNewFile' },
