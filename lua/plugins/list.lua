@@ -171,6 +171,13 @@ local plugins = {
     event = { 'BufReadPre', 'BufNewFile' },
   },
   {
+    'akinsho/git-conflict.nvim',
+    version = '*',
+    config = load_config('tools.git-conflict'),
+    cmd = 'GitConflictListQf',
+    event = { 'BufReadPre', 'BufNewFile' },
+  },
+  {
     'aserowy/tmux.nvim',
     config = load_config('tools.tmux'),
     event = function()
