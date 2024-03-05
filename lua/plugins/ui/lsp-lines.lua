@@ -4,5 +4,10 @@ if not status_ok then
 end
 
 lsp_lines.setup()
-vim.diagnostic.config({ virtual_text = false })
 
+vim.diagnostic.config(
+  {
+    virtual_lines = false,
+    virtual_text = false
+  }
+)
