@@ -22,7 +22,6 @@ local plugins = {
     },
     config = load_config('ui.lualine'),
     event = { 'BufReadPre', 'BufNewFile' },
-    lazy = false,
   },
   {
     'nvimdev/dashboard-nvim',

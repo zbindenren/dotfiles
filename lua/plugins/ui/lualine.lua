@@ -119,7 +119,8 @@ local config = {
     -- section_separators = '',
     theme = 'onedark',
     disabled_filetypes = {
-      'dashboard',
+      statusline = { 'dashboard' },
+      winbar = { 'dashboard' },
     },
   },
   -- extensions = { 'quickfix', 'man', 'mason', 'lazy', 'toggleterm', 'nvim-tree' },
