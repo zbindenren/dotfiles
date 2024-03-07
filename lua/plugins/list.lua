@@ -106,11 +106,11 @@ local plugins = {
     config = load_config('ui.cmp'),
     event = 'InsertEnter',
   },
-  {
-    'Maan2003/lsp_lines.nvim',
-    config = load_config('ui.lsp-lines'),
-    event = 'LspAttach',
-  },
+  -- {
+  --   'Maan2003/lsp_lines.nvim',
+  --   config = load_config('ui.lsp-lines'),
+  --   event = 'LspAttach',
+  -- },
   {
     'folke/flash.nvim',
     config = load_config('ui.flash'),

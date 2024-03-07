@@ -55,3 +55,11 @@ vim.api.nvim_create_user_command("ToggleClipboard", function()
     vim.notify("set clipboard to unamedplus (default)")
   end
 end, {})
+
+-- Toggle Diagnostic virtual text.
+vim.g.diagnostic_virtual_text = true
+
+vim.api.nvim_create_user_command("ToggleDiagnosticVirtualText", function()
+  vim.g.diagnostic_virtual_text = not vim.g.diagnostic_virtual_text
+  vim.diagnostic.config({ virtual_text = vim.g.diagnostic_virtual_text })
+end, {})
