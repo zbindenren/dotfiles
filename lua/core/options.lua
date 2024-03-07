@@ -33,7 +33,7 @@ local options = {
   cmdheight = 1,                               -- More space to display messages
   timeoutlen = 300,                            -- Don't wait more that 150ms for normal mode commands
   shada = { "!", "'1000", "<50", "s10", "h" }, -- remember stuff across sessions
-  laststatus = 0,                              -- disable last status
+  laststatus = 3,
   -- folds
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
