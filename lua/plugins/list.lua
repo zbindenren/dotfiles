@@ -63,6 +63,11 @@ local plugins = {
     event = 'VeryLazy',
   },
   {
+    'kazhala/close-buffers.nvim',
+    config = true,
+    event = 'VeryLazy',
+  },
+  {
     'nvim-telescope/telescope.nvim',
     --    branch = '0.1.x',
     dependencies = {
