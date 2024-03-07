@@ -1,7 +1,7 @@
 local function map(mode, lhs, rhs, opts)
-    opts = opts or {}
-    opts.silent = opts.silent ~= false
-    vim.keymap.set(mode, lhs, rhs, opts)
+  opts = opts or {}
+  opts.silent = opts.silent ~= false
+  vim.keymap.set(mode, lhs, rhs, opts)
 end
 local opts = { noremap = true, silent = true }
 
@@ -13,6 +13,9 @@ vim.g.maplocalleader = ' '
 -- Modes
 -- normal_mode = "n", insert_mode = "i", visual_mode = "v",
 -- visual_block_mode = "x", term_mode = "t", command_mode = "c",
+
+-- Diagnostics
+map({ 'n' }, 'ge', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 
 -- Use jj as escape
 map('i', 'jj', '<Esc>', opts)
