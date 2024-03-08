@@ -313,6 +313,17 @@ local plugins = {
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim"
     }
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      search = {
+        pattern = "\\b(KEYWORDS)[:(]", -- ripgrep regex
+      },
+    },
+    cmd = { 'TodoQuickFix', 'TodoLocList', 'TodoTelescope' },
+    event = { 'BufReadPre', 'BufNewFile' },
   }
 }
 
