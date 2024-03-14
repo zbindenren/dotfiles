@@ -271,11 +271,12 @@ local mappings = {
   },
   t = {
     name = icons.ui.Test .. 'Test',
-    a = { '<cmd>Fterm go test -count=1 ./... ; sleep infinity<cr>', 'Run all tests in terminal' },
+    a = { '<cmd>Fterm gotestsum -- -short ./... -count=1 ; sleep infinity<cr>', 'Run all tests in terminal' },
     f = { '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<cr>', 'Run current file' },
-    t = { '<cmd>lua require("neotest").run.run({extra_args = {"-count=1"}})<cr>', 'Run Current Test' },
     o = { '<cmd>Neotest output-panel<cr>', 'Test Output' },
     O = { '<cmd>Neotest summary<cr>', 'Test Summary' },
+    l = { '<cmd>Fterm golangci-lint run -v; sleep infinity<cr>', 'Run linter' },
+    t = { '<cmd>lua require("neotest").run.run({extra_args = {"-count=1"}})<cr>', 'Run Current Test' },
   },
   s = {
     name = icons.ui.Windows .. 'Split',
