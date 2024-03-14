@@ -3,13 +3,19 @@ if not status_ok then
   return
 end
 
-lsp_zero.on_attach(function(_, bufnr)
+local navic = require("nvim-navic")
+
+lsp_zero.on_attach(function(client, bufnr)
   -- see :help lsp-zero-keybindings
   -- to learn the available actions
   lsp_zero.default_keymaps({
     buffer = bufnr,
     preserve_mappings = false,
   })
+
+  if client.server_capabilities.documentSymbolProvider then
+    navic.attach(client, bufnr)
+  end
 end
 )
 

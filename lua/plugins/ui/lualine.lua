@@ -127,7 +127,11 @@ local config = {
   tabline = {
     lualine_a = {},
     lualine_b = { mode(), buffers },
-    lualine_c = {},
+    lualine_c = {
+      "navic",
+      color_correction = nil, -- Can be nil, "static" or "dynamic". This option is useful only when you have highlights enabled.
+      navic_opts = nil        -- lua table with same format as setup's option. All options except "lsp" options take effect when set here.
+    },
     lualine_x = { diff_icons, branch },
     lualine_y = { searchcount, selectioncount },
     lualine_z = {},
