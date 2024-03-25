@@ -157,6 +157,11 @@ local plugins = {
       },
     },
   },
+  {
+    "gbprod/cutlass.nvim", -- delete key does not cut
+    lazy = false,
+    config = true,
+  },
 
   -- Language
   {
