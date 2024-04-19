@@ -170,6 +170,7 @@ local plugins = {
     branch = 'v3.x',
     dependencies = {
       'neovim/nvim-lspconfig',
+      'b0o/schemastore.nvim',
       'williamboman/mason-lspconfig.nvim',
       'j-hui/fidget.nvim',
       {
@@ -357,6 +358,8 @@ local ts_parsers = {
 local lsp_servers = {
   'bashls',
   'gopls',
+  'jsonls',
+  'yamlls',
 }
 
 return {
