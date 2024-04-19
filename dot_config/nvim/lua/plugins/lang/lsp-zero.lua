@@ -66,8 +66,12 @@ for _, sign in ipairs(signs) do
 end
 
 local config = {
-  -- disable virtual text
-  virtual_text = true,
+  float = {
+    source = "always",
+  },
+  virtual_text = {
+    source = "always",
+  },
   -- show signs
   signs = {
     active = signs,
