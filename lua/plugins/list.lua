@@ -157,11 +157,6 @@ local plugins = {
       },
     },
   },
-  {
-    "gbprod/cutlass.nvim", -- delete key does not cut
-    lazy = false,
-    config = true,
-  },
 
   -- Language
   {
@@ -214,10 +209,11 @@ local plugins = {
   {
     'nvim-neotest/neotest',
     dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'antoinemadec/FixCursorHold.nvim',
-      'nvim-neotest/neotest-go',
+      "nvim-neotest/nvim-nio",
+      "nvim-lua/plenary.nvim",
+      "antoinemadec/FixCursorHold.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/neotest-go",
     },
     config = load_config('lang.neotest'),
     cmd = 'Neotest',
