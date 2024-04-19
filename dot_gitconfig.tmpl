@@ -3,7 +3,7 @@
   name = Rene Zbinden
 {{- if hasKey . "email" }}
   email = {{ .email }}
-	signingKey = /home/rz/.ssh/id_rsa.pub
+	; signingKey = /home/rz/.ssh/id_rsa.pub
 {{- else }}
   email = rene.zbinden@gmail.com
 {{- end }}
@@ -27,7 +27,7 @@
 
 {{ if hasKey . "email" }}
 [commit]
-  gpgsign = false
+  ; gpgsign = false
   template = /home/rz/.gitmessage
 {{- end }}
 [diff]
