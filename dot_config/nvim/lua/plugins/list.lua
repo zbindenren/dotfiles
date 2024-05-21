@@ -23,20 +23,20 @@ local plugins = {
     config = load_config('ui.lualine'),
     event = { 'BufReadPre', 'BufNewFile' },
   },
-  {
-    'nvimdev/dashboard-nvim',
-    config = load_config('ui.dashboard'),
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    -- Only load when no arguments
-    event = function()
-      if vim.fn.argc() == 0 then
-        return 'VimEnter'
-      end
-    end,
-    cmd = 'Dashboard',
-  },
+  -- {
+  --   'nvimdev/dashboard-nvim',
+  --   config = load_config('ui.dashboard'),
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   -- Only load when no arguments
+  --   event = function()
+  --     if vim.fn.argc() == 0 then
+  --       return 'VimEnter'
+  --     end
+  --   end,
+  --   cmd = 'Dashboard',
+  -- },
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
