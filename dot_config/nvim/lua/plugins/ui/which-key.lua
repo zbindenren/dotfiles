@@ -210,7 +210,7 @@ local mappings = {
   },
   l = {
     name = icons.ui.Gear .. 'LSP',
-    a = { '<cmd>Lspsaga code_action<cr>', 'Code Action' },
+    a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'Code Action' },
     c = { '<cmd>Navbuddy<cr>', 'Navbuddy' },
     G = { '<cmd>Telescope lsp_references<cr>', 'References' },
     i = { '<cmd>Telescope diagnostics<cr>', 'Diagnostics' },
