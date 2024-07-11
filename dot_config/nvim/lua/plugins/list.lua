@@ -16,6 +16,14 @@ local plugins = {
     priority = 1000,
   },
   {
+    'nvim-pack/nvim-spectre',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = true,
+    cmd = 'Spectre',
+  },
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
