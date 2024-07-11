@@ -20,7 +20,5 @@ Host github.com
 Host *
     User {{ .sshuser }}
     Compression yes
-    PubkeyAcceptedKeyTypes +ssh-dss
-    HostKeyAlgorithms +ssh-dss
     ServerAliveInterval 60
 {{- end }}
