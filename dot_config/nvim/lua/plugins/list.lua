@@ -279,8 +279,8 @@ local plugins = {
     event = { 'BufReadPre', 'BufNewFile' },
   },
   {
-    'aserowy/tmux.nvim',
-    config = load_config('tools.tmux'),
+    'numToStr/Navigator.nvim',
+    config = load_config('tools.tmux-navigator'),
     event = function()
       if vim.fn.exists('$TMUX') == 1 then
         return 'VeryLazy'
