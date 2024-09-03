@@ -7,7 +7,9 @@ local icons = require('lib.icons')
 
 which_key.setup()
 which_key.add({
-  { '<leader>e', '<cmd>NvimTreeToggle<cr>', icon = icons.documents.OpenFolder .. 'Explorer' },
+  { '<leader>e', '<cmd>NvimTreeToggle<cr>', icon = icons.documents.OpenFolder, desc = 'explorer' },
+  { '<leader>w', '<cmd>w<cr>',              icon = icons.ui.Save,              desc = 'write file' },
+  { '<leader>Q', '<cmd>qa!<cr>',            icon = icons.ui.Power,             desc = 'force quit' },
 })
 
 which_key.add({
