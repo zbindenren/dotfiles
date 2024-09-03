@@ -8,5 +8,10 @@
     "prefix": "nosec",
     "body": "// #nosec G${1:404}",
     "description": "Snippet for nosec"
+  },
+  "interface": {
+    "prefix": "_",
+    "body": "var _ ${1:io.Reader} = (*${2:MyType})(nil)",
+    "description": "Snippet to check interface in golang"
   }
 }
