@@ -233,6 +233,20 @@ local plugins = {
     config = load_config('lang.neotest'),
     cmd = 'Neotest',
   },
+  {
+    "olexsmir/gopher.nvim",
+    ft = "go",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "mfussenegger/nvim-dap", -- (optional) only if you use `gopher.dap`
+    },
+    cmd = 'GoInstallDeps',
+    build = function()
+      vim.cmd.GoInstallDeps()
+    end,
+    opts = {},
+  },
 
   -- Tools
   {
