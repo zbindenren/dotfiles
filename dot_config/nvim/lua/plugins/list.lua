@@ -404,8 +404,12 @@ local plugins = {
         ft = { "markdown", "Avante" },
       },
     },
-  }
-
+  },
+  {
+    'RRethy/nvim-align',
+    config = true,
+    cmd = { 'Align' },
+  },
 }
 
 local ts_parsers = {
