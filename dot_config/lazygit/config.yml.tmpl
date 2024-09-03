@@ -8,3 +8,14 @@ services:
   "git.{{ .domain }}": "gitlab:git.{{ .domain }}"
   "gitlab.{{ .domain }}": "gitlab:gitlab.{{ .domain }}"
 {{- end }}
+customCommands:
+  - key: "<c-u>"
+    description: "Force push"
+    command: 'git push -f'
+    context: files
+    showOutput: true
+  - key: "<c-u>"
+    description: "Force push"
+    command: 'git push -f'
+    context: localBranches
+    showOutput: true
