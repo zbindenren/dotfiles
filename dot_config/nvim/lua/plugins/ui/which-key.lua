@@ -61,9 +61,9 @@ which_key.add({
 
 which_key.add({
   { '<leader>p',  group = 'Project',                     icon = icons.ui.Project },
-  { '<leader>po', '"<cmd>Fterm lab open; sleep 1<cr>"',  desc = 'open gitlab project in browser' },
+  { '<leader>po', '<cmd>Fterm lab open; sleep 1<cr>',    desc = 'open gitlab project in browser' },
   { '<leader>pp', '<cmd>Fterm lab open -p; sleep 1<cr>', desc = 'Open pipeline in browser' },
-  { '<leader>pP', '<cmd>Fterm lab ci<cr>',               desc = 'Open pipeline in browser' },
+  { '<leader>pP', '<cmd>Fterm lab ci<cr>',               desc = 'Open project in teminal' },
 })
 
 which_key.add({
