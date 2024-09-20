@@ -25,6 +25,13 @@ PACKAGES="noto-fonts \
   ripgrep \
   broot \
   git-delta \
+  github-cli \
+  pcsc-tools \
+  ccid \
+  libusb-compat \
+  fzf \
+  sshuttle \
+  libfido2 \
 "
 
 AUR_PACKAGES="jumpapp \
