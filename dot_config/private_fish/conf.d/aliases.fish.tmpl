@@ -15,9 +15,9 @@ alias ke="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
 alias kga="kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl sudo get --show-kind --ignore-not-found"
 alias klo="kubectl login --login-methods=full"
-{{- if hasKey . "sshuser" }}
-alias k9="k9s --as={{ .sshuser }} --as-group=system:masters"
-alias kl="stern --as={{ .sshuser }} --as-group=system:masters"
+{{- if hasKey . "email" }}
+alias k9="k9s --as={{ .user }} --as-group=system:masters"
+alias kl="stern --as={{ .user }} --as-group=system:masters"
 {{- end }}
 
 # lab (https://github.com/Ackerr/lab)

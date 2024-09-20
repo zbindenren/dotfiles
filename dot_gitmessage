@@ -1,0 +1,9 @@
+
+# Title: Summary, imperative, start upper case, don't end with a period
+# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).
+#
+# Conventional commits scopes:  feat, fix, refactor, perf, style, test, docs, build chore
+#
+# Wrap at 72 chars. ################################## which is here:  #
+#
+#
