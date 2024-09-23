@@ -32,6 +32,13 @@ PACKAGES="noto-fonts \
   fzf \
   sshuttle \
   libfido2 \
+  go-task \
+  git-cliff \
+  kubectl \
+  kubectx \
+  k9s \
+  yubico-piv-tool \
+  opensc \
 "
 
 AUR_PACKAGES="jumpapp \

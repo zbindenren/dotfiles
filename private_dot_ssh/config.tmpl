@@ -10,6 +10,7 @@ AddKeysToAgent yes
 
 Host {{ .logingw }}*
     StrictHostKeyChecking no
+    PKCS11Provider /usr/lib/opensc-pkcs11.so
 
 Host github.com
     Hostname ssh.github.com
