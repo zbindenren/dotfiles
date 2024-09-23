@@ -39,6 +39,7 @@ PACKAGES="noto-fonts \
   k9s \
   yubico-piv-tool \
   opensc \
+  xclip \
 "
 
 AUR_PACKAGES="jumpapp \
