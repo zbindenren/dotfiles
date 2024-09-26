@@ -437,6 +437,7 @@ local lsp_servers = {
   'gopls',
   'jsonls',
   'yamlls',
+  'lua_ls',
 }
 
 return {
