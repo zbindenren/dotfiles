@@ -6,33 +6,32 @@ end
 local colorbuddy = require('colorbuddy')
 -- local Color = colorbuddy.Color
 local Group = colorbuddy.Group
--- local c = colorbuddy.colors
+local c = colorbuddy.colors
 -- local g = colorbuddy.groups
 local s = colorbuddy.styles
-
 
 -- https://coolors.co/gradient-palette/f2f2f2-000000?number=10
 noir.setup({
   colors = {
     background = '#ffffff',
-    primary = '#000000',
-    secondary = '#515151',
-    noir_0 = '#000000',
-    noir_1 = '#1B1B1B',
-    noir_2 = '#363636',
-    noir_3 = '#515151',
-    noir_4 = '#6C6C6C',
-    noir_5 = '#868686',
-    noir_6 = '#A1A1A1',
-    noir_7 = '#BCBCBC',
-    noir_8 = '#D7D7D7',
-    noir_9 = '#F2F2F2',
+    primary = '#03045E',
+    secondary = '#03045E',
+    noir_9 = '#EDF2FB',
+    noir_8 = '#D3D8EA',
+    noir_7 = '#B9BDD8',
+    noir_6 = '#9FA3C7',
+    noir_5 = '#8588B5',
+    noir_4 = '#6B6EA4',
+    noir_3 = '#515392',
+    noir_2 = '#373981',
+    noir_1 = '#1D1E6F',
+    noir_0 = '#03045E',
     diagnostic_error = '#CE4257',
-    diagnostic_warning = '#FF9B54',
-    diagnostic_info = '#219EBC',
-    diagnostic_hint = '#219EBC',
+    diagnostic_warning = '#ffac81',
+    diagnostic_info = '#B9BDD8',
+    diagnostic_hint = '#B9BDD8',
     diff_add = '#40916C',
-    diff_change = '#219EBC',
+    diff_change = '#B9BDD8',
     diff_delete = '#CE4257',
   },
   styles = {
@@ -43,4 +42,9 @@ noir.setup({
   },
 })
 
-Group.new("@keyword", nil, nil, s.bold)
+Group.new("@keyword", c.primary, nil, s.bold)
+Group.new("@keyword.function", c.primary, nil, s.bold)
+Group.new("@operator", c.primary, nil, s.bold)
+Group.new("@constant", c.primary, nil, s.bold)
+Group.new("@punctuation.bracket", c.primary, nil, nil)
+Group.new("@type.builtin", c.primary, nil, nil)
