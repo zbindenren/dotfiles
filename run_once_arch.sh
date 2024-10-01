@@ -6,6 +6,7 @@ fi
 
 PACKAGES="noto-fonts \
   noto-fonts-emoji \
+  ttf-fira-code \
   fd \
   bat \
   delve \
