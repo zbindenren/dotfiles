@@ -26,15 +26,6 @@ local plugins = {
       vim.cmd('colorscheme le-grand-bleu')
     end
   },
-  -- {
-  --   'jesseleite/nvim-noirbuddy',
-  --   dependencies = {
-  --     { 'tjdevries/colorbuddy.nvim' }
-  --   },
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = load_config('ui.noirbuddy'),
-  -- },
   {
     'nvim-pack/nvim-spectre',
     dependencies = {
