@@ -6,15 +6,35 @@ end
 
 local plugins = {
   -- UI
+  -- {
+  --   'mcchrish/zenbones.nvim',
+  --   dependencies = {
+  --     'rktjmp/lush.nvim',
+  --   },
+  --   config = load_config('ui.zenbones'),
+  --   lazy = false,
+  --   priority = 1000,
+  -- },
   {
-    'mcchrish/zenbones.nvim',
-    dependencies = {
-      'rktjmp/lush.nvim',
-    },
-    config = load_config('ui.zenbones'),
+    dir = '/home/zbindenren/repos/github.com/zbindenren/le-grand-bleu',
     lazy = false,
+    config = function()
+      require('le-grand-bleu').setup({})
+    end,
     priority = 1000,
+    init = function()
+      vim.cmd('colorscheme le-grand-bleu')
+    end
   },
+  -- {
+  --   'jesseleite/nvim-noirbuddy',
+  --   dependencies = {
+  --     { 'tjdevries/colorbuddy.nvim' }
+  --   },
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = load_config('ui.noirbuddy'),
+  -- },
   {
     'nvim-pack/nvim-spectre',
     dependencies = {
