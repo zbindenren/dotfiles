@@ -117,10 +117,10 @@ local config = {
   options = {
     component_separators = '',
     -- section_separators = '',
-    theme = 'onedark',
+    theme = 'le-grand-bleu',
     disabled_filetypes = {
-      statusline = { 'dashboard' },
-      winbar = { 'dashboard' },
+      -- statusline = { 'dashboard' },
+      -- winbar = { 'dashboard' },
     },
   },
   -- extensions = { 'quickfix', 'man', 'mason', 'lazy', 'toggleterm', 'nvim-tree' },
@@ -139,8 +139,8 @@ local config = {
   sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = { separator, mode(icons.ui.Heart), 'location', progress, filename },
-    lualine_x = { diagnostics, lsp, filetype, filesize, fileformat, encoding, separator },
+    lualine_c = { mode(icons.ui.Heart), 'location', progress, filename },
+    lualine_x = { diagnostics, lsp, filetype, filesize, fileformat, encoding },
     lualine_y = {},
     lualine_z = {},
   },

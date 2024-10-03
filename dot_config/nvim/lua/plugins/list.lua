@@ -98,7 +98,6 @@ local plugins = {
       'nvim-telescope/telescope-symbols.nvim',
       'molecule-man/telescope-menufacture',
       'debugloop/telescope-undo.nvim',
-      'ThePrimeagen/harpoon',
     },
     config = load_config('ui.telescope'),
     cmd = 'Telescope',
@@ -345,15 +344,15 @@ local plugins = {
     cmd = { 'Fterm', 'FTerm', 'Sterm', 'STerm', 'Vterm', 'VTerm' },
   },
   {
-    "jackMort/ChatGPT.nvim",
-    event = "VeryLazy",
-    config = load_config('tools.chatgpt'),
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      "MunifTanjim/nui.nvim",
       "nvim-lua/plenary.nvim",
-      "folke/trouble.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp",              -- Optional: For using slash commands and variables in the chat buffer
+      "nvim-telescope/telescope.nvim", -- Optional: For using slash commands
+    },
+    config = load_config('tools.codecompanion'),
+    cmd = { 'CodeCompanion', 'CodeCompanionChat', 'CodeCompanionActions' },
   },
   {
     "folke/todo-comments.nvim",
