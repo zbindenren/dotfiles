@@ -2,3 +2,4 @@ README.md
 {{- if or (not (hasPrefix .chezmoi.hostname "w00")) (not (hasPrefix .chezmoi.hostname "e1-")) }}
 work_*
 {{- end }}
+key.txt.age
