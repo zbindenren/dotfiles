@@ -420,6 +420,18 @@ local plugins = {
     config = true,
     cmd = { 'Align' },
   },
+  {
+    'ruifm/gitlinker.nvim',
+    config = function()
+      require('gitlinker').setup({
+        callbacks = {
+          ["github.com"] = require("gitlinker.hosts").get_github_type_url,
+          ["gitlab.com"] = require("gitlinker.hosts").get_gitlab_type_url,
+          ["gitlab.pnet.ch"] = require("gitlinker.hosts").get_gitlab_type_url,
+        },
+      })
+    end,
+  },
 }
 
 local ts_parsers = {

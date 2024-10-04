@@ -28,6 +28,13 @@ cc.setup({
         },
       })
     end,
+    anthropic = function()
+      return require('codecompanion.adapters').extend('anthropic', {
+        env = {
+          api_key = 'ANTHROPIC_API_KEY'
+        },
+      })
+    end,
   },
   opts = {
     log_level = 'DEBUG'

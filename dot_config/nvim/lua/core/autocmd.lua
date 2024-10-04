@@ -1,5 +1,5 @@
 local function augroup(name)
-  return vim.api.nvim_create_augroup('nvim2k_' .. name, { clear = true })
+  return vim.api.nvim_create_augroup('zbindenren_' .. name, { clear = true })
 end
 
 -- Jump to last known position
@@ -21,41 +21,6 @@ vim.api.nvim_create_autocmd('BufRead', {
       end,
     })
   end,
-})
-
--- Command to format via conform
-vim.api.nvim_create_user_command("Format", function(args)
-  local range = nil
-  if args.count ~= -1 then
-    local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
-    range = {
-      start = { args.line1, 0 },
-      ["end"] = { args.line2, end_line:len() },
-    }
-  end
-  require("conform").format({ async = true, lsp_fallback = true, range = range })
-end, { range = true })
-
-
--- Disable autoformat
-vim.api.nvim_create_user_command("FormatDisable", function(args)
-  if args.bang then
-    -- FormatDisable! will disable formatting just for this buffer
-    vim.b.disable_autoformat = true
-  else
-    vim.g.disable_autoformat = true
-  end
-end, {
-  desc = "Disable autoformat-on-save",
-  bang = true,
-})
-
--- Enable autoformat
-vim.api.nvim_create_user_command("FormatEnable", function()
-  vim.b.disable_autoformat = false
-  vim.g.disable_autoformat = false
-end, {
-  desc = "Re-enable autoformat-on-save",
 })
 
 -- Strip trailing spaces before write
@@ -135,13 +100,13 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- Auto create dir when saving a file, in case some intermediate directory does not exist
-vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-  group = augroup('auto_create_dir'),
-  callback = function(event)
-    local file = vim.loop.fs_realpath(event.match) or event.match
-    vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
-  end,
-})
+-- vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+--   group = augroup('auto_create_dir'),
+--   callback = function(event)
+--     local file = vim.loop.fs_realpath(event.match) or event.match
+--     vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
+--   end,
+-- })
 
 
 -- LSP format on save.
@@ -156,24 +121,24 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 
 -- Go organize imports on save.
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = { "*.go" },
-  callback = function()
-    local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
-    params.context = { only = { "source.organizeImports" } }
-
-    local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
-    for _, res in pairs(result or {}) do
-      for _, r in pairs(res.result or {}) do
-        if r.edit then
-          vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
-        else
-          vim.lsp.buf.execute_command(r.command)
-        end
-      end
-    end
-  end
-})
+-- vim.api.nvim_create_autocmd("BufWritePre", {
+--   pattern = { "*.go" },
+--   callback = function()
+--     local params = vim.lsp.util.make_range_params(nil, vim.lsp.util._get_offset_encoding())
+--     params.context = { only = { "source.organizeImports" } }
+--
+--     local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, 3000)
+--     for _, res in pairs(result or {}) do
+--       for _, r in pairs(res.result or {}) do
+--         if r.edit then
+--           vim.lsp.util.apply_workspace_edit(r.edit, vim.lsp.util._get_offset_encoding())
+--         else
+--           vim.lsp.buf.execute_command(r.command)
+--         end
+--       end
+--     end
+--   end
+-- })
 
 -- Lint when writing file.
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {

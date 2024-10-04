@@ -27,18 +27,19 @@ which_key.add({
 })
 
 which_key.add({
-  { '<leader>v',  group = 'VersionControl',         icon = icons.git.Octoface },
-  { '<leader>va', '<cmd>Gitsigns stage_hunk<cr>',   desc = 'stage hunk' },
-  { '<leader>vf', '<cmd>:Telescope git_status<cr>', desc = 'changed files (status)' },
-  { '<leader>vl', '<cmd>Fterm lazygit<cr>',         desc = 'open lazygit' },
-  { '<leader>vb', '<cmd>Gitsigns blame_line<cr>',   desc = 'blame current line' },
-  { '<leader>vo', '<cmd>Neogit<cr>',                desc = 'Open neogit' },
-  { '<leader>vd', '<cmd>DiffviewOpen<cr>',          desc = 'Open diffsplit' },
-  { '<leader>vc', '<cmd>DiffviewClose<cr>',         desc = 'Close diffsplit' },
-  { '<leader>vp', '<cmd>Gitsigns preview_hunk<cr>', desc = 'Preview hunk' },
-  { '<leader>vr', '<cmd>Gitsigns reset_hunk<cr>',   desc = 'Reset hunk' },
-  { '<leader>vk', '<cmd>Gitsigns prev_hunk<cr>',    desc = 'Previous hunk' },
-  { '<leader>vj', '<cmd>Gitsigns next_hunk<cr>',    desc = 'Next hunk' },
+  { '<leader>v',  group = 'VersionControl',                                                                                                   icon = icons.git.Octoface },
+  { '<leader>va', '<cmd>Gitsigns stage_hunk<cr>',                                                                                             desc = 'stage hunk' },
+  { '<leader>vg', '<cmd>lua require("gitlinker").get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>', desc = 'open file in browser' },
+  { '<leader>vf', '<cmd>:Telescope git_status<cr>',                                                                                           desc = 'changed files (status)' },
+  { '<leader>vl', '<cmd>Fterm lazygit<cr>',                                                                                                   desc = 'open lazygit' },
+  { '<leader>vb', '<cmd>Gitsigns blame_line<cr>',                                                                                             desc = 'blame current line' },
+  { '<leader>vo', '<cmd>Neogit<cr>',                                                                                                          desc = 'Open neogit' },
+  { '<leader>vd', '<cmd>DiffviewOpen<cr>',                                                                                                    desc = 'Open diffsplit' },
+  { '<leader>vc', '<cmd>DiffviewClose<cr>',                                                                                                   desc = 'Close diffsplit' },
+  { '<leader>vp', '<cmd>Gitsigns preview_hunk<cr>',                                                                                           desc = 'Preview hunk' },
+  { '<leader>vr', '<cmd>Gitsigns reset_hunk<cr>',                                                                                             desc = 'Reset hunk' },
+  { '<leader>vk', '<cmd>Gitsigns prev_hunk<cr>',                                                                                              desc = 'Previous hunk' },
+  { '<leader>vj', '<cmd>Gitsigns next_hunk<cr>',                                                                                              desc = 'Next hunk' },
 })
 
 which_key.add({
