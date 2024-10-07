@@ -28,7 +28,9 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = augroup('strip_space'),
   pattern = { '*' },
   callback = function()
-    vim.cmd([[ %s/\s\+$//e ]])
+    if vim.g.format_on_save_enabled then
+      vim.cmd([[ %s/\s\+$//e ]])
+    end
   end,
 })
 
@@ -99,28 +101,25 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
--- vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
---   group = augroup('auto_create_dir'),
---   callback = function(event)
---     local file = vim.loop.fs_realpath(event.match) or event.match
---     vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
---   end,
--- })
-
 
 -- LSP format on save.
+local format_on_save_group = vim.api.nvim_create_augroup('FormatOnSave', { clear = true })
+
+vim.g.format_on_save_enabled = true
 vim.api.nvim_create_autocmd("BufWritePre", {
+  group = format_on_save_group,
   pattern = { "*.go", "*.lua" },
   callback = function()
-    vim.lsp.buf.format({
-      timeout_ms = 3000
-    })
+    if vim.g.format_on_save_enabled then
+      vim.lsp.buf.format({
+        timeout_ms = 3000
+      })
+    end
   end,
 })
 
 
--- Autoimport go packages.
+-- Go organize imports on save.
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
