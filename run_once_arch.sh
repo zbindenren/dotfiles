@@ -47,6 +47,8 @@ AUR_PACKAGES="jumpapp \
   puppet-lint \
   tmux-plugin-manager
   jo \
+  git-town \
+  logdy-bin \
   choose-rust-git
 "
 
