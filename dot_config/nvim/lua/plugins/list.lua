@@ -416,6 +416,24 @@ local plugins = {
     },
   },
   {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app; yarn install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      -- vim.g.mkdp_browser = "/Applications/Brave Browser.app"
+    end,
+    ft = { "markdown" },
+  },
+  {
+    "mzlogin/vim-markdown-toc",
+    cmd = { "GenTocGFM", "GenTocGitLab", "UpdateToc" },
+    init = function()
+      vim.g.vmt_auto_update_on_save = 0
+    end,
+    ft = { "markdown" },
+  },
+  {
     'RRethy/nvim-align',
     config = true,
     cmd = { 'Align' },
