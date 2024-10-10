@@ -41,6 +41,8 @@ PACKAGES="noto-fonts \
   yubico-piv-tool \
   opensc \
   xclip \
+  jq \
+  yq \
 "
 
 AUR_PACKAGES="jumpapp \
