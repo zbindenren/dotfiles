@@ -1,0 +1,33 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  issue-edit:
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - sh: command -v fzf
+        msg: command 'fzf' not found
+    desc: Edit an issue description for the current project.
+    vars:
+      SELECTION:
+        sh: glab issue list |grep '#' |fzf
+      ID:
+        sh: echo '{{ .SELECTION }}' |awk '{print $1}'
+    cmds:
+      - glab issue update -d - '{{ .ID }}'
+      - glab issue view '{{ .ID }}'
+
+  issue-view:
+    dir: '{{.USER_WORKING_DIR}}'
+    preconditions:
+      - sh: command -v fzf
+        msg: command 'fzf' not found
+    desc: View an issue description for the current project.
+    vars:
+      SELECTION:
+        sh: glab issue list |grep '#' |fzf
+      ID:
+        sh: echo '{{ .SELECTION }}' |awk '{print $1}'
+    cmds:
+      - glab issue view '{{ .ID }}'
