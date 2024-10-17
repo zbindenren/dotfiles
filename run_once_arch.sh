@@ -43,6 +43,7 @@ PACKAGES="noto-fonts \
   xclip \
   jq \
   yq \
+  kind \
 "
 
 AUR_PACKAGES="jumpapp \
@@ -65,3 +66,6 @@ do
 done
 
 fish -c 'fisher install danhper/fish-ssh-agent'
+
+
+test -s $(go env GOPATH)/bin/kube-tmux || go install github.com/marcsauter/kube-tmux@latest
