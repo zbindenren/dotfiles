@@ -24,3 +24,13 @@ customCommands:
     command: 'git push -f'
     context: commits
     showOutput: true
+# TODO: this only works in nvim or without tmux
+keybinding:
+  universal:
+    prevBlock-alt: <c-k>
+    nextBlock-alt: <c-j>
+    nextTab: <c-l>
+    # prevTab: <c-h> # not permitted
+  commits:
+    moveDownCommit: j
+    moveUpCommit: k
