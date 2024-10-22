@@ -14,6 +14,12 @@ customCommands:
     command: 'git push -f'
     context: files
     showOutput: true
+  - key: "C"
+    command: "git cz"
+    description: "commit with commitizen"
+    context: "files"
+    loadingText: "opening commitizen commit tool"
+    subprocess: true
   - key: "<c-u>"
     description: "Force push"
     command: 'git push -f'

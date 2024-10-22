@@ -52,6 +52,7 @@ AUR_PACKAGES="jumpapp \
   jo \
   git-town \
   logdy-bin \
+  nodejs-commitizen \
   choose-rust-git
 "
 
