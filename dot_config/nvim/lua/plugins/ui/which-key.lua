@@ -83,13 +83,3 @@ which_key.add({
   { '<leader>tl', '<cmd>Fterm golangci-lint run -v; sleep infinity<cr>',                  desc = 'Run linter' },
   { '<leader>tt', '<cmd>lua require("neotest").run.run({extra_args = {"-count=1"}})<cr>', desc = 'Run Current Test' },
 })
-
-
-if vim.fn.exists('$TMUX') == 1 then
-  which_key.add({
-    { '<C-h>', '<cmd>NavigatorLeft<cr>',  desc = 'Move Left' },
-    { '<C-j>', '<cmd>NavigatorDown<cr>',  desc = 'Move Down' },
-    { '<C-k>', '<cmd>NavigatorUp<cr>',    desc = 'Move Up' },
-    { '<C-l>', '<cmd>NavigatorRight<cr>', desc = 'Move Right' },
-  })
-end
