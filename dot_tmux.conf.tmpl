@@ -7,18 +7,12 @@ bind-key C-n send-prefix
 
 set -s escape-time 0
 
-# Colors
-set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color"
 set -ga terminal-overrides ",xterm-256color*:Tc"
 set -as terminal-features ",xterm-256color:RGB"
 
 # shortcut for reloading config
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
-
-# Colors
-set -g default-terminal "screen-256color"
-set -ga terminal-overrides ",xterm-256color*:Tc"
-set -as terminal-features ",xterm-256color:RGB"
 
 set -g clock-mode-colour default
 
