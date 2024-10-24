@@ -22,6 +22,7 @@ which_key.add({
 which_key.add({
   { '<leader>f',  group = 'Find',                                                         icon = icons.ui.Telescope },
   { '<leader>ff', '<cmd>NvimTreeFindFile<cr>',                                            desc = 'find current file' },
+  { '<leader>fl', '<cmd>Telescope find_files<cr>',                                        desc = 'find files' },
   { '<leader>fg', '<cmd>lua require("telescope").extensions.menufacture.live_grep()<cr>', desc = 'find current file' },
   { '<leader>fh', '<cmd>Telescope help_tags<cr>',                                         desc = 'find help' },
 })
