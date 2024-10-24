@@ -15,3 +15,16 @@ function task_select_global
   set task (echo $line |awk  '{print $2}'| sed 's/:$//')
   go-task -g $task
 end
+
+function tmkk
+    # Capture the output of tmux ls command and pipe it to fzf for selection
+    set sessions (tmux list-sessions -F '#S' | fzf --multi)
+
+    # Check if any sessions were selected
+    if test -n "$sessions"
+        # Iterate over each selected session and kill it
+        for session in $sessions
+            tmux kill-session -t $session
+        end
+    end
+end
