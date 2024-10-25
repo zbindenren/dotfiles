@@ -25,3 +25,15 @@ function tmk
         end
     end
 end
+
+# attach tmux session
+function tma
+    if test -n "$TMUX"
+       echo "cannot attach form within tmux session"
+       return
+    end
+    set session (tmux list-sessions -F '#S' | fzf --no-multi)
+    if test -n "$session"
+      tmux attach -t $session
+    end
+end
