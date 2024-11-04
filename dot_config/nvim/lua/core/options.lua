@@ -37,9 +37,8 @@ local options = {
   -- folds
   foldmethod = "expr",
   foldexpr = "nvim_treesitter#foldexpr()",
-  foldnestmax = 5,
-  foldminlines = 1,
-  foldenable = false,
+  foldlevelstart = 99,
+  foldnestmax = 1,
 }
 
 vim.cmd([[
