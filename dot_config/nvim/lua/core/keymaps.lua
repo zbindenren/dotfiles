@@ -1,3 +1,9 @@
+local ok, _ = pcall(require, "core.usercmd")
+if not ok then
+  vim.notify("usercmd not found")
+  return
+end
+
 local function map(mode, lhs, rhs, opts)
   opts = opts or {}
   opts.silent = opts.silent ~= false
@@ -69,3 +75,7 @@ map('v', '>', '>gv')
 map('i', ',', ',<c-g>u')
 map('i', '.', '.<c-g>u')
 map('i', ';', ';<c-g>u')
+
+map({ "n", "v" }, "<Leader>cl", "<Cmd>CBllline9<CR>", opts)
+map('n', '<leader>cj', ':NextCommentBox<CR>', opts)
+map('n', '<leader>ck', ':PreviousCommentBox<CR>', opts)

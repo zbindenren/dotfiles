@@ -178,3 +178,61 @@ local function add_comment_header()
 end
 
 vim.api.nvim_create_user_command("AddCommentHeader", add_comment_header, {})
+
+
+
+vim.api.nvim_create_user_command('NextCommentBox', function()
+  local function find_next_comment(start_line)
+    local pattern = ' ━━'
+    local last_line = vim.fn.line('$')
+
+    for i = start_line, last_line do
+      local content = vim.fn.getline(i)
+      local start_pos = vim.fn.stridx(content, pattern)
+
+      if start_pos ~= -1 then
+        vim.api.nvim_win_set_cursor(0, { i, start_pos })
+        return true
+      end
+    end
+    return false
+  end
+
+  local current_line = vim.fn.line('.')
+  local next_line = current_line + 1
+
+  if not find_next_comment(next_line) then
+    -- If no comment found from next line, try from the beginning
+    if not find_next_comment(1) or vim.fn.line('.') == current_line then
+      print("No more comments found")
+    end
+  end
+end, {})
+
+vim.api.nvim_create_user_command('PreviousCommentBox', function()
+  local function find_previous_comment(start_line)
+    local pattern = ' ━━'
+
+    for i = start_line, 1, -1 do
+      local content = vim.fn.getline(i)
+      local start_pos = vim.fn.stridx(content, pattern)
+
+      if start_pos ~= -1 then
+        vim.api.nvim_win_set_cursor(0, { i, start_pos })
+        return true
+      end
+    end
+    return false
+  end
+
+  local current_line = vim.fn.line('.')
+  local previous_line = current_line - 1
+
+  if not find_previous_comment(previous_line) then
+    -- If no comment found from previous line, try from the end
+    local last_line = vim.fn.line('$')
+    if not find_previous_comment(last_line) or vim.fn.line('.') == current_line then
+      print("No more comments found")
+    end
+  end
+end, {})

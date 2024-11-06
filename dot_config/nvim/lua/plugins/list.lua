@@ -489,6 +489,15 @@ local plugins = {
       })
     end,
   },
+  {
+    'LudoPinelli/comment-box.nvim',
+    opts = {
+      comment_style = "line",
+      doc_width = 82,  -- width of the document
+      line_width = 80, -- width of the lines
+    },
+    cmd = { 'CBllline' },
+  }
 }
 
 local ts_parsers = {
