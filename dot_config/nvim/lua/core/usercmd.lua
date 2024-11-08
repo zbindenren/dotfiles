@@ -72,12 +72,6 @@ vim.api.nvim_create_user_command("ToggleDiagnosticVirtualText", function()
 end, {})
 
 --------------------------------------------------------------------------------
--- Chat with Anhropic
-vim.api.nvim_create_user_command('CodeCompanionChatAnthropic', function()
-  vim.cmd('CodeCompanionChat anthropic')
-end, {})
-
---------------------------------------------------------------------------------
 -- Toggle format on save
 local function toggle_format_on_save()
   vim.g.format_on_save_enabled = not vim.g.format_on_save_enabled
