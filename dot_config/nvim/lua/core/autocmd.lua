@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd('BufRead', {
   end,
 })
 
--- Strip trailing spaces before write
+-- ━━ Strip trailing spaces before write ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = augroup('strip_space'),
   pattern = { '*' },
@@ -34,13 +34,13 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
--- Check if we need to reload the file when it changed
+-- ━━ Check if we need to reload the file when it changed ━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
   group = augroup('checktime'),
   command = 'checktime',
 })
 
--- Highlight on yank
+-- ━━ Highlight on yank ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd('TextYankPost', {
   group = augroup('highlight_yank'),
   callback = function()
@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
--- resize splits if window got resized
+-- ━━ Resize splits if window got resized ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd({ 'VimResized' }, {
   group = augroup('resize_splits'),
   callback = function()
@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd({ 'VimResized' }, {
   end,
 })
 
--- go to last loc when opening a buffer
+-- ━━ Go to last loc when opening a buffer ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd('BufReadPost', {
   group = augroup('last_loc'),
   callback = function()
@@ -68,7 +68,7 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
--- close some filetypes with <q>
+-- ━━ Close some filetypes with <q> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('close_with_q'),
   pattern = {
@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
--- wrap and check for spell in text filetypes
+-- ━━ Wrap and check for spell in text filetypes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('wrap_spell'),
   pattern = { 'gitcommit', 'markdown' },
@@ -102,7 +102,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 
--- LSP format on save.
+-- ━━ LSP format on save. ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 local format_on_save_group = vim.api.nvim_create_augroup('FormatOnSave', { clear = true })
 
 vim.g.format_on_save_enabled = true
@@ -119,7 +119,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
--- Go organize imports on save.
+-- ━━ Go organize imports on save. ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.go" },
   callback = function()
@@ -143,15 +143,48 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end
 })
 
--- Lint when writing file.
+-- ━━ Lint when writing file. ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   callback = function()
     require("lint").try_lint()
   end,
 })
--- additional filetypes
+
+-- ━━ Additional filetypes ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.filetype.add({
   extension = {
     templ = "templ",
   },
+})
+
+-- ━━ Highlight symbol under cursor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vim.opt.updatetime = 1500
+
+local function highlight_symbol(event)
+  local id = vim.tbl_get(event, 'data', 'client_id')
+  local client = id and vim.lsp.get_client_by_id(id)
+  if client == nil or not client.supports_method('textDocument/documentHighlight') then
+    return
+  end
+
+  local group = vim.api.nvim_create_augroup('highlight_symbol', { clear = false })
+
+  vim.api.nvim_clear_autocmds({ buffer = event.buf, group = group })
+
+  vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+    group = group,
+    buffer = event.buf,
+    callback = vim.lsp.buf.document_highlight,
+  })
+
+  vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+    group = group,
+    buffer = event.buf,
+    callback = vim.lsp.buf.clear_references,
+  })
+end
+
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'Setup highlight symbol',
+  callback = highlight_symbol,
 })
