@@ -158,6 +158,7 @@ vim.filetype.add({
 })
 
 -- ━━ Highlight symbol under cursor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+-- https://vonheikemen.github.io/devlog/tools/neovim-lsp-client-guide/
 vim.opt.updatetime = 1500
 
 local function highlight_symbol(event)
