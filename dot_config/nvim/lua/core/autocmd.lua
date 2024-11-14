@@ -68,6 +68,16 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
+-- ━━ Clear search highlight ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+vim.api.nvim_create_autocmd('CursorMoved', {
+  group = vim.api.nvim_create_augroup('auto-hlsearch', { clear = true }),
+  callback = function()
+    if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+      vim.schedule(function() vim.cmd.nohlsearch() end)
+    end
+  end
+})
+
 -- ━━ Close some filetypes with <q> ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 vim.api.nvim_create_autocmd('FileType', {
   group = augroup('close_with_q'),
