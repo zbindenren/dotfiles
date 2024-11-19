@@ -44,6 +44,8 @@ PACKAGES="noto-fonts \
   jq \
   yq \
   kind \
+  xsel \
+  bind \
 "
 
 AUR_PACKAGES="jumpapp \
