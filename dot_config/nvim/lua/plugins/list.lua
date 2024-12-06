@@ -412,11 +412,10 @@ local plugins = {
       provider = "claude",
       claude = {
         endpoint = "https://api.anthropic.com",
-        model = "claude-3-5-sonnet-20240620",
+        model = "claude-3-5-sonnet-20241022",
         timeout = 30000, -- Timeout in milliseconds
         temperature = 0,
         max_tokens = 8000,
-        ["local"] = false,
       },
     },
     build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
