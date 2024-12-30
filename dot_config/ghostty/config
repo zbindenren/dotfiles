@@ -1,3 +1,4 @@
+# https://github.com/ThorstenRhau/ghostty/blob/main/config
 theme = AtomOneLight
 shell-integration = fish
 
