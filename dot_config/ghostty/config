@@ -1,15 +1,22 @@
 # https://github.com/ThorstenRhau/ghostty/blob/main/config
 theme = AtomOneLight
-shell-integration = fish
 
 # ━━ font ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 font-family = "JetBrainsMono Nerd Font"
 font-size = 17
 font-family = ""
-
-gtk-single-instance = true
+adjust-cell-height = 20%
 
 # ━━ fullscreen ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 window-decoration = false
 macos-non-native-fullscreen = true
 fullscreen = true
+
+# ━━ cursor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+cursor-style = block
+cursor-style-blink = false
+
+# ━━ misc ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+gtk-single-instance = true
+mouse-hide-while-typing = true
+shell-integration-features = no-cursor, sudo, no-title
