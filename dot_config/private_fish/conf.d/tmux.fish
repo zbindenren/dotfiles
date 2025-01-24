@@ -1,8 +1,12 @@
 function tmn
   set name (basename $PWD)
-  tmux new-session -s $name -d
-  tmux send-keys -t $name 'vi' C-m
-  tmux -2 attach-session -d
+  tmux new-session -s $name -d -n neovim
+  tmux send-keys -t $name:neovim 'vi' C-m
+  tmux new-window -t $name -n term01
+  tmux new-window -t $name -n term02
+  tmux new-window -t $name -n term03
+  tmux new-window -t $name -n term04
+  tmux -2 attach-session -t $name:neovim
 end
 
 function tmK
