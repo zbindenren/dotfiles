@@ -1,0 +1,12 @@
+# https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset
+
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[manager]
+
+append_keymap = [
+	{ on = [ "g", "n" ],       run = "cd ~/.config/nvim",             desc = "Goto ~/.config/nvim" },
+	{ on = [ "g", "C" ],       run = "cd ~/.local/share/chezmoi",     desc = "Goto ~/.config/chezmoi" },
+]
