@@ -496,6 +496,24 @@ local plugins = {
       line_width = 80, -- width of the lines
     },
     cmd = { 'CBllline' },
+  },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    keys = {
+      {
+        -- Open in the current working directory
+        "<leader>e",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      }
+    },
+    opts = {
+      open_for_directories = true,
+      keymaps = {
+        show_help = "<f1>",
+      },
+    },
   }
 }
 
