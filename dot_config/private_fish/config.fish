@@ -13,3 +13,5 @@ end
 set -x PATH $PATH ~/go/bin ~/bin
 
 starship init fish | source
+
+zoxide init fish | source
