@@ -502,6 +502,12 @@ local plugins = {
     event = "VeryLazy",
     keys = {
       {
+        "<leader>ff",
+        mode = { "n", "v" },
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
         -- Open in the current working directory
         "<leader>e",
         "<cmd>Yazi cwd<cr>",

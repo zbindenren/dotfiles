@@ -7,9 +7,8 @@ local icons = require('lib.icons')
 
 which_key.setup()
 which_key.add({
-  { '<leader>e', '<cmd>NvimTreeToggle<cr>', icon = icons.documents.OpenFolder, desc = 'explorer' },
-  { '<leader>w', '<cmd>w<cr>',              icon = icons.ui.Save,              desc = 'write file' },
-  { '<leader>Q', '<cmd>qa!<cr>',            icon = icons.ui.Power,             desc = 'force quit' },
+  { '<leader>w', '<cmd>w<cr>',   icon = icons.ui.Save,  desc = 'write file' },
+  { '<leader>Q', '<cmd>qa!<cr>', icon = icons.ui.Power, desc = 'force quit' },
 })
 
 which_key.add({
@@ -21,7 +20,6 @@ which_key.add({
 
 which_key.add({
   { '<leader>f',  group = 'Find',                                                         icon = icons.ui.Telescope },
-  { '<leader>ff', '<cmd>NvimTreeFindFile<cr>',                                            desc = 'find current file' },
   { '<leader>fl', '<cmd>Telescope find_files<cr>',                                        desc = 'find files' },
   { '<leader>fg', '<cmd>lua require("telescope").extensions.menufacture.live_grep()<cr>', desc = 'find current file' },
   { '<leader>fh', '<cmd>Telescope help_tags<cr>',                                         desc = 'find help' },
