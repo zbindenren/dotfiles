@@ -8,5 +8,6 @@
 
 append_keymap = [
 	{ on = [ "g", "n" ],       run = "cd ~/.config/nvim",             desc = "Goto ~/.config/nvim" },
+	{ on = [ "g", "r" ],       run = "cd ~/repos",                    desc = "Goto ~/repos" },
 	{ on = [ "g", "C" ],       run = "cd ~/.local/share/chezmoi",     desc = "Goto ~/.config/chezmoi" },
 ]
