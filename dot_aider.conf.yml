@@ -1,0 +1,7 @@
+# Aider configuration file
+
+# Set DeepSeek as the default model
+model: deepseek/deepseek-coder
+
+# Disable automatic commits
+auto-commits: false

@@ -5,9 +5,15 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 [manager]
+# prepend overwrites
+prepend_keymap = [
+	{ on = "d",                run = "remove --permanently",                       desc = "Permanently delete selected files" },
+  { on = "p",                run = "paste --force",                              desc = "Paste yanked files (overwrite if the destination exists)" },
+]
 
 append_keymap = [
-	{ on = [ "g", "n" ],       run = "cd ~/.config/nvim",             desc = "Goto ~/.config/nvim" },
-	{ on = [ "g", "r" ],       run = "cd ~/repos",                    desc = "Goto ~/repos" },
-	{ on = [ "g", "C" ],       run = "cd ~/.local/share/chezmoi",     desc = "Goto ~/.config/chezmoi" },
+	{ on = [ "g", "n" ],       run = "cd ~/.config/nvim",                          desc = "Goto ~/.config/nvim" },
+	{ on = [ "g", "r" ],       run = "cd ~/repos",                                 desc = "Goto ~/repos" },
+	{ on = [ "g", "z" ],       run = "cd ~/repos/github.pnet.ch/zbindenren",       desc = "Goto ~/repos/github.pnet.ch/zbindenren" },
+	{ on = [ "g", "C" ],       run = "cd ~/.local/share/chezmoi",                  desc = "Goto ~/.config/chezmoi" },
 ]

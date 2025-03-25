@@ -6,17 +6,8 @@ end
 
 local plugins = {
   -- UI
-  -- {
-  --   'mcchrish/zenbones.nvim',
-  --   dependencies = {
-  --     'rktjmp/lush.nvim',
-  --   },
-  --   config = load_config('ui.zenbones'),
-  --   lazy = false,
-  --   priority = 1000,
-  -- },
   {
-    dir = '/home/zbindenren/repos/github.com/zbindenren/le-grand-bleu',
+    'zbindenren/le-grand-bleu.nvim',
     lazy = false,
     config = function()
       require('le-grand-bleu').setup({})

@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# Check if Homebrew is installed
+if ! command -v brew &> /dev/null; then
+    echo "Homebrew is not installed."
+    exit 1
+fi
+
+# Install packages from Brewfile
+echo "Installing packages from Brewfile..."
+chezmoi execute-template < "{{ .chezmoi.sourceDir }}/Brewfile.tmpl" | brew bundle --file=-
+
+# ━━ Pacman ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+if command -v pacman &> /dev/null; then
+echo "Installing pacman packages"
+
+sudo pacman -Sy --noconfirm --needed \
+  pcsc-tools \
+  ccid \
+  libusb-compat \
+  ttf-jetbrains-mono-nerd \
+  libfido2 \
+  opensc
+
+fi
+
+# ━━ AUR ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+if command -v yay &> /dev/null; then
+echo "Installing aur packages"
+
+yay  --noconfirm --needed -S \
+  aur/jumpapp \
+  aur/puppet-lint
+fi
+
+# ━━ Go ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+export GOBIN=$HOME/go/bin
+
+if command -v go &> /dev/null; then
+  echo "Installing go packages"
+
+  go install github.com/marcsauter/kube-tmux@latest
+  go install github.com/lintingzhen/commitizen-go@latest
+fi
+
+commitizen-go install
+
+# ━━ fisher ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+if fish -c "functions -q fisher" &> /dev/null; then
+  echo "Installing fisher packages"
+
+  fish -c "fisher install danhper/fish-ssh-agent"
+fi
+
+echo "Package installation complete."

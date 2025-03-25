@@ -76,19 +76,23 @@ cc.setup({
   },
   strategies = {
     chat = {
-      adapter = 'openai',
+      adapter = 'deepseek',
     },
     inline = {
-      adapter = 'openai',
+      adapter = 'deepseek',
     },
     agent = {
-      adapter = 'openai',
+      adapter = 'deepseek',
     },
   },
   adapters = {
-    opts = {
-      proxy = 'http://127.0.0.1:9999',
-    },
+    opts = (function()
+      local http_proxy = os.getenv('http_proxy')
+      if http_proxy then
+        return { proxy = http_proxy }
+      end
+      return {}
+    end)(),
     openai = function()
       return require('codecompanion.adapters').extend('openai', {
         env = {
@@ -100,6 +104,13 @@ cc.setup({
       return require('codecompanion.adapters').extend('anthropic', {
         env = {
           api_key = 'ANTHROPIC_API_KEY'
+        },
+      })
+    end,
+    deepseek = function()
+      return require('codecompanion.adapters').extend('deepseek', {
+        env = {
+          api_key = 'DEEPSEEK_API_KEY'
         },
       })
     end,

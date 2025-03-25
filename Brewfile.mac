@@ -1,0 +1,3 @@
+# Mac only packages
+
+cask 'raycast', args: { require_sha: false }  # Spotlight alternative

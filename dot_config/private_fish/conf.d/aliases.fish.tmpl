@@ -1,6 +1,5 @@
 alias kc="killall chromium && killall chromium && killall chromium"
 alias cat="bat -p --theme=GitHub"
-alias task="go-task"
 alias sa="ssh-add -s /usr/lib/opensc-pkcs11.so" #needs opensc lib
 alias fd="fd -c never"
 alias t=task_select
@@ -8,7 +7,7 @@ alias ta=task_select_all
 alias tg=task_select_global
 alias lazy-backup="cp $HOME/.config/nvim/lua/plugins/lock.json $HOME/.config/nvim/lua/plugins/lock.json-(date +%Y%m%d-%H%M%S)"
 alias cha="chezmoi apply"
-alias chd="chezmoi diff"
+alias chd="chezmoi diff --script-contents=false"
 
 # systemctl
 alias start="sudo systemctl start"

@@ -33,6 +33,7 @@ local options = {
   cmdheight = 1,                               -- More space to display messages
   timeoutlen = 300,                            -- Don't wait more that 150ms for normal mode commands
   shada = { "!", "'1000", "<50", "s10", "h" }, -- remember stuff across sessions
+  confirm = true,                              -- when you leave a file and didn't save, you just just hit y or n or save or leave it untouched
   laststatus = 3,
   -- folds
   foldmethod = "expr",

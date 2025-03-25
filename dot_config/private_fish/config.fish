@@ -10,6 +10,14 @@ if status is-interactive
   atuin init fish | source
 end
 
+# ━━ Setup brew ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+set -x PATH $PATH $HOME/homebrew/bin
+set -x PATH $PATH /opt/homebrew/bin
+set -x PATH $PATH /home/linuxbrew/.linuxbrew/bin
+set -x PATH $PATH /usr/local/bin
+
+eval "$(brew shellenv)"
+
 set -x PATH $PATH ~/go/bin ~/bin
 
 starship init fish | source
