@@ -3,7 +3,7 @@ local home = os.getenv("HOME")
 return {
   {
     -- "zbindenren/le-grand-bleu.nvim",
-    dir = home .. "/repos/github.com/zbindenren/le-grand-bleu",
+    dir = home .. "/repos/github.com/zbindenren/le-grand-bleu.nvim",
     opts = {},
   },
 
