@@ -4,6 +4,7 @@ cask_args appdir: '~/Applications', require_sha: true
 # ━━ Brew Taps ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 tap 'jesseduffield/lazygit'
 tap 'lintingzhen/tap'
+tap 'hashicorp/tap'
 
 # ━━ Brew Common ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 brew 'git'              # Version control
@@ -52,6 +53,8 @@ brew 'aider'            # AI in the command line
 brew 'aichat'           # Another AI in the command line
 brew 'ackerr/tap/lab'   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
 brew 'git-who'          # Git blame for file trees
+brew 'terraform'
+brew 'hashicorp/tap/vault'
 
 # ━━ Brew Darwin or Linux only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {{- if eq .chezmoi.os "darwin" }}
