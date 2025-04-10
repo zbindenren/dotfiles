@@ -1,3 +1,4 @@
+
 alias kc="killall chromium && killall chromium && killall chromium"
 alias cat="bat -p --theme=GitHub"
 alias sa="ssh-add -s /usr/lib/opensc-pkcs11.so" #needs opensc lib
@@ -34,6 +35,7 @@ alias top="btop"
 alias lg="lazygit"
 alias ping="gping"
 alias grep="rg"
+alias lvim="NVIM_APPNAME=nvim-lecacy nvim"
 
 # vi
 {{- if hasPrefix "/export" .chezmoi.homeDir }}
@@ -42,7 +44,6 @@ alias vi='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
 {{- else }}
 alias vim='nvim'
 alias vi='nvim'
-#alias lvi="NVIM_APPNAME=lazyvim nvim"
 {{ end }}
 {{- if hasKey . "email" }}
 alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host }} --remote {{ .sshuttle_host }} {{ .sshuttle_network }}'
