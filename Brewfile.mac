@@ -1,7 +1,7 @@
 # Mac only packages
 
 cask 'raycast', args: { require_sha: false }  # Spotlight alternative
-
+cask 'font-jetbrains-mono-nerd-font'
 cask 'ghostty'
 cask 'bitwarden'
 cask 'iterm2'
