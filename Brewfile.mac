@@ -4,7 +4,6 @@ cask 'raycast', args: { require_sha: false }  # Spotlight alternative
 cask 'font-jetbrains-mono-nerd-font'
 cask 'ghostty'
 cask 'bitwarden'
-cask 'iterm2'
 cask 'latest'
 cask 'localsend'
 cask 'spotify' , args: { require_sha: false }  # Listen to music
