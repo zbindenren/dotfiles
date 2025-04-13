@@ -11,4 +11,4 @@ cask 'spotify' , args: { require_sha: false }  # Listen to music
 cask 'visual-studio-code'
 cask 'zed'
 cask 'zen-browser'
-cask 'eurkey', args: { require_sha: false }  # Euro Key Layout
+cask 'wezterm'
