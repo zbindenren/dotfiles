@@ -7,7 +7,7 @@ if wezterm.config_builder then
 end
 
 local function macCMDtoCtrl()
-	local keys = "abcdefghijklmnopqrstuvxyz" -- no w
+	local keys = "abcdefghijklmnopqrstuvwxyz"
 	local keymappings = {}
 
 	for i = 1, #keys do
