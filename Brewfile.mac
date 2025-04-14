@@ -11,3 +11,4 @@ cask 'visual-studio-code'
 cask 'zed'
 cask 'zen-browser'
 cask 'wezterm'
+cask 'keymapp' , args: { require_sha: false }  # ZSA Voyager App
