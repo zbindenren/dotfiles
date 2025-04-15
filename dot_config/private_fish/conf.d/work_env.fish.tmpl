@@ -15,6 +15,11 @@ set -x HTTPS_PROXY {{ .network.proxy }}
 set -x no_proxy {{ .network.noproxy }}
 {{- end }}
 
+
+{{- if not .personal }}
+set -x SSH_AUTH_SOCK "$SSH_AUTH_SOCK_FISH"
+{{- end }}
+
 function paam-fzf
   set hosts (cat $HOME/nodes.txt | fzf -m)
 
