@@ -8,7 +8,7 @@ Host *
   IdentityFile ~/.ssh/id_rsa
 {{- end -}}
 
-{{- if .work -}}
+{{- if .work }}
 StrictHostKeyChecking no
 ForwardX11 no
 ForwardX11Trusted no
@@ -22,16 +22,19 @@ NoHostAuthenticationForLocalhost no
 GlobalKnownHostsFile /etc/ssh/ssh_known_hosts
 {{- end }}
 
+{{- $provider := "/usr/lib/ssh-keychain.dylib" -}}
+{{- if eq .chezmoi.os "linux" }}
+{{- $provider =  "/usr/lib/opensc-pkcs11.so" -}}
+{{- end -}}
+
 {{ range .jump_hosts }}
 Host {{ . }}
-    StrictHostKeyChecking no
     UpdateHostkeys yes
-    PKCS11Provider /usr/lib/opensc-pkcs11.so
+    PKCS11Provider {{ $provider }}
 
 Host {{ . }}.{{ $.network.domain }}
-    StrictHostKeyChecking no
     UpdateHostkeys yes
-    PKCS11Provider /usr/lib/opensc-pkcs11.so
+    PKCS11Provider {{ $provider }}
 {{ end }}
 
 Host github.com
