@@ -38,10 +38,12 @@
 
 {{- $includedData := fromYaml (include $includeFile) -}}
 ---
+{{- if $personal }}
 encryption: age
 age:
   identity: "~/.config/chezmoi/key.txt"
   recipient: "age14qjvt3qwwnu745sg8e6vfnede2tgf48h0fz7kn00ge3gsljeagcskfy8w5"
+{{ end }}
 
 data:
   work: {{ $work }}
