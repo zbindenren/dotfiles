@@ -1,0 +1,3 @@
+{{- if and .work .personal -}}
+{{ join .chezmoi.sourceDir ".chezmoitemplates_ecrypted/sshuttle-default" | include | decrypt }}
+{{- end -}}
