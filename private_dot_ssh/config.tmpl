@@ -15,7 +15,7 @@ ForwardX11Trusted no
 ConnectTimeout 5
 Compression yes
 AddKeysToAgent yes
-User {{ .user }}
+User {{ .user_name }}
 NoHostAuthenticationForLocalhost no
 
 {{- if stat "/etc/ssh/ssh_known_hosts" }}
