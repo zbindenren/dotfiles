@@ -3,10 +3,10 @@ git:
   paging:
     colorArg: always
     pager: delta --light --paging=never
-{{- if hasKey . "email" }}
+{{- if .work }}
 services:
-  "git.{{ .domain }}": "gitlab:git.{{ .domain }}"
-  "gitlab.{{ .domain }}": "gitlab:gitlab.{{ .domain }}"
+  "git.{{ .network.domain }}": "gitlab:git.{{ .network.domain }}"
+  "gitlab.{{ .network.domain }}": "gitlab:gitlab.{{ .network.domain }}"
 {{- end }}
 customCommands:
   - key: "<c-u>"
