@@ -42,13 +42,8 @@ alias grep="rg"
 alias lvim="NVIM_APPNAME=nvim-lecacy nvim"
 
 # vi
-{{- if hasPrefix "/export" .chezmoi.homeDir }}
-alias vim='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
-alias vi='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
-{{- else }}
 alias vim='nvim'
 alias vi='nvim'
-{{ end }}
 {{- if and .work .personal }}
 alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_default_host }} --remote {{ .sshuttle_default_host }} -s $HOME/.config/sshuttle/default'
 alias paam_shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_paam_host }} --remote {{ .sshuttle_paam_host }} -s $HOME/.config/sshuttle/paam'
