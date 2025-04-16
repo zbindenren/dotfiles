@@ -22,13 +22,15 @@ NoHostAuthenticationForLocalhost no
 GlobalKnownHostsFile /etc/ssh/ssh_known_hosts
 {{- end }}
 
+{{- if .personal }}
 {{ range .jump_hosts }}
 Host {{ . }}
     UpdateHostkeys yes
 
 Host {{ . }}.{{ $.network.domain }}
     UpdateHostkeys yes
-{{ end }}
+{{- end }}
+{{- end }}
 
 Host github.com
     Hostname ssh.github.com
