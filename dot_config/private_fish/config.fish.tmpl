@@ -18,6 +18,7 @@ set -x PATH $PATH ~/go/bin ~/bin
 {{- if eq .chezmoi.os "darwin" }}
 # to use coreutils (better cp, find) we prepend gnubin to path
 set -gx PATH /opt/homebrew/opt/coreutils/libexec/gnubin $PATH
+set -gx PATH /opt/homebrew/opt/findutils/libexec/gnubin $PATH
 {{- end }}
 
 starship init fish | source

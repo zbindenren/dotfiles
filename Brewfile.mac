@@ -15,3 +15,4 @@ cask 'keymapp' , args: { require_sha: false }  # ZSA Voyager App
 brew 'telnet'
 brew 'lima'
 brew 'coreutils'
+brew 'findutils'
