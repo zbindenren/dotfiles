@@ -47,3 +47,19 @@ function y
     end
     rm -f -- "$tmp"
 end
+
+function proxy_user
+    set -l default_port 3128
+    echo "Proxy host:"
+    read proxy
+    echo "Port (default $default_port):"
+    read port
+    if test -z "$port"
+        set port $default_port
+    end
+    echo "Password:"
+    read -s password
+    echo
+    set -gx http_proxy "http://$USER:$password@$proxy:$port"
+    set -gx https_proxy "http://$USER:$password@$proxy:$port"
+end
