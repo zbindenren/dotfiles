@@ -8,7 +8,7 @@ set -x PATH $PATH /opt/homebrew/bin
 set -x PATH $PATH /home/linuxbrew/.linuxbrew/bin
 set -x PATH $PATH /usr/local/bin
 
-eval "$(brew shellenv)"
+eval (brew shellenv)
 
 set -x PATH $PATH ~/go/bin ~/bin
 
