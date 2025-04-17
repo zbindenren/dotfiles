@@ -4,16 +4,22 @@ set -gx TERM xterm-256color
 
 # ━━ Setup brew ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 set -x PATH $PATH $HOME/homebrew/bin
+{{- if eq .chezmoi.os "darwin" }}
 set -x PATH $PATH /opt/homebrew/bin
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
 set -x PATH $PATH /home/linuxbrew/.linuxbrew/bin
+{{- end }}
 set -x PATH $PATH /usr/local/bin
 
 eval (brew shellenv)
 
 set -x PATH $PATH ~/go/bin ~/bin
 
+{{- if eq .chezmoi.os "darwin" }}
 # to use coreutils (better cp, find) we prepend gnubin to path
 set -gx PATH /opt/homebrew/opt/coreutils/libexec/gnubin $PATH
+{{- end }}
 
 starship init fish | source
 
