@@ -12,6 +12,9 @@ eval (brew shellenv)
 
 set -x PATH $PATH ~/go/bin ~/bin
 
+# to use coreutils (better cp, find) we prepend gnubin to path
+set -gx PATH /opt/homebrew/opt/coreutils/libexec/gnubin $PATH
+
 starship init fish | source
 
 zoxide init fish | source
