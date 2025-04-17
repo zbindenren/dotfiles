@@ -21,6 +21,7 @@ brew 'jo'               # JSON output from shell
 brew 'jq'               # Command-line JSON processor
 brew 'k9s'              # Terminal UI to manage Kubernetes clusters
 brew 'kind'             # Run local Kubernetes clusters using Docker
+brew 'krew'             # A kubectl plugin manager
 brew 'lazygit'          # Simple terminal UI for git commands
 brew 'logdy'            # Simple and lightweight logging utility
 brew 'prettier'         # Code formatter for many languages
