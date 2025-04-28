@@ -35,3 +35,4 @@ brew 'yq'               # Process YAML, JSON and XML documents
 brew 'zoxide'           # Smarter cd command with learning capabilities
 brew 'nfpm'             # Simple deb and rpm packager
 brew 'tree'
+brew 'hugo'
