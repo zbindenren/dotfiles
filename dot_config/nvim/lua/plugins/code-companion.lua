@@ -84,7 +84,7 @@ return {
     },
     strategies = {
       chat = {
-        adapter = "anthropic",
+        adapter = "gemini",
         keymaps = {
           close = {
             modes = {
@@ -105,10 +105,10 @@ return {
         },
       },
       inline = {
-        adapter = "anthropic",
+        adapter = "gemini",
       },
       agent = {
-        adapter = "anthropic",
+        adapter = "gemini",
       },
     },
     adapters = {
@@ -119,24 +119,12 @@ return {
         end
         return {}
       end)(),
-      openai = function()
-        return require("codecompanion.adapters").extend("openai", {
-          env = {
-            api_key = "OPENAI_API_KEY",
-          },
-        })
-      end,
-      anthropic = function()
-        return require("codecompanion.adapters").extend("anthropic", {
-          env = {
-            api_key = "ANTHROPIC_API_KEY",
-          },
-        })
-      end,
-      deepseek = function()
-        return require("codecompanion.adapters").extend("deepseek", {
-          env = {
-            api_key = "DEEPSEEK_API_KEY",
+      gemini = function()
+        return require("codecompanion.adapters").extend("gemini", {
+          schema = {
+            model = {
+              default = "gemini-2.5-pro-exp-03-25",
+            },
           },
         })
       end,

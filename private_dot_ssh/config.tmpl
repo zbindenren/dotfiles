@@ -1,25 +1,40 @@
-{{ if hasKey . "logingw" -}}
-GlobalKnownHostsFile /etc/ssh/ssh_known_hosts
-NoHostAuthenticationForLocalhost no
 ForwardAgent yes
-ForwardX11 yes
-ForwardX11Trusted yes
-ConnectTimeout 5
-StrictHostKeyChecking no
-AddKeysToAgent yes
+HashKnownHosts no
 
-Host {{ .logingw }}*
-    StrictHostKeyChecking no
-    PKCS11Provider /usr/lib/opensc-pkcs11.so
+{{- if .private }}
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
+{{- end -}}
+
+{{- if .work }}
+StrictHostKeyChecking no
+ForwardX11 no
+ForwardX11Trusted no
+ConnectTimeout 5
+Compression yes
+AddKeysToAgent yes
+User {{ .user_name }}
+NoHostAuthenticationForLocalhost no
+
+{{- if stat "/etc/ssh/ssh_known_hosts" }}
+GlobalKnownHostsFile /etc/ssh/ssh_known_hosts
+{{- end }}
+
+{{- if .personal }}
+{{ range .jump_hosts }}
+Host {{ . }}
+    UpdateHostkeys yes
+
+Host {{ . }}.{{ $.network.domain }}
+    UpdateHostkeys yes
+{{- end }}
+{{- end }}
 
 Host github.com
     Hostname ssh.github.com
     Port 443
     User git
     ProxyCommand nc -X connect -x localhost:9999 %h %p
-
-Host *
-    User {{ .user }}
-    Compression yes
-    ServerAliveInterval 60
 {{- end }}

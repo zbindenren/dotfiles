@@ -1,7 +1,10 @@
-set -x EDITOR nvim
+# XDG base directories.
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_STATE_HOME "$HOME/.local/state"
 
-set -gx PATH $PATH $HOME/.krew/bin
-set -gx PATH $PATH $HOME/.npm-packages/bin
+set -gx EDITOR nvim
 
 set -gx LESS -X
 
@@ -9,5 +12,3 @@ set -gx TASK_X_REMOTE_TASKFILES 1
 
 # create-go-app
 set -gx CREATE_GO_APP_IGNORE Makefile
-
-set -gx NODE_EXTRA_CA_CERTS /etc/ssl/certs/ca-certificates.crt

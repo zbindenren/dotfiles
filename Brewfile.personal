@@ -1,0 +1,37 @@
+# Linux Packages only on personal (not shared) workstations
+
+brew 'ackerr/tap/lab'   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
+brew 'aichat'           # Another AI in the command line
+brew 'aider'            # AI in the command line
+brew 'bat'              # A better cat
+brew 'broot'            # Better directory navigation
+brew 'btop'             # TUI system monitor
+brew 'fd'               # Simple, fast and user-friendly alternative to find
+brew 'gdu'              # TUI disk usage monitor
+brew 'gh'               # GitHub CLI
+brew 'git-cliff'        # Highly customizable changelog generator
+brew 'git-delta'        # Syntax highlighting pager for git, diff and grep
+brew 'git-town'         # High-level Git workflow automation
+brew 'git-who'          # Git blame for file trees
+brew 'git'              # Version control
+brew 'go-task'          # Task runner / build tool written in Go
+brew 'hashicorp/tap/vault'
+brew 'jo'               # JSON output from shell
+brew 'jq'               # Command-line JSON processor
+brew 'k9s'              # Terminal UI to manage Kubernetes clusters
+brew 'kind'             # Run local Kubernetes clusters using Docker
+brew 'krew'             # A kubectl plugin manager
+brew 'lazygit'          # Simple terminal UI for git commands
+brew 'logdy'            # Simple and lightweight logging utility
+brew 'prettier'         # Code formatter for many languages
+brew 'ripgrep'          # Fast line-oriented search tool (better grep)
+brew 'sshuttle'         # Proxy server that tunnels over SSH
+brew 'terraform'
+brew 'tmux'             # Term multiplexer
+brew 'tpm'              # Tmux Plugin Manager
+brew 'xsel'             # X11 clipboard manipulation tool
+brew 'yazi'             # TUI file explorer
+brew 'yq'               # Process YAML, JSON and XML documents
+brew 'zoxide'           # Smarter cd command with learning capabilities
+brew 'nfpm'             # Simple deb and rpm packager
+brew 'tree'

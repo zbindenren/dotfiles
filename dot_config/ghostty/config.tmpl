@@ -1,22 +1,33 @@
-# https://github.com/ThorstenRhau/ghostty/blob/main/config
-theme = AtomOneLight
+# https://ghostty.zerebos.com/
+
+theme = catppuccin-latte
 
 # ━━ font ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-font-family = "JetBrainsMono Nerd Font"
-font-size = 17
+font-size = 20
 font-family = ""
 adjust-cell-height = 20%
 
-# ━━ fullscreen ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-window-decoration = false
-macos-non-native-fullscreen = true
-fullscreen = true
+# Clipboard
+clipboard-read = allow
+clipboard-write = allow
+copy-on-select = true
 
 # ━━ cursor ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 cursor-style = block
 cursor-style-blink = false
 
-# ━━ misc ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# ━━ ui ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+confirm-close-surface = false
+cursor-click-to-move = false 
+fullscreen = false
 gtk-single-instance = true
 mouse-hide-while-typing = true
 shell-integration-features = no-cursor, sudo, no-title
+window-decoration = true
+ 
+# Darwin settings
+macos-option-as-alt = left
+macos-non-native-fullscreen = false
+
+config-file = config-{{ .chezmoi.os }}
+

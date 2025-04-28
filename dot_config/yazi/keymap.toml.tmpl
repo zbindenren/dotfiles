@@ -14,6 +14,6 @@ prepend_keymap = [
 append_keymap = [
 	{ on = [ "g", "n" ],       run = "cd ~/.config/nvim",                          desc = "Goto ~/.config/nvim" },
 	{ on = [ "g", "r" ],       run = "cd ~/repos",                                 desc = "Goto ~/repos" },
-	{ on = [ "g", "z" ],       run = "cd ~/repos/github.pnet.ch/zbindenren",       desc = "Goto ~/repos/github.pnet.ch/zbindenren" },
+	{ on = [ "g", "z" ],       run = "cd ~/repos/github.{{ .network.domain }}/{{ .user_name }}",       desc = "Goto ~/repos/github.pnet.ch/zbindenren" },
 	{ on = [ "g", "C" ],       run = "cd ~/.local/share/chezmoi",                  desc = "Goto ~/.config/chezmoi" },
 ]

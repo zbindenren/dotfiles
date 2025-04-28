@@ -1,0 +1,6 @@
+{{- if .work -}}
+[global]
+index-url = https://repo.{{ .network.domain }}/artifactory/api/pypi/python/simple
+trusted-host = repo.{{ .network.domain }}:443
+timeout = 60
+{{- end }}

@@ -1,20 +1,18 @@
-
-alias kc="killall chromium && killall chromium && killall chromium"
-alias cat="bat -p --theme=GitHub"
-alias sa="ssh-add -s /usr/lib/opensc-pkcs11.so" #needs opensc lib
-alias fd="fd -c never"
-alias t=task_select
-alias ta=task_select_all
-alias tg=task_select_global
-alias lazy-backup="cp $HOME/.config/nvim/lua/plugins/lock.json $HOME/.config/nvim/lua/plugins/lock.json-(date +%Y%m%d-%H%M%S)"
 alias cha="chezmoi apply"
 alias chd="chezmoi diff --script-contents=false"
+{{- if eq .chezmoi.os "darwin" }}
+alias sa="ssh-add -s /usr/lib/ssh-keychain.dylib"
+{{- else }}
+alias sa="ssh-add -s /usr/lib/opensc-pkcs11.so" #needs opensc lib
+{{ end }}
 
+{{- if eq .chezmoi.os "linux" }}
 # systemctl
 alias start="sudo systemctl start"
 alias stop="sudo systemctl stop"
 alias stat="sudo systemctl status"
 alias restart="sudo systemctl restart"
+{{- end }}
 
 # kubectl
 alias k="kubectl"
@@ -22,33 +20,38 @@ alias ks="kubectl sudo"
 alias ke="kubectl get events --sort-by=.metadata.creationTimestamp"
 alias kse="kubectl sudo get events --sort-by=.metadata.creationTimestamp"
 alias kga="kubectl api-resources --verbs=list --namespaced -o name | xargs -n 1 kubectl sudo get --show-kind --ignore-not-found"
-alias klo="kubectl login --login-methods=full"
-{{- if hasKey . "email" }}
-alias k9="k9s --as={{ .user }} --as-group=system:masters"
-alias kl="stern --as={{ .user }} --as-group=system:masters"
-{{- end }}
+alias klo="kubectl login --login-methods=yubikey,secureid"
+alias k9="k9s --as={{ .user_name }} --as-group=system:masters"
+alias kl="stern --as={{ .user_name }} --as-group=system:masters"
+
+# vi
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
+
+# only for personal workstations
+{{- if and .work .personal }}
+# task
+alias t=task_select
+alias ta=task_select_all
+alias tg=task_select_global
 
 # lab (https://github.com/Ackerr/lab)
 alias ws='cd (lab ws)'
-
-alias top="btop"
 alias lg="lazygit"
-alias ping="gping"
-alias grep="rg"
-alias lvim="NVIM_APPNAME=nvim-lecacy nvim"
 
-# vi
-{{- if hasPrefix "/export" .chezmoi.homeDir }}
-alias vim='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
-alias vi='{{ .chezmoi.homeDir }}/bin/nvim.appimage'
-{{- else }}
-alias vim='nvim'
-alias vi='nvim'
-{{ end }}
-{{- if hasKey . "email" }}
-alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host }} --remote {{ .sshuttle_host }} {{ .sshuttle_network }}'
-alias paam_shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_host_paam }} --remote {{ .sshuttle_host_paam }} {{ .sshuttle_network_paam }}'
+# overwrite std coreutils with rust ones
+alias grep="rg"
+alias cat="bat -p"
+alias top="btop"
+
+# sshuttle
+alias shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_default_host }} --remote {{ .sshuttle_default_host }} -s $HOME/.config/sshuttle/default'
+alias paam_shuttle='sshuttle --disable-ipv6 --dns --exclude {{ .sshuttle_paam_host }} --remote {{ .sshuttle_paam_host }} -s $HOME/.config/sshuttle/paam'
+
+alias lvim="NVIM_APPNAME=nvim-lecacy nvim"
+alias fd="fd -c never"
 {{- end }}
 
 # git
-alias gb='git blabe -w -C -C -C'
+alias gb='git blame -w -C -C -C'

@@ -2,58 +2,30 @@
 cask_args appdir: '~/Applications', require_sha: true
 
 # ━━ Brew Taps ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-tap 'homebrew/bundle'
-tap 'homebrew/services'
 tap 'jesseduffield/lazygit'
 tap 'lintingzhen/tap'
+tap 'hashicorp/tap'
 
-# ━━ Brew Common ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-brew 'git'              # Version control
+# ━━ Brew Minimal ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+brew 'age'              # PGP alternative
 brew 'atuin'            # Better shell history
+brew 'bat'              # A better cat
 brew 'fish'             # Fish shell
 brew 'fisher'           # Fish plugin manager
-brew 'neovim'           # Text editor
-brew 'tmux'             # Term multiplexer
-brew 'fd'               # Simple, fast and user-friendly alternative to find
-brew 'yazi'             # TUI file explorer
-brew 'bat'              # A better cat
-brew 'gdu'              # TUI disk usage monitor
-brew 'btop'             # TUI system monitor
-brew 'age'              # PGP alternative
-brew 'starship'         # Cross-shell prompt that's fast, minimal and customizable
-brew 'lazygit'          # Simple terminal UI for git commands
-brew 'prettier'         # Code formatter for many languages
-brew 'onefetch'         # Git repository summary in your terminal
-brew 'gping'            # Ping with graph plotting
-brew 'ripgrep'          # Fast line-oriented search tool (better grep)
-brew 'broot'            # Better directory navigation
-brew 'git-delta'        # Syntax highlighting pager for git, diff and grep
-brew 'gh'               # GitHub CLI
 brew 'fzf'              # Command-line fuzzy finder
-brew 'sshuttle'         # Proxy server that tunnels over SSH
-brew 'go-task'          # Task runner / build tool written in Go
 brew 'go'               # Open source programming language
-brew 'git-cliff'        # Highly customizable changelog generator
 brew 'kubectl'          # Kubernetes command-line tool
 brew 'kubectx'          # Tool to switch between kubectl contexts
-brew 'k9s'              # Terminal UI to manage Kubernetes clusters
-brew 'opensc'           # Smart card tools and middleware
-brew 'xclip'            # Command line interface to X clipboard
-brew 'jq'               # Command-line JSON processor
-brew 'yq'               # Process YAML, JSON and XML documents
-brew 'xsel'             # X11 clipboard manipulation tool
-#brew 'jumpapp'         # Focus or start applications from the command line
-#brew 'puppet-lint'     # Linter for Puppet manifests
-brew 'tpm'              # Tmux Plugin Manager
-brew 'jo'               # JSON output from shell
-brew 'git-town'         # High-level Git workflow automation
-brew 'logdy'            # Simple and lightweight logging utility
-brew 'kind'             # Run local Kubernetes clusters using Docker
+brew 'neovim'           # Text editor
+brew 'onefetch'         # Git repository summary in your terminal
+brew 'starship'         # Cross-shell prompt that's fast, minimal and customizable
 brew 'zoxide'           # Smarter cd command with learning capabilities
-brew 'aider'            # AI in the command line
-brew 'aichat'           # Another AI in the command line
-brew 'ackerr/tap/lab'   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
-brew 'git-who'          # Git blame for file trees
+
+
+# ━━ On personal workstations only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{{- if .personal }}
+{{ include (joinPath .chezmoi.sourceDir "Brewfile.personal") }}
+{{- end -}}
 
 # ━━ Brew Darwin or Linux only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {{- if eq .chezmoi.os "darwin" }}

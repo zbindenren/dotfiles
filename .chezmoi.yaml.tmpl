@@ -1,0 +1,58 @@
+{{/* boolean feature tags */}}
+{{- $work := false -}}{{/* true if this machine is a work machine */}}
+{{- $private := false -}}{{/* true if this machine is a private machine - the opposite of work */}}
+{{- $personal := true -}}{{/* true if this machine is not shared */}}
+{{- "" -}}
+
+{{- $osID := .chezmoi.os -}}
+{{- if (and (eq .chezmoi.os "linux") (hasKey .chezmoi.osRelease "id")) -}}
+{{-   $osID = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
+
+{{/* work around unreliable hostname on darwin */}}
+{{- $hostname := .chezmoi.hostname -}}
+
+{{- if "/home/linuxbrew" | lstat -}}
+{{- if eq ("/home/linuxbrew" | lstat).type "symlink" -}}
+{{-   $personal = false -}}
+{{- end -}}
+{{- end -}}
+
+{{- $includeFile := (printf "%s/%s" .chezmoi.destDir ".config/chezmoi/chezmoi-work.yaml") -}}
+{{- if $includeFile | lstat -}}
+{{-   $work = true -}}
+{{- end -}}
+
+
+{{- if not $work -}}
+    {{- $includeFile = (printf "%s/%s" .chezmoi.destDir ".config/chezmoi/chezmoi-private.yaml") -}}
+    {{- if $includeFile | lstat -}}
+    {{-   $private = true -}}
+{{- end -}}
+
+{{- end -}}
+
+{{- if eq $work $private -}}
+  {{- fail "work and private cannot be the same" -}}
+{{- end -}}
+
+{{- $includedData := fromYaml (include $includeFile) -}}
+
+{{ $userName := base (printf "%s" .chezmoi.destDir) }}
+---
+{{- if $personal }}
+encryption: age
+age:
+  identity: "~/.config/chezmoi/key.txt"
+  recipient: "age14qjvt3qwwnu745sg8e6vfnede2tgf48h0fz7kn00ge3gsljeagcskfy8w5"
+{{ end }}
+
+data:
+  work: {{ $work }}
+  private: {{ $private }}
+  personal: {{ $personal }}
+  hostname: {{ $hostname }}
+  osID: {{ $osID }}
+  user_name: {{ $userName }}
+{{- $includedData | toYaml | nindent 2 }}
+

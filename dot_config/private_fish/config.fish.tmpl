@@ -1,0 +1,46 @@
+set fish_greeting ""
+
+set -gx TERM xterm-256color
+set -x PATH $PATH /usr/local/bin
+
+# ━━ Setup brew ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{{- if .personal }}
+{{- if eq .chezmoi.os "darwin" }}
+set -x PATH $PATH /opt/homebrew/bin
+{{- end }}
+{{- if eq .chezmoi.os "linux" }}
+set -x PATH $PATH /home/linuxbrew/.linuxbrew/bin
+{{- end }}
+
+eval (brew shellenv)
+{{- end }}
+
+ 
+ # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ path for gnu tools ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+{{- if eq .chezmoi.os "darwin" }}
+# to use coreutils (better cp, find) we prepend gnubin to path
+set -gx PATH /opt/homebrew/opt/coreutils/libexec/gnubin $PATH
+set -gx PATH /opt/homebrew/opt/findutils/libexec/gnubin $PATH
+set -gx PATH /opt/homebrew/opt/gnu-sed/libexec/gnubin $PATH
+{{- end }}
+
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+    {{- if not .personal }}
+    fastfetch
+    {{- end }}
+    starship init fish | source
+    zoxide init fish | source
+
+    bind \cF forward-bigword
+    bind -k nul accept-autosuggestion
+
+    atuin init fish | source
+end
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ additional paths ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+set -x PATH $PATH ~/go/bin ~/bin
+set -gx PATH $PATH $HOME/.krew/bin
+set -gx PATH $PATH $HOME/.npm-packages/bin
+

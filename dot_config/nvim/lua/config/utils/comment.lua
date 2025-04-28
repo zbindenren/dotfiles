@@ -60,8 +60,8 @@ local function getComment()
   end
 
   -- Get the parser for the current buffer
-  local parser = vim.treesitter.get_parser(bufnr)
-  if not parser then
+  local parser_status, parser = pcall(vim.treesitter.get_parser, bufnr)
+  if not parser_status or not parser then
     return "", false, indentation
   end
 
@@ -126,7 +126,11 @@ function M.create_comment_header()
     local indentLength = #indentation
     local comment_prefix_lenth = #vim.bo.commentstring:format("")
     input_text = createHeader(value, maxLength - indentLength - comment_prefix_lenth)
-    modifyLineAtCursor(indentation .. vim.bo.commentstring:format(input_text), isComment)
+    local commentStr = vim.bo.commentstring
+    if commentStr == "" then
+      commentStr = "# %s"
+    end
+    modifyLineAtCursor(indentation .. commentStr:format(input_text), isComment)
   end)
 end
 

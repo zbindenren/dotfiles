@@ -1,25 +1,26 @@
 # Dotfiles Repository
+
 <!-- vim-markdown-toc GitLab -->
 
-* [Prerequisites](#prerequisites)
-  * [Linux](#linux)
-* [Manual Installation](#manual-installation)
-* [Configuration](#configuration)
-* [Updating](#updating)
-* [Customizing](#customizing)
-  * [Adding New Dotfiles](#adding-new-dotfiles)
-* [Extending](#extending)
-  * [Adding New Tools](#adding-new-tools)
-  * [Organization Best Practices](#organization-best-practices)
-  * [Repository](#repository)
-* [Encryption with Age](#encryption-with-age)
-  * [Setup Age Encryption](#setup-age-encryption)
-  * [Encrypting Files](#encrypting-files)
-  * [Encrypting Template Variables](#encrypting-template-variables)
-  * [Moving to a New Machine](#moving-to-a-new-machine)
-* [Package Installation](#package-installation)
-  * [Customizing Packages](#customizing-packages)
-  * [Skipping Package Installation](#skipping-package-installation)
+- [Prerequisites](#prerequisites)
+  - [Linux](#linux)
+- [Manual Installation](#manual-installation)
+- [Configuration](#configuration)
+- [Updating](#updating)
+- [Customizing](#customizing)
+  - [Adding New Dotfiles](#adding-new-dotfiles)
+- [Extending](#extending)
+  - [Adding New Tools](#adding-new-tools)
+  - [Organization Best Practices](#organization-best-practices)
+  - [Repository](#repository)
+- [Encryption with Age](#encryption-with-age)
+  - [Setup Age Encryption](#setup-age-encryption)
+  - [Encrypting Files](#encrypting-files)
+  - [Encrypting Template Variables](#encrypting-template-variables)
+  - [Moving to a New Machine](#moving-to-a-new-machine)
+- [Package Installation](#package-installation)
+  - [Customizing Packages](#customizing-packages)
+  - [Skipping Package Installation](#skipping-package-installation)
 
 <!-- vim-markdown-toc -->
 
@@ -27,9 +28,9 @@ A cross-platform dotfiles repository managed with Chezmoi. This repository conta
 
 ## Prerequisites
 
-* Git
-* [Chezmoi](https://www.chezmoi.io/)
-* [Age](https://github.com/FiloSottile/age) (for encrypted files)
+- Git
+- [Chezmoi](https://www.chezmoi.io/)
+- [Age](https://github.com/FiloSottile/age) (for encrypted files)
 
 ### Linux
 
@@ -43,8 +44,9 @@ The following shortcuts are configured:
 ## Manual Installation
 
 1. Install Chezmoi:
-   * macOS: `brew install chezmoi`
-   * Linux: `sh -c "$(curl -fsLS get.chezmoi.io)"`
+
+   - macOS: `brew install chezmoi`
+   - Linux: `sh -c "$(curl -fsLS get.chezmoi.io)"`
 
 2. Initialize with this repository:
 
@@ -66,14 +68,32 @@ The following shortcuts are configured:
 
 ## Configuration
 
-Place the age key in `~/.config/chezmoi/key.txt` and create the following minimal configuration `~/.config/chezmoi/chezmoi.yaml`:
+### Work Environment
+
+Create the following file `~./config/chezmoi/chezmoi-work.yaml`:
 
 ```yaml
 ---
-encryption: age
-age:
-  identity: "~/.config/chezmoi/key.txt"
-  recipient: "age14qjvt3qwwnu745sg8e6vfnede2tgf48h0fz7kn00ge3gsljeagcskfy8w5"
+email: < work email address >
+sshuttle_default_host: < default shottle jump host >
+sshuttle_paam_host: < paam shottle jump host >
+jump_hosts:
+  - < jump host 1 >
+  - < jump host 2 >
+  - < jump host 3 >
+network:
+  domain: < domain >
+  noproxy: < list of no proxy addr >
+  proxy: http://localhost:3128
+```
+
+### Private Environment
+
+Create the following file `~./config/chezmoi/chezmoi-private.yaml`:
+
+```yaml
+---
+email: < private email address >
 ```
 
 ## Updating
@@ -131,20 +151,20 @@ This repository is designed to be extended with your preferred tools:
 
 ### Organization Best Practices
 
-* Group related configurations in directories
-* Use Chezmoi's `run_` scripts for installation steps
-* Document complex setups in comments
+- Group related configurations in directories
+- Use Chezmoi's `run_` scripts for installation steps
+- Document complex setups in comments
 
 ### Repository
 
 The repository contains the following helper files:
 
-* `.chezmoiignore`: List of files that are ignored by chezmoi
-* `packages-arch-pacman.txt`: Packages installed with pacman
-* `packages-arch-yay.txt`: Packages installed with yay
-* `run_once_before_decrypt-private-key.sh.tmpl`: Decrypt age key by asking for the passphrase
-* `run_once_install-packages.darwin.sh.tmpl`: macOS package installation script
-* `run_once_install-packages.linux.sh.tmpl`: linux package installation script
+- `.chezmoiignore`: List of files that are ignored by chezmoi
+- `packages-arch-pacman.txt`: Packages installed with pacman
+- `packages-arch-yay.txt`: Packages installed with yay
+- `run_once_before_decrypt-private-key.sh.tmpl`: Decrypt age key by asking for the passphrase
+- `run_once_install-packages.darwin.sh.tmpl`: macOS package installation script
+- `run_once_install-packages.linux.sh.tmpl`: linux package installation script
 
 ## Encryption with Age
 
@@ -201,15 +221,15 @@ For sensitive variables in templates:
 
 This repository automatically installs necessary packages defined in `.chezmoi.yaml.tmpl`. The installation uses:
 
-* Homebrew for macOS
-* Native package managers Arch Linux
+- Homebrew for macOS
+- Native package managers Arch Linux
 
 ### Customizing Packages
 
 Add packages to:
 
-* `packages-arch-pacman.txt` for packages installed with pacman
-* `packages-arch-yay.txt` for packages installed with yay
+- `packages-arch-pacman.txt` for packages installed with pacman
+- `packages-arch-yay.txt` for packages installed with yay
 
 ### Skipping Package Installation
 

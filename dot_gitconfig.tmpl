@@ -1,12 +1,6 @@
-{{- /* if email variable is set I am on work environment */ -}}
 [user]
   name = Rene Zbinden
-{{- if hasKey . "email" }}
   email = {{ .email }}
-	; signingKey = /home/{{ .user }}/.ssh/id_rsa.pub
-{{- else }}
-  email = rene.zbinden@gmail.com
-{{- end }}
 [push]
 	default = current
 [merge]
@@ -19,16 +13,16 @@
   pager = delta
   editor = nvim
   askpass =
-{{ if hasKey . "email" }}
+{{- if .work }}
 [http]
   sslVerify = false
-  cookiefile = /home/{{ .user }}/.gitcookies
+  cookiefile = {{ .chezmoi.destDir }}/.gitcookies
 {{- end }}
 
-{{ if hasKey . "email" }}
+{{- if .work }}
 [commit]
   ; gpgsign = false
-  template = /home/{{ .user }}/.gitmessage
+  template = {{ .chezmoi.destDir }}/.gitmessage
 {{- end }}
 [diff]
   colorMoved = dimmed-zebra

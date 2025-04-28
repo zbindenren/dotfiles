@@ -1,3 +1,21 @@
 # Mac only packages
 
 cask 'raycast', args: { require_sha: false }  # Spotlight alternative
+cask 'font-jetbrains-mono-nerd-font'
+cask 'ghostty'
+cask 'bitwarden'
+cask 'latest'
+cask 'localsend'
+cask 'spotify' , args: { require_sha: false }  # Listen to music
+cask 'visual-studio-code'
+cask 'zed'
+cask 'zen-browser'
+cask 'wezterm'
+cask 'keymapp' , args: { require_sha: false }  # ZSA Voyager App
+brew 'telnet'
+brew 'lima'
+brew 'coreutils'
+brew 'findutils'
+brew 'gnu-sed'
+cask 'appcleaner'
+cask 'popclip'

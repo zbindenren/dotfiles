@@ -1,14 +1,10 @@
 #!/bin/bash
 
-# Check if Homebrew is installed
-if ! command -v brew &> /dev/null; then
-    echo "Homebrew is not installed."
-    exit 1
-fi
-
 # Install packages from Brewfile
-echo "Installing packages from Brewfile..."
-chezmoi execute-template < "{{ .chezmoi.sourceDir }}/Brewfile.tmpl" | brew bundle --file=-
+if command -v brew &> /dev/null; then
+  echo "Installing packages from Brewfile..."
+  chezmoi execute-template < "{{ .chezmoi.sourceDir }}/Brewfile.tmpl" | brew bundle --file=-
+fi
 
 # ━━ Pacman ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 if command -v pacman &> /dev/null; then
@@ -51,6 +47,21 @@ if fish -c "functions -q fisher" &> /dev/null; then
   echo "Installing fisher packages"
 
   fish -c "fisher install danhper/fish-ssh-agent"
+fi
+
+# ━━ krew ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+if command -v kubectl-krew >/dev/null; then
+    KREW_BIN=kubectl-krew
+
+    ${KREW_BIN} update
+
+    ${KREW_BIN} install stern
+    ${KREW_BIN} install who-can
+    ${KREW_BIN} install access-matrix
+    ${KREW_BIN} install rolesum
+    ${KREW_BIN} install cilium
+    ${KREW_BIN} install ingress-nginx
 fi
 
 echo "Package installation complete."

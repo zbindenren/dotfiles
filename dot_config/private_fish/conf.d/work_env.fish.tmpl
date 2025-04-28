@@ -1,33 +1,18 @@
 # path
-{{ if hasKey . "proxy" }}
-set -x PATH $PATH $HOME/homebrew/bin
-
+{{ if .work }}
 # go
 set -x GOPROXY https://proxy.golang.org
-set -x GOPRIVATE '*.{{ .domain }}'
+set -x GOPRIVATE '*.{{ .network.domain }}'
 
 # proxy
-{{- if hasPrefix "w0" .chezmoi.fqdnHostname }}
-set -x http_proxy http://localhost:3128
-set -x HTTP_PROXY http://localhost:3128
-set -x https_proxy http://localhost:3128
-set -x HTTPS_PROXY http://localhost:3128
-set -x no_proxy {{ .noproxy }}
-{{- else }}
-set -x http_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
-set -x https_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
-set -x no_proxy {{ .noproxy }}
+{{- if .work }}
+set -x http_proxy {{ .network.proxy }}
+set -x HTTP_PROXY {{ .network.proxy }}
+set -x https_proxy {{ .network.proxy }}
+set -x HTTPS_PROXY {{ .network.proxy }}
+set -x no_proxy {{ .network.noproxy }}
 {{- end }}
 
-
-function proxyuser
-  set proxyname {{ .proxy }}:{{ .proxyport }}
-  read --prompt "echo 'username: ' " -l username
-  read -s --prompt "echo 'password: ' " -l password
-  set -x ftp_proxy http://$username:$password@$proxyname
-  set -x http_proxy http://$username:$password@$proxyname
-  set -x https_proxy http://$username:$password@$proxyname
-end
 
 function paam-fzf
   set hosts (cat $HOME/nodes.txt | fzf -m)
@@ -60,17 +45,4 @@ function proxyoff
   set -e http_proxy
   set -e https_proxy
 end
-
-function proxyappl
-set -x ftp_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
-set -x http_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
-set -x https_proxy 'http://{{ .proxyappl }}:{{ .proxyport }}'
-end
 {{ end }}
-
-{{- if not (hasPrefix "w0" .chezmoi.fqdnHostname) }}
-function fzsh
-  set host (/usr/bin/cat /etc/pssh/by-os/linux/all.sys | fzf)
-  ssh $host
-end
-{{- end }}

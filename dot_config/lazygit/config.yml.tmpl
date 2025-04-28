@@ -1,35 +1,20 @@
-{{- /* if email variable is set I am on work environment */ -}}
+notARepository: 'quit'
 git:
   paging:
     colorArg: always
     pager: delta --light --paging=never
-{{- if hasKey . "email" }}
+{{- if .work }}
 services:
-  "git.{{ .domain }}": "gitlab:git.{{ .domain }}"
-  "gitlab.{{ .domain }}": "gitlab:gitlab.{{ .domain }}"
+  "git.{{ .network.domain }}": "gitlab:git.{{ .network.domain }}"
+  "gitlab.{{ .network.domain }}": "gitlab:gitlab.{{ .network.domain }}"
 {{- end }}
 customCommands:
-  - key: "<c-u>"
-    description: "Force push"
-    command: 'git push -f'
-    context: files
-    showOutput: true
   - key: "C"
     command: "git cz"
     description: "commit with commitizen"
     context: "files"
     loadingText: "opening commitizen commit tool"
     subprocess: true
-  - key: "<c-u>"
-    description: "Force push"
-    command: 'git push -f'
-    context: localBranches
-    showOutput: true
-  - key: "<c-u>"
-    description: "Force push"
-    command: 'git push -f'
-    context: commits
-    showOutput: true
 # TODO: this only works in nvim or without tmux
 keybinding:
   universal:
