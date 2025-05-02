@@ -63,3 +63,21 @@ function proxy_user
     set -gx http_proxy "http://$USER:$password@$proxy:$port"
     set -gx https_proxy "http://$USER:$password@$proxy:$port"
 end
+
+# Interactively change the current directory using fd and fzf.
+set EXCLUDE_DIRS Library go/pkg qmk_firmware .cache .git/ Pictures/ Music/ Applications/
+function c
+    set -l fd_exclude_args
+    if set -q EXCLUDE_DIRS && test (count $EXCLUDE_DIRS) -gt 0
+        for dir in $EXCLUDE_DIRS
+            set -a fd_exclude_args -E $dir
+        end
+    end
+
+    # fd_exclude_args will be empty if TST_EXCLUDE_DIRS was not set or empty
+    set selected_dir (fd -t d $fd_exclude_args -H | fzf)
+
+    if test -n "$selected_dir"
+        cd "$selected_dir"
+    end
+end
