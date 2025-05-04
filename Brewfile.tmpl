@@ -21,6 +21,12 @@ brew 'onefetch'         # Git repository summary in your terminal
 brew 'starship'         # Cross-shell prompt that's fast, minimal and customizable
 brew 'zoxide'           # Smarter cd command with learning capabilities
 
+{{- if and .work .personal }}
+tap 'postfinace/tap', 'https://gitlab.{{ .network.domain }}/kubernetes/developer-workplace/homebrew-tap.git'
+
+brew 'postfinace/tap/kubectl-login-cgo'
+brew 'postfinace/tap/kubectl-mkconfig'
+{{- end -}}
 
 # ━━ On personal workstations only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {{- if .personal }}
