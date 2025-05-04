@@ -78,6 +78,6 @@ function c
     set selected_dir (fd -t d $fd_exclude_args -H | fzf)
 
     if test -n "$selected_dir"
-        cd "$selected_dir"
+        z "$selected_dir"
     end
 end
