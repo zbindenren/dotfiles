@@ -31,6 +31,7 @@
   "mini.icons": { "branch": "main", "commit": "397ed3807e96b59709ef3292f0a3e253d5c1dc0a" },
   "mini.pairs": { "branch": "main", "commit": "69864a2efb36c030877421634487fd90db1e4298" },
   "mini.pick": { "branch": "main", "commit": "417c273861971b451687e847383e61687463b06e" },
+  "mini.surround": { "branch": "main", "commit": "5aab42fcdcf31fa010f012771eda5631c077840a" },
   "neotest": { "branch": "master", "commit": "6267dcd577aa519c828d2526b05844770d3a2c6a" },
   "neotest-golang": { "branch": "main", "commit": "5d1fdb068914ac23593495e71ecf9b1fad309b45" },
   "noice.nvim": { "branch": "main", "commit": "0427460c2d7f673ad60eb02b35f5e9926cf67c59" },
