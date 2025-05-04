@@ -32,6 +32,11 @@ config.hide_tab_bar_if_only_one_tab = true
 config.color_scheme = "Catppuccin Latte"
 config.audible_bell = "Disabled"
 config.window_padding = { left = 1, right = 0, top = 0, bottom = 0 }
-config.keys = macCMDtoCtrl()
+
+config.keys = config.keys or {}
+
+for _, mapping in ipairs(macCMDtoCtrl()) do
+	table.insert(config.keys, mapping)
+end
 
 return config
