@@ -6,6 +6,8 @@ set -gx XDG_STATE_HOME "$HOME/.local/state"
 
 set -gx EDITOR nvim
 
+set -gx MANPAGER 'nvim +Man!'
+
 set -gx LESS -X
 
 set -gx TASK_X_REMOTE_TASKFILES 1
