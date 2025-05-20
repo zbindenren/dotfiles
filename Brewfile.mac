@@ -9,7 +9,7 @@ cask 'localsend'
 cask 'spotify' , args: { require_sha: false }  # Listen to music
 cask 'visual-studio-code'
 cask 'zed'
-cask 'zen-browser'
+cask 'zen'
 cask 'wezterm'
 cask 'keymapp' , args: { require_sha: false }  # ZSA Voyager App
 brew 'telnet'
