@@ -115,9 +115,14 @@ return {
       opts = (function()
         local http_proxy = os.getenv("http_proxy")
         if http_proxy then
-          return { proxy = http_proxy }
+          return {
+            proxy = http_proxy,
+            show_model_choices = true,
+          }
         end
-        return {}
+        return {
+          show_model_choices = true,
+        }
       end)(),
       gemini = function()
         return require("codecompanion.adapters").extend("gemini", {
