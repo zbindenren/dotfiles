@@ -36,3 +36,4 @@ brew 'nfpm'             # Simple deb and rpm packager
 brew 'tree'
 brew 'hugo'
 brew 'yarn'
+brew 'evil-helix'
