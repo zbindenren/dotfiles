@@ -3,3 +3,8 @@ bin/kubectl-sudo:
   url: "https://github.com/postfinance/kubectl-sudo/archive/refs/heads/master.zip"
   executable: true
   path: "kubectl-sudo-master/bash/kubectl-sudo"
+bin/wt:
+  type: "archive-file"
+  url: "https://github.com/yankeexe/git-worktree-switcher/archive/refs/tags/0.1.1.zip"
+  executable: true
+  path: "git-worktree-switcher-0.1.1/wt"
