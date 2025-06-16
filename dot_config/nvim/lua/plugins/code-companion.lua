@@ -4,12 +4,6 @@ if not status_ok then
   return
 end
 
-local constants = {
-  LLM_ROLE = "llm",
-  USER_ROLE = "user",
-  SYSTEM_ROLE = "system",
-}
-
 return {
   "olimorris/codecompanion.nvim",
   dependencies = {
