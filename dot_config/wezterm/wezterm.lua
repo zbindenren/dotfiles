@@ -25,6 +25,7 @@ local function macCMDtoCtrl()
 end
 
 config.font_size = 20
+config.window_decorations = "RESIZE"
 config.window_close_confirmation = "NeverPrompt"
 config.default_prog = { "/opt/homebrew/bin/fish" }
 -- config.line_height=1
