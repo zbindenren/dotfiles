@@ -1,8 +1,6 @@
 # Linux Packages only on personal (not shared) workstations
 
 brew 'ackerr/tap/lab'   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
-brew 'aichat'           # Another AI in the command line
-brew 'aider'            # AI in the command line
 brew 'bat'              # A better cat
 brew 'btop'             # TUI system monitor
 brew 'fd'               # Simple, fast and user-friendly alternative to find
@@ -45,3 +43,6 @@ brew 'sst/tap/opencode'
 brew 'glab'
 brew 'presenterm'
 brew 'rust'
+brew 'kubebuilder'
+brew 'jwt-cli'
+brew 'gonzo'
