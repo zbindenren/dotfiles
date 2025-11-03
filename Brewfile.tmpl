@@ -22,10 +22,12 @@ brew 'starship'         # Cross-shell prompt that's fast, minimal and customizab
 brew 'zoxide'           # Smarter cd command with learning capabilities
 
 {{- if and .work .personal }}
-tap 'postfinace/tap', 'https://gitlab.{{ .network.domain }}/kubernetes/developer-workplace/homebrew-tap.git'
+tap 'postfinance/tap', 'https://gitlab.{{ .network.domain }}/developer-workplace/macos/homebrew-tap.git'
 
-brew 'postfinace/tap/kubectl-login-cgo'
-brew 'postfinace/tap/kubectl-mkconfig'
+brew 'kubectl-login-cgo'
+brew 'kubectl-mkconfig'
+brew 'kubectl-vault_sync'
+brew 'create-go-app'
 {{- end -}}
 
 # ━━ On personal workstations only ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
