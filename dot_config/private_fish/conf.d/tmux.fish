@@ -9,7 +9,7 @@ function tmn
         set name "$argv[1]"
     end
 
-    if tmux has-session -t $name 2>/dev/null
+    if tmux has-session -t "=$name" 2>/dev/null
         echo "Error: tmux session '$name' already exists" >&2
         return 1
     end
