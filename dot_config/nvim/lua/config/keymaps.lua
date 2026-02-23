@@ -4,11 +4,15 @@
 local map = vim.keymap.set
 local mouse = require("config.utils.mouse")
 local comment = require("config.utils.comment")
+local yank = require("config.utils.yank")
 
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Gitlab ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 map("n", "<leader>gp", function()
   Snacks.terminal("lab open -p; sleep 1")
 end, { desc = "Open Git Project Pipeline in Browser" })
+
+-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Yank ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+map({ "n", "v" }, "<leader>ay", yank.yank_file_reference, { desc = "Yank File Reference" })
 
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Mouse ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 map("n", "<leader>uM", mouse.toggle_mouse, { desc = "Toggle Mouse" })
