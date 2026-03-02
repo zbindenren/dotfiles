@@ -44,7 +44,6 @@ The following shortcuts are configured:
 ## Manual Installation
 
 1. Install Chezmoi:
-
    - macOS: `brew install chezmoi`
    - Linux: `sh -c "$(curl -fsLS get.chezmoi.io)"`
 
@@ -89,7 +88,7 @@ network:
 
 ### Private Environment
 
-Create the following file `~./config/chezmoi/chezmoi-private.yaml`:
+Create the following file `~/.config/chezmoi/chezmoi-private.yaml`:
 
 ```yaml
 ---
