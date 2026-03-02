@@ -48,6 +48,37 @@ function y
     rm -f -- "$tmp"
 end
 
+function tssh_clone
+    scp $JUMP_HOST:/etc/pssh/by-os/linux/all.sys $HOME/.all.sys
+    and echo "Cloned to $HOME/.all.sys ("(wc -l < $HOME/.all.sys | string trim)" hosts)"
+end
+
+function tssh
+    if not set -q TMUX
+        echo "Error: must be inside a tmux session" >&2
+        return 1
+    end
+
+    if not test -f $HOME/.all.sys
+        echo "Error: $HOME/.all.sys not found, run tssh_clone first" >&2
+        return 1
+    end
+
+    set -l hosts (command cat $HOME/.all.sys | fzf --multi --prompt="Select hosts> ")
+
+    if test (count $hosts) -eq 0
+        return 0
+    end
+
+    tmux new-window -n tssh "ssh -t $JUMP_HOST ssh $hosts[1]"
+
+    # remaining hosts each get a split pane
+    for host in $hosts[2..]
+        tmux split-window -t tssh "ssh -t $JUMP_HOST ssh $host"
+        tmux select-layout -t tssh tiled
+    end
+end
+
 function proxy_user
     set -l default_port 3128
     echo "Proxy host:"

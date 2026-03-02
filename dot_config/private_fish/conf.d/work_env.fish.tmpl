@@ -1,5 +1,8 @@
 # path
 {{ if .work }}
+# jump host
+set -x JUMP_HOST {{ .sshuttle_paam_host }}
+
 # go
 set -x GOPROXY https://proxy.golang.org
 set -x GOPRIVATE '*.{{ .network.domain }}'
