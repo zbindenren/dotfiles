@@ -41,14 +41,14 @@ function M.yank_file_reference()
     end
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
   else
-    start_line = vim.fn.line(".")
-    end_line = start_line
-    ref = string.format("@%s#L%d", filepath, start_line)
+    ref = string.format("@%s", filepath)
   end
 
-  local diags = get_diagnostics(start_line, end_line)
-  if #diags > 0 then
-    ref = ref .. "\n" .. table.concat(diags, "\n")
+  if start_line then
+    local diags = get_diagnostics(start_line, end_line)
+    if #diags > 0 then
+      ref = ref .. "\n" .. table.concat(diags, "\n")
+    end
   end
 
   vim.fn.setreg("+", ref)
