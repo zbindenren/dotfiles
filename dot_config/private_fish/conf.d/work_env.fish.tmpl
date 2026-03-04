@@ -17,6 +17,11 @@ set -x no_proxy {{ .network.noproxy }}
 {{- end }}
 
 
+# auto-mount network share
+if test -d /Volumes; and not test -d /Volumes/zbindenren
+    osascript -e 'mount volume "smb://{{ .nas_host }}/zbindenren"' >/dev/null
+end
+
 function paam-fzf
   set hosts (cat $HOME/nodes.txt | fzf -m)
 

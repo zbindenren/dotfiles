@@ -80,6 +80,7 @@ jump_hosts:
   - < jump host 1 >
   - < jump host 2 >
   - < jump host 3 >
+nas_host: < NAS hostname for network share auto-mount >
 network:
   domain: < domain >
   noproxy: < list of no proxy addr >
