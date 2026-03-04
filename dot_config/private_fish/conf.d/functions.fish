@@ -79,6 +79,22 @@ function tssh
     end
 end
 
+function reload-keys
+    ssh-add -D
+
+    set -l OPK (ls $HOME/.ssh/opkssh/*connect)
+
+    # load OpenPubKey certificate
+    test -r "$OPK"; and ssh-add $OPK
+
+    if ssh-add -l | grep -q "Key For PIV Authentication"
+        return 0
+    else
+        # load the YubiKey certificate
+        ssh-add -s /usr/lib/ssh-keychain.dylib
+    end
+end
+
 function proxy_user
     set -l default_port 3128
     echo "Proxy host:"

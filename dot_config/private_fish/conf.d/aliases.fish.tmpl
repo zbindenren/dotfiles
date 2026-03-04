@@ -2,6 +2,8 @@ alias cha="chezmoi apply"
 alias chd="chezmoi diff --script-contents=false"
 {{- if eq .chezmoi.os "darwin" }}
 alias sa="ssh-add -s /usr/lib/ssh-keychain.dylib"
+alias opkssh-login='getkeys2 login; and reload-keys'
+alias opkssh-logout='getkeys2 logout; and reload-keys'
 {{- else }}
 alias sa="ssh-add -s /usr/lib/opensc-pkcs11.so" #needs opensc lib
 {{ end }}
