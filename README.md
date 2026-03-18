@@ -16,7 +16,6 @@
 - [Encryption with Age](#encryption-with-age)
   - [Setup Age Encryption](#setup-age-encryption)
   - [Encrypting Files](#encrypting-files)
-  - [Encrypting Template Variables](#encrypting-template-variables)
   - [Moving to a New Machine](#moving-to-a-new-machine)
 - [Package Installation](#package-installation)
   - [Customizing Packages](#customizing-packages)
@@ -69,7 +68,7 @@ The following shortcuts are configured:
 
 ### Work Environment
 
-Create the following file `~./config/chezmoi/chezmoi-work.yaml`:
+Create the following file `~/.config/chezmoi/chezmoi-work.yaml`:
 
 ```yaml
 ---
@@ -200,22 +199,10 @@ chezmoi add --encrypt ~/.config/some-service/credentials
 chezmoi edit ~/.config/some-service/credentials
 ```
 
-### Encrypting Template Variables
+Encrypted files use chezmoi's native `encrypted_` prefix and `.age` suffix (e.g.,
+`encrypted_private-env.fish.age`). This allows editing with `chezmoi edit` which
+handles decryption and re-encryption automatically.
 
-For sensitive variables in templates:
-
-1. Create an encrypted data file:
-
-   ```sh
-   chezmoi cd
-   echo '{"github_token":"secret-token-here"}' | chezmoi encrypt --output data/secrets.json
-   ```
-
-2. Access encrypted values in templates:
-
-   ```txt
-   {{ (index . "github_token") }}
-   ```
 
 ## Package Installation
 

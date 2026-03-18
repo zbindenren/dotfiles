@@ -1,3 +1,0 @@
-{{- if .personal -}}
-{{ join .chezmoi.sourceDir ".chezmoitemplates_ecrypted/private-env.fish" | include | decrypt }}
-{{- end -}}
