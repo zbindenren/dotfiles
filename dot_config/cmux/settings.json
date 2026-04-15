@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux-settings.schema.json",
+  "schemaVersion": 1,
+  "shortcuts": {
+    "bindings": {
+      "prevSurface": "opt+h",
+      "nextSurface": "opt+l",
+      "splitRight": "cmd+shift+\\",
+      "splitDown": "cmd+-",
+      "closeTab": "cmd+x",
+      "focusLeft": "cmd+shift+h",
+      "focusDown": "cmd+shift+j",
+      "focusUp": "cmd+shift+k",
+      "focusRight": "cmd+shift+l",
+      "browserZoomIn": "cmd+shift+=",
+      "browserZoomOut": "cmd+shift+-",
+      "triggerFlash": "cmd+shift+y"
+    }
+  }
+}
