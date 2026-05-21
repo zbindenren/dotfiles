@@ -23,7 +23,6 @@ brew 'logdy'            # Simple and lightweight logging utility
 brew 'prettier'         # Code formatter for many languages
 brew 'ripgrep'          # Fast line-oriented search tool (better grep)
 brew 'sshuttle'         # Proxy server that tunnels over SSH
-brew 'terraform'
 brew 'tmux'             # Term multiplexer
 brew 'tpm'              # Tmux Plugin Manager
 brew 'xsel'             # X11 clipboard manipulation tool
@@ -51,3 +50,4 @@ brew 'watch'
 brew 'hadolint'
 brew 'raine/workmux/workmux'
 brew 'oven-sh/bun/bun'
+brew 'tfenv'
