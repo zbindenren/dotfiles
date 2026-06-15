@@ -1,6 +1,6 @@
 # Linux Packages only on personal (not shared) workstations
 
-brew 'ackerr/tap/lab'   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
+brew 'ackerr/tap/lab', trusted: true   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
 brew 'bat'              # A better cat
 brew 'btop'             # TUI system monitor
 brew 'fd'               # Simple, fast and user-friendly alternative to find
@@ -12,7 +12,7 @@ brew 'git-town'         # High-level Git workflow automation
 brew 'git-who'          # Git blame for file trees
 brew 'git'              # Version control
 brew 'go-task'          # Task runner / build tool written in Go
-brew 'hashicorp/tap/vault'
+brew 'hashicorp/tap/vault', trusted: true
 brew 'jo'               # JSON output from shell
 brew 'jq'               # Command-line JSON processor
 brew 'k9s'              # Terminal UI to manage Kubernetes clusters
@@ -36,10 +36,10 @@ brew 'yarn'
 brew 'evil-helix'
 brew 'wget'
 brew 'helm'
-brew 'norwoodj/tap/helm-docs'
+brew 'norwoodj/tap/helm-docs', trusted: true
 brew 'kustomize'
 brew 'stern'
-brew 'sst/tap/opencode'
+brew 'sst/tap/opencode', trusted: true
 brew 'glab'
 brew 'presenterm'
 brew 'rust'
@@ -48,6 +48,6 @@ brew 'jwt-cli'
 brew 'gonzo'
 brew 'watch'
 brew 'hadolint'
-brew 'raine/workmux/workmux'
-brew 'oven-sh/bun/bun'
+brew 'raine/workmux/workmux', trusted: true
+brew 'oven-sh/bun/bun', trusted: true
 brew 'tfenv'
