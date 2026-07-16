@@ -23,3 +23,22 @@ format = "[$user]($style) "
 [hostname]
 ssh_only = true
 format =  "on [$hostname](green) "
+
+[kubernetes]
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+
+[[kubernetes.contexts]]
+context_pattern = "(p[1-9]-.*)-admin"
+context_alias = "$1"
+style = "bold red"
+symbol = "🚨 "
+
+[[kubernetes.contexts]]
+context_pattern = "(.*)-admin"
+context_alias = "$1"
+style = "bold red"
+
+[[kubernetes.contexts]]
+context_pattern = ".*"
+style = "cyan"
