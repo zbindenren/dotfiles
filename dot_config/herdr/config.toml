@@ -1,0 +1,33 @@
+[terminal]
+default_shell = "fish"
+
+[keys]
+prefix = "ctrl+n"
+
+# Detach from session (like tmux prefix+d)
+detach = "prefix+d"
+
+# Tab navigation with alt+h/l (like tmux M-h/M-l)
+previous_tab = ["prefix+p", "alt+h", "alt+left"]
+next_tab = ["prefix+n", "alt+l", "alt+right"]
+
+# Pane navigation (vi-style, like tmux defaults)
+focus_pane_left = ["prefix+h", "ctrl+h"]
+focus_pane_down = ["prefix+j", "ctrl+j"]
+focus_pane_up = ["prefix+k", "ctrl+k"]
+focus_pane_right = ["prefix+l", "ctrl+l"]
+
+# Split panes (like tmux: | for vertical, - for horizontal)
+split_vertical = "prefix+|"
+split_horizontal = "prefix+minus"
+
+# Reload config (like tmux prefix+r)
+reload_config = "prefix+r"
+
+# Last active pane (like tmux prefix+n → last-window)
+last_pane = "prefix+tab"
+
+[theme]
+name = "catppuccin-latte"
+auto_switch = false
+
