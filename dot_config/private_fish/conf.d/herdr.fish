@@ -1,3 +1,36 @@
+function herdr-ws-fzf --description 'Fuzzy switch Herdr workspaces from inside a session'
+    # Requires: herdr, jq, fzf
+    set json (herdr workspace list 2>/dev/null)
+    or begin
+        echo "Failed to reach Herdr server." >&2
+        return 1
+    end
+
+    # Get current workspace label for preselection
+    set current_label (printf '%s' "$json" | jq -r --arg id "$HERDR_WORKSPACE_ID" \
+        '.result.workspaces[] | select(.workspace_id == $id) | .label' 2>/dev/null)
+
+    # Build lines: "id<TAB>label"
+    set selection (printf '%s' "$json" \
+        | jq -r '.result.workspaces[] | [.workspace_id, .label] | @tsv' \
+        | fzf \
+            --query="$current_label" \
+            --header="Herdr workspaces — Enter to focus, Esc to cancel" \
+            --delimiter='\t' \
+            --with-nth=2 \
+            --exact \
+            --cycle \
+            --height=40% \
+            --reverse \
+            --border)
+
+    test -n "$selection"; or return 0
+
+    # First field (before tab) is the workspace ID
+    set ws_id (echo "$selection" | cut -f1)
+    herdr workspace focus $ws_id
+end
+
 function hma
     # Refuse to run from inside herdr (like tma checks $TMUX)
     if test "$HERDR_ENV" = 1
