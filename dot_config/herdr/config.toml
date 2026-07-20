@@ -1,3 +1,4 @@
+onboarding = false
 [terminal]
 default_shell = "fish"
 
@@ -27,7 +28,28 @@ reload_config = "prefix+r"
 # Last active pane (like tmux prefix+n → last-window)
 last_pane = "prefix+tab"
 
+# Custom commands
+# Agent navigation — cycle or jump directly to agents in the sidebar
+next_agent = "prefix+a"
+previous_agent = "prefix+shift+a"
+focus_agent = "prefix+alt+1..9"
+
+[[keys.command]]
+key = "prefix+shift+s"
+type = "popup"
+command = "nvim ~/.config/herdr/config.toml"
+width = "80%"
+height = "80%"
+
 [theme]
 name = "catppuccin-latte"
 auto_switch = false
 
+[experimental]
+pane_history = false
+
+[ui.sound]
+enabled = false
+
+[ui.toast]
+delivery = "herdr"
