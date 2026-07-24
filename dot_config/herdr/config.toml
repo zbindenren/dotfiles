@@ -13,10 +13,10 @@ previous_tab = ["prefix+p", "alt+h", "alt+left"]
 next_tab = ["prefix+n", "alt+l", "alt+right"]
 
 # Pane navigation (vi-style, like tmux defaults)
-focus_pane_left = ["prefix+h", "ctrl+h"]
-focus_pane_down = ["prefix+j", "ctrl+j"]
-focus_pane_up = ["prefix+k", "ctrl+k"]
-focus_pane_right = ["prefix+l", "ctrl+l"]
+focus_pane_left = ["prefix+h"]
+focus_pane_down = ["prefix+j"]
+focus_pane_up = ["prefix+k"]
+focus_pane_right = ["prefix+l"]
 
 # Split panes (like tmux: | for vertical, - for horizontal)
 split_vertical = "prefix+|"
@@ -47,6 +47,9 @@ auto_switch = false
 
 [experimental]
 pane_history = false
+
+[ui]
+copy_on_select = true
 
 [ui.sound]
 enabled = false

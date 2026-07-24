@@ -111,3 +111,106 @@ function hmn
     herdr tab focus $tab1_id >/dev/null
     herdr
 end
+
+function hssh --description 'SSH into multiple hosts in a Herdr workspace'
+    # Check if herdr server is running
+    if not herdr api snapshot >/dev/null 2>&1
+        echo "Error: herdr server is not running" >&2
+        return 1
+    end
+
+    if not test -f $HOME/.all.sys
+        echo "Error: $HOME/.all.sys not found, run tssh_clone first" >&2
+        return 1
+    end
+
+    # Max panes per tab, default 6
+    set -l max_panes 6
+    if set -q argv[1]
+        set max_panes $argv[1]
+    end
+
+    # Select hosts via fzf
+    set -l hosts (command cat $HOME/.all.sys | fzf --multi --prompt="Select hosts> ")
+    if test (count $hosts) -eq 0
+        return 0
+    end
+
+    # Find existing ssh workspace or create a new one
+    set -l existing_ws (herdr workspace list 2>/dev/null | python3 -c "
+import json,sys
+data = json.load(sys.stdin)
+for ws in data['result']['workspaces']:
+    if ws['label'] == 'ssh':
+        print(ws['workspace_id'])
+" 2>/dev/null)
+
+    if test -n "$existing_ws"
+        # Add a new tab to existing workspace
+        set tab_output (herdr tab create --workspace $existing_ws --label "ssh" --cwd $HOME --no-focus 2>&1)
+        if test $status -ne 0
+            echo "Error: failed to create tab in existing ssh workspace" >&2
+            return 1
+        end
+        set ws_id $existing_ws
+        set tab_id (echo $tab_output | string match -r '"tab_id":"([^"]+)"' | tail -1)
+        set current_pane (echo $tab_output | string match -r '"pane_id":"([^"]+)"' | tail -1)
+        set tab_count (herdr tab list --workspace $existing_ws 2>/dev/null | python3 -c "
+import json,sys
+data = json.load(sys.stdin)
+print(len(data['result']['tabs']))
+" 2>/dev/null)
+    else
+        # Create workspace (detached)
+        set ws_output (herdr workspace create --label ssh --cwd $HOME --no-focus 2>&1)
+        if test $status -ne 0
+            echo "Error: failed to create workspace" >&2
+            return 1
+        end
+        set ws_id (echo $ws_output | string match -r '"workspace_id":"([^"]+)"' | tail -1)
+        set tab_id (echo $ws_output | string match -r '"tab_id":"([^"]+)"' | tail -1)
+        set current_pane (echo $ws_output | string match -r '"pane_id":"([^"]+)"' | tail -1)
+        set tab_count 1
+    end
+
+    herdr tab rename $tab_id "ssh-$tab_count" >/dev/null
+    set pane_count 1
+    set host_idx 1
+    set -l total (count $hosts)
+
+    # First host in the initial pane
+    herdr pane run $current_pane "ssh -t $JUMP_HOST ssh $hosts[$host_idx]" >/dev/null
+    set host_idx (math "$host_idx + 1")
+
+    # Remaining hosts: equal-width columns, new tab when max_panes reached
+    while test $host_idx -le $total
+        if test $pane_count -ge $max_panes
+            set tab_count (math $tab_count + 1)
+            set tab_output (herdr tab create --workspace $ws_id --label "ssh-$tab_count" --cwd $HOME --no-focus 2>&1)
+            set tab_id (echo $tab_output | string match -r '"tab_id":"([^"]+)"' | tail -1)
+            set current_pane (echo $tab_output | string match -r '"pane_id":"([^"]+)"' | tail -1)
+            set pane_count 1
+        else
+            # Equal-width columns: ratio = 1/(panes_left_including_current)
+            set -l remaining_hosts (math "$total - $host_idx + 1")
+            set -l panes_in_tab $remaining_hosts
+            if test $panes_in_tab -gt $max_panes
+                set panes_in_tab $max_panes
+            end
+            set -l ratio (math "1 / ($panes_in_tab - $pane_count + 1)")
+            set split_output (herdr pane split $current_pane --direction right --ratio $ratio --no-focus 2>&1)
+            set current_pane (echo $split_output | string match -r '"pane_id":"([^"]+)"' | tail -1)
+            set pane_count (math "$pane_count + 1")
+        end
+
+        herdr pane run $current_pane "ssh -t $JUMP_HOST ssh $hosts[$host_idx]" >/dev/null
+        set host_idx (math "$host_idx + 1")
+    end
+
+    # Focus and attach (only attach when outside herdr)
+    herdr workspace focus $ws_id >/dev/null
+    herdr tab focus $tab_id >/dev/null
+    if test "$HERDR_ENV" != 1
+        herdr
+    end
+end

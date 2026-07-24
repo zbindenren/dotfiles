@@ -141,3 +141,6 @@ enter_accept = false
 #common_prefix = ["sudo"]
 
 store_failed = true
+
+[ai]
+enabled = false
