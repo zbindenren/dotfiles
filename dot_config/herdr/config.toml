@@ -2,6 +2,9 @@ onboarding = false
 [terminal]
 default_shell = "fish"
 
+[advanced]
+scrollback_limit_bytes = 100000000
+
 [keys]
 prefix = "ctrl+n"
 
@@ -19,7 +22,7 @@ focus_pane_up = ["prefix+k"]
 focus_pane_right = ["prefix+l"]
 
 # Split panes (like tmux: | for vertical, - for horizontal)
-split_vertical = "prefix+|"
+split_vertical = "prefix+v"
 split_horizontal = "prefix+minus"
 
 # Reload config (like tmux prefix+r)
@@ -51,6 +54,7 @@ pane_history = false
 [ui]
 copy_on_select = true
 
+agent_panel_sort = "spaces"
 [ui.sound]
 enabled = false
 
