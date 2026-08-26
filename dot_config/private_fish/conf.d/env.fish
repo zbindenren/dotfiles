@@ -10,6 +10,4 @@ set -gx MANPAGER 'nvim +Man!'
 
 set -gx LESS -X
 
-set -gx TASK_X_REMOTE_TASKFILES 1
-
 set -gx NODE_EXTRA_CA_CERTS $HOME/.node-extra-certs.pem
