@@ -1,5 +1,7 @@
 command = /opt/homebrew/bin/fish
-font-family = "JetBrainsMono Nerd Font Mono"
+
+font-family = "FiraCode Nerd Font Mono"
+#font-family = "JetBrainsMono Nerd Font Mono"
 
 # new bindings to replace window bindings
 keybind = cmd+shift+f=toggle_fullscreen
