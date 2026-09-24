@@ -1,6 +1,10 @@
 #!/bin/bash
-# <bitbar.title>Kube Auth</bitbar.title>
-# <bitbar.desc>Show/toggle kubectl OIDC login state</bitbar.desc>
+# <xbar.title>Kube Auth</xbar.title>
+# <xbar.desc>Show/toggle kubectl OIDC login state</xbar.desc>
+# <swiftbar.hideRunInTerminal>true</swiftbar.hideRunInTerminal>
+# <swiftbar.hideLastUpdated>true</swiftbar.hideLastUpdated>
+# <swiftbar.hideDisablePlugin>true</swiftbar.hideDisablePlugin>
+# <swiftbar.hideSwiftBar>true</swiftbar.hideSwiftBar>
 # green = logged in, red = logged out. Click toggles.
 export PATH=/opt/homebrew/bin:$HOME/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
