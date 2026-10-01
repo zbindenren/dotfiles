@@ -48,6 +48,22 @@ function y
     rm -f -- "$tmp"
 end
 
+# run 'lab sync' with GITLAB_TOKEN fetched from the keychain on demand
+function lab-sync
+    set -l token (security find-generic-password -s 'glab:gitlab.pnet.ch:token' -w | sed 's/^go-keyring-base64://' | base64 -d)
+    or begin
+        echo "lab-sync: failed to read token from keychain" >&2
+        return 1
+    end
+
+    test -n "$token"; or begin
+        echo "lab-sync: empty token from keychain" >&2
+        return 1
+    end
+
+    env GITLAB_TOKEN="$token" lab sync $argv
+end
+
 # Interactively change the current directory using fd and fzf.
 set EXCLUDE_DIRS Library go/pkg qmk_firmware .cache .git/ Pictures/ Music/ Applications/
 function c
