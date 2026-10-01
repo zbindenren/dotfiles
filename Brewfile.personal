@@ -48,6 +48,5 @@ brew 'jwt-cli'
 brew 'gonzo'
 brew 'watch'
 brew 'hadolint'
-brew 'raine/workmux/workmux', trusted: true
 brew 'oven-sh/bun/bun', trusted: true
 brew 'tfenv'
