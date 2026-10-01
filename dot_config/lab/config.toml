@@ -1,6 +1,6 @@
 [gitlab]
 # gitlab domain, like https://gitlab.com
-base_url = "$GITLAB_BASE_URL"
+base_url = "https://gitlab.pnet.ch"
 
 # gitlab access token
 token = "$GITLAB_TOKEN"
