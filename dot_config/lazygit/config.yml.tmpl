@@ -1,8 +1,8 @@
 notARepository: 'quit'
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta --light --paging=never
+      command: delta --light --paging=never
 {{- if .work }}
 services:
   "git.{{ .network.domain }}": "gitlab:git.{{ .network.domain }}"
@@ -10,11 +10,37 @@ services:
 {{- end }}
 customCommands:
   - key: "C"
-    command: "git cz"
-    description: "commit with commitizen"
     context: "files"
-    loadingText: "opening commitizen commit tool"
-    output: terminal
+    description: "commit with commitizen (native)"
+    loadingText: "composing commit"
+    command: "git commit -m '{{"{{"}}.Form.Type{{"}}"}}{{"{{"}}if .Form.Scope{{"}}"}}({{"{{"}}.Form.Scope{{"}}"}}){{"{{"}}end{{"}}"}}: {{"{{"}}.Form.Subject{{"}}"}}'"
+    prompts:
+      - type: "menu"
+        key: "Type"
+        title: "Select the type of change that you're committing:"
+        options:
+          - value: "chore"
+            description: "chore: Miscellaneus tasks"
+          - value: "feat"
+            description: "feat: A new feature"
+          - value: "fix"
+            description: "fix: A bug fix"
+          - value: "ci"
+            description: "ci: Making changes to CI"
+          - value: "build"
+            description: "build: Making changes in the build process"
+          - value: "test"
+            description: "test: Adding missing tests"
+          - value: "docs"
+            description: "docs: Documentation only changes"
+          - value: "revert"
+            description: "revert: Revert to a commit"
+      - type: "input"
+        key: "Scope"
+        title: "Scope. Could be anything specifying place of the commit change (users, db, poll):"
+      - type: "input"
+        key: "Subject"
+        title: "Subject. Concise description of the changes. Imperative, lower case and no final dot:"
 # TODO: this only works in nvim or without tmux
 keybinding:
   universal:

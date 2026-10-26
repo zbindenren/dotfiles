@@ -1,0 +1,185 @@
+#!/usr/bin/env bash
+#
+# terraform-setup - validate Terraform Cloud credentials and, when they are
+# missing or invalid, open the token page and store a pasted token.
+#
+# Ports the ensureVaultToken pattern from lslb-importer/internal/cmd/setup.go
+# to Terraform Cloud, replacing `terraform login`.
+
+set -euo pipefail
+
+TOKEN_URL=""
+CRED_PATH="${HOME}/.terraform.d/credentials.tfrc.json"
+
+usage() {
+  cat <<'EOF'
+Usage: terraform-setup [--tfc-host HOST] [--token-url URL]
+
+Checks ~/.terraform.d/credentials.tfrc.json for a valid Terraform Cloud token.
+If none is found, opens the token page in your browser, prompts for a token,
+validates it, and saves it.
+
+Options:
+  --tfc-host HOST   Terraform Cloud hostname (default: terraform.pnet.ch)
+  --token-url URL   Token page to open (default: https://<host>/app/settings/tokens)
+  -h, --help        Show this help
+EOF
+}
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+  --tfc-host)
+    [ $# -ge 2 ] || {
+      echo "--tfc-host requires a value" >&2
+      exit 1
+    }
+    TFC_HOST="$2"
+    shift 2
+    ;;
+  --tfc-host=*)
+    TFC_HOST="${1#*=}"
+    shift
+    ;;
+  --token-url)
+    [ $# -ge 2 ] || {
+      echo "--token-url requires a value" >&2
+      exit 1
+    }
+    TOKEN_URL="$2"
+    shift 2
+    ;;
+  --token-url=*)
+    TOKEN_URL="${1#*=}"
+    shift
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  *)
+    echo "unknown argument: $1" >&2
+    usage >&2
+    exit 1
+    ;;
+  esac
+done
+
+[ -n "$TOKEN_URL" ] || TOKEN_URL="https://${TFC_HOST}/app/settings/tokens"
+
+log() {
+  echo "terraform-setup: $*" >&2
+}
+
+# read_tfc_token prints the stored token for the host, or nothing when the
+# file is missing, unparsable, or has no entry for the host.
+read_tfc_token() {
+  [ -r "$CRED_PATH" ] || return 0
+  jq -r --arg host "$TFC_HOST" '.credentials[$host].token // empty' "$CRED_PATH" 2>/dev/null || true
+}
+
+# tfc_token_valid returns 0 when the Terraform Cloud API accepts the token.
+tfc_token_valid() {
+  local token="$1"
+  local status
+
+  status=$(curl --silent --output /dev/null --write-out '%{http_code}' \
+    --max-time 5 \
+    --header "Authorization: Bearer ${token}" \
+    --header 'Content-Type: application/vnd.api+json' \
+    "https://${TFC_HOST}/api/v2/account/details" 2>/dev/null) || return 1
+
+  [ "$status" = "200" ]
+}
+
+# save_tfc_token stores token for the host without disturbing other entries.
+save_tfc_token() {
+  local token="$1"
+  local dir tmp
+
+  dir=$(dirname "$CRED_PATH")
+  tmp=$(mktemp "${dir}/credentials.tfrc.json.XXXXXX")
+
+  if [ -r "$CRED_PATH" ]; then
+    jq --arg host "$TFC_HOST" --arg token "$token" \
+      '.credentials = (.credentials // {}) | .credentials[$host] = ((.credentials[$host] // {}) + {token: $token})' \
+      "$CRED_PATH" >"$tmp"
+  else
+    jq -n --arg host "$TFC_HOST" --arg token "$token" \
+      '{credentials: {($host): {token: $token}}}' >"$tmp"
+  fi
+
+  chmod 0600 "$tmp"
+  mv "$tmp" "$CRED_PATH"
+}
+
+# print_next_steps writes the workspace workflow checklist to stdout.
+print_next_steps() {
+  cat <<'EOF'
+
+Before changing anything in a workspace:
+
+  cd <workspace-dir>      # test/<name>, entw/<name>, or lab/<name>
+  git pull                # start from current main
+  terraform init          # sync providers and remote backend
+  terraform plan          # review the remote run before touching state
+  terraform state list    # inspect what state tracks today
+
+State changes:
+
+  terraform state rm <address>        # prefer removing from the .tf files
+EOF
+}
+
+# open_browser opens url in the default browser, printing it on platforms
+# without a known opener.
+open_browser() {
+  local url="$1"
+
+  case "$(uname -s)" in
+  Darwin)
+    open "$url"
+    ;;
+  Linux)
+    xdg-open "$url" >/dev/null 2>&1 &
+    ;;
+  *)
+    echo "Please open the following URL in your browser: ${url}" >&2
+    ;;
+  esac
+}
+
+token=$(read_tfc_token)
+
+if [ -n "$token" ] && tfc_token_valid "$token"; then
+  log "terraform cloud credentials are valid (host: ${TFC_HOST})"
+  print_next_steps
+  exit 0
+fi
+
+log "no valid terraform cloud credentials, opening token page (url: ${TOKEN_URL})"
+open_browser "$TOKEN_URL"
+
+printf 'Paste your Terraform Cloud token: ' >&2
+
+new_token=""
+IFS= read -rs new_token || true
+
+echo >&2
+
+new_token=$(printf '%s' "$new_token" | tr -d '[:space:]')
+
+if [ -z "$new_token" ]; then
+  echo "terraform-setup: empty token" >&2
+  exit 1
+fi
+
+if ! tfc_token_valid "$new_token"; then
+  echo "terraform-setup: invalid terraform cloud token" >&2
+  exit 1
+fi
+
+mkdir -p "$(dirname "$CRED_PATH")"
+save_tfc_token "$new_token"
+
+log "terraform cloud token saved (path: ${CRED_PATH})"
+print_next_steps

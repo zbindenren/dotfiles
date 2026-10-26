@@ -3,6 +3,9 @@
 # jump host
 set -x JUMP_HOST {{ .sshuttle_paam_host }}
 
+# terraform
+set -x TFC_HOST terraform.{{ .network.domain }}
+
 # go
 set -x GOPROXY https://proxy.golang.org
 set -x GOPRIVATE '*.{{ .network.domain }}'
