@@ -1,6 +1,5 @@
 # Linux Packages only on personal (not shared) workstations
 
-brew 'ackerr/tap/lab', trusted: true   # A fuzzy finder command line tool for gitlab: https://github.com/Ackerr/lab
 brew 'bat'              # A better cat
 brew 'btop'             # TUI system monitor
 brew 'fd'               # Simple, fast and user-friendly alternative to find
