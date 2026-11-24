@@ -1,0 +1,41 @@
+// Personal additions for zbindenren. Gitignored, extends nothing. Use with:
+//   nono run --profile postfinance --extends local-zbindenren -- pi
+{
+  "meta": {
+    "name": "local-zbindenren",
+    "version": "1.0.0",
+    "description": "Personal paths for zbindenren"
+  },
+  "filesystem": {
+    // Read+write. .env and *.tfstate* stay denied via pf-base.
+    "allow": [
+      "$HOME/repos",
+      // crit review state
+      "$HOME/.crit"
+    ],
+    // personal tool binaries (goreleaser, golangci-lint, ...), read-only
+    "read": [
+      "$HOME/bin"
+    ]
+  },
+  "network": {
+    "open_port": [
+      // ollama API (default OLLAMA_HOST port)
+      11434,
+      // crit review server (pinned via CRIT_PORT, default is random)
+      48080
+    ]
+  },
+  "environment": {
+    "set_vars": {
+      "CRIT_PORT": "48080"
+    }
+  },
+  // Only this layer sets open_urls (it replaces, it does not merge).
+  "open_urls": {
+    // GitLab links (issues, MRs) clicked in pi
+    "allow_origins": ["https://gitlab.pnet.ch"],
+    // crit opens its review UI on localhost
+    "allow_localhost": true
+  }
+}

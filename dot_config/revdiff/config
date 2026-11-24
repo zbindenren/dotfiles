@@ -1,0 +1,14 @@
+; load theme from themes directory; "auto" picks a light/dark theme based on
+; the terminal background
+theme = auto
+
+; theme to use for dark terminal backgrounds when theme = auto
+auto-theme-dark = revdiff
+
+; theme to use for light terminal backgrounds when theme = auto
+auto-theme-light = catppuccin-latte
+
+; copy the full current annotation set on every O flush; no --output needed
+post-flush-command = pbcopy
+
+vim-motion = true
